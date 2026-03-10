@@ -1,117 +1,86 @@
-<!DOCTYPE HTML>
-<!--
-	Escape Velocity by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>My Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="homepage is-preload">
-		<div id="page-wrapper">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nrepesh Joshi — ML Engineer</title>
+  <meta name="description" content="Machine Learning Team Lead, GT OMSCS student, and builder. Portfolio of Nrepesh Joshi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
 
-			<!-- Header -->
-				<section id="header" class="wrapper">
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Nrepesh Joshi</a>
+      <div class="nav-links">
+        <a href="ml.html">ML Projects</a>
+        <a href="software.html">Software</a>
+        <a href="physics.html">Physics</a>
+        <a href="about.html">About</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="ml.html">ML Projects</a>
+    <a href="software.html">Software</a>
+    <a href="physics.html">Physics</a>
+    <a href="about.html">About</a>
+  </div>
 
-					<!-- Logo -->
-						<div id="logo">
-							<h1><a href="index.html">Nrepesh Joshi</a></h1>
-							<p>Computer Science & Physics Grad '20 | Up next: Data Science</p>
-							<p>Malpi'13 | SXC'15 | Knox'20 </p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-tag" id="typewriter"></div>
+      <h1>Nrepesh Joshi</h1>
+      <p class="hero-subtitle">Machine Learning Team Lead · GT OMSCS · Builder</p>
+      <div class="hero-cta">
+        <a href="ml.html" class="btn">View My Work <i class="fas fa-arrow-down" style="font-size:0.8em"></i></a>
+        <a href="about.html" class="btn btn-secondary">About Me</a>
+      </div>
+    </div>
+  </section>
 
-						</div>
+  <!-- Skills Strip -->
+  <section class="skills-strip">
+    <div class="skills-strip-inner">
+      <span>Python</span><span class="sep">·</span>
+      <span>PyTorch</span><span class="sep">·</span>
+      <span>TensorFlow</span><span class="sep">·</span>
+      <span>HuggingFace</span><span class="sep">·</span>
+      <span>LangChain</span><span class="sep">·</span>
+      <span>OpenAI</span><span class="sep">·</span>
+      <span>FastAPI</span><span class="sep">·</span>
+      <span>Docker</span><span class="sep">·</span>
+      <span>Kubernetes</span><span class="sep">·</span>
+      <span>AWS</span><span class="sep">·</span>
+      <span>GCP</span>
+    </div>
+  </section>
 
-					<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li class="current"><a href="index.html">Home</a></li>
-								<li><a href="DataScience.html">Data Science Projects</a></li>
-								<li><a href="Software.html">Software Engineering Projects</a></li>
-								<li><a href="Physics.html">Physics Projects</a></li>
-								<li><a href="AboutMe.html">About Me</a></li>
-							</ul>
-						</nav>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Nrepesh Joshi</p>
+      <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/nrepeshjoshi" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/nrepesh" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Nrepesh Joshi</p>
+    </div>
+  </footer>
 
-				</section>
-
-			<!-- Intro -->
-				<section id="intro" class="wrapper style1">
-					<div class="title">Data Science</div>
-					<div class="container">
-						<p class="style2">Here is an overview of one of my projects...</p>
-						<a href="https://drive.google.com/file/d/1WS8byus33Wlue2cZG0RLjP5YC5Z93SAT/view" class="image featured">
-								<img src="images/StudentPoster.jpg" alt="" />
-							</a>
-							<li><a href="DataScience.html" class="button style3 large">Check Out More Data Science Projects!</a></li>
-						<header class="style1">
-							<p style="color:white;">
-								I follow the "Weekend Project Principle" where I try to get as far as I can in a project every weekend.
-								I keep learning this way!
-							</p>
-						</header>
-						</ul>
-					</div>
-				</section>
-
-
-
-
-			<!-- Footer -->
-				<section id="footer" class="wrapper">
-					<div class="title">connect</div>
-					<div class="container">
-
-
-							<div class="col-6 col-12-medium">
-
-								<!-- Contact -->
-									<section class="feature-list small">
-										<div class="row">
-											<div class="col-6 col-12-small">
-												<section>
-													<h3 class="icon solid fa-envelope">Email</h3>
-													<p>
-														<a href="nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a>
-													</p>
-												</section>
-											</div>
-											<div class="col-6 col-12-small">
-												<section>
-													<h3 class="icon solid fa-comment">Social</h3>
-													<p>
-														<a href="linkedin.com/in/nrepeshjoshi/">linkedin.com/in/nrepeshjoshi/</a><br />
-														<a href="github.com/nrepesh">github.com/nrepesh</a>
-													</p>
-												</section>
-											</div>
-										</div>
-									</section>
-
-							</div>
-						</div>
-
-
-						<div id="copyright">
-							<ul>
-								<li>&copy; Nrepesh.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</section>
-
-		</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
 </html>

@@ -1,66 +1,89 @@
-/*
-	Escape Velocity by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+/* ============================================
+   Nrepesh Joshi — Portfolio 2026
+   Vanilla JS — No jQuery, No Frameworks
+   ============================================ */
 
-(function($) {
+(function () {
+  'use strict';
 
-	var	$window = $(window),
-		$body = $('body');
+  // --- AOS Init ---
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 600,
+      easing: 'ease-out',
+      once: true,
+      offset: 80
+    });
+  }
 
-	// Breakpoints.
-		breakpoints({
-			xlarge:  [ '1281px',  '1680px' ],
-			large:   [ '981px',   '1280px' ],
-			medium:  [ '737px',   '980px'  ],
-			small:   [ null,      '736px'  ]
-		});
+  // --- Nav scroll behavior ---
+  const nav = document.getElementById('nav');
+  if (nav) {
+    let ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          if (window.scrollY > 40) {
+            nav.classList.add('scrolled');
+          } else {
+            nav.classList.remove('scrolled');
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+  // --- Mobile hamburger ---
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', function () {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
 
-	// Dropdowns.
-		$('#nav > ul').dropotron({
-			mode: 'fade',
-			noOpenerFade: true,
-			alignment: 'center',
-			detach: false
-		});
+    // Close on link click
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+      });
+    });
 
-	// Nav.
+    // Close on outside click
+    document.addEventListener('click', function (e) {
+      if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+      }
+    });
+  }
 
-		// Title Bar.
-			$(
-				'<div id="titleBar">' +
-					'<a href="#navPanel" class="toggle"></a>' +
-					'<span class="title">' + $('#logo h1').html() + '</span>' +
-				'</div>'
-			)
-				.appendTo($body);
+  // --- Typewriter effect for hero tag ---
+  var typewriterEl = document.getElementById('typewriter');
+  if (typewriterEl) {
+    var text = '< ML Engineer />';
+    var i = 0;
+    var cursor = document.createElement('span');
+    cursor.className = 'cursor';
 
-		// Panel.
-			$(
-				'<div id="navPanel">' +
-					'<nav>' +
-						$('#nav').navList() +
-					'</nav>' +
-				'</div>'
-			)
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'left',
-					target: $body,
-					visibleClass: 'navPanel-visible'
-				});
+    function type() {
+      if (i < text.length) {
+        typewriterEl.textContent = text.slice(0, i + 1);
+        typewriterEl.appendChild(cursor);
+        i++;
+        setTimeout(type, 70 + Math.random() * 40);
+      } else {
+        // Keep cursor blinking after done
+        typewriterEl.textContent = text;
+        typewriterEl.appendChild(cursor);
+      }
+    }
 
-})(jQuery);
+    // Start after a short delay for the hero fade-in
+    setTimeout(type, 600);
+  }
+
+})();
