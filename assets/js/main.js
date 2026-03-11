@@ -97,9 +97,9 @@
     });
 
     (function animateGlow() {
-      // Smooth follow with lerp
-      gx += (mx - gx) * 0.15;
-      gy += (my - gy) * 0.15;
+      // Tighter follow - higher lerp = more responsive
+      gx += (mx - gx) * 0.35;
+      gy += (my - gy) * 0.35;
       glow.style.left = gx + 'px';
       glow.style.top = gy + 'px';
       requestAnimationFrame(animateGlow);

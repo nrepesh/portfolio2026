@@ -209,15 +209,15 @@ h1, h2, h3, h4 {
 /* --- Mouse Glow --- */
 .mouse-glow {
   position: fixed;
-  width: 600px;
-  height: 600px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,217,255,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,217,255,0.12) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.2s;
 }
 
 .mouse-glow.visible {
@@ -439,6 +439,7 @@ h1, h2, h3, h4 {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
+  object-position: top;
 }
 
 .bio-text p {
