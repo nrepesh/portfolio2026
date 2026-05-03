@@ -77,76 +77,159 @@
   }
 
 
-  // --- Cursor trail: damped follower for soothing motion, white stroke ---
-  var trail = document.getElementById('cursorTrail');
-  if (trail) {
-    var tctx = trail.getContext('2d');
+  // --- Shooting stars: occasional meteors streak across the upper sky ---
+  var starsCanvas = document.getElementById('shootingStars');
+  if (starsCanvas) {
+    var sctx = starsCanvas.getContext('2d');
     var dpr = window.devicePixelRatio || 1;
-    var points = []; // {x, y, t}
-    var TRAIL_LIFE = 1100; // ms — longer fade reads as soothing
-    var EASE = 0.14;       // damping factor — lower = more glide, higher = snappier
-    var target = null;     // raw cursor position
-    var follower = null;   // smoothed point sampled into the trail
+    var w = 0, h = 0;
+    var stars = [];
+    var initialized = false;
 
-    function sizeTrail() {
-      trail.width = window.innerWidth * dpr;
-      trail.height = window.innerHeight * dpr;
-      tctx.setTransform(1, 0, 0, 1, 0, 0);
-      tctx.scale(dpr, dpr);
+    function sizeStars() {
+      var rect = starsCanvas.getBoundingClientRect();
+      // Bail when the canvas hasn't been laid out yet — drawStars will retry next frame.
+      if (rect.width <= 0 || rect.height <= 0) return false;
+      w = rect.width;
+      h = rect.height;
+      starsCanvas.width = Math.round(w * dpr);
+      starsCanvas.height = Math.round(h * dpr);
+      sctx.setTransform(1, 0, 0, 1, 0, 0);
+      sctx.scale(dpr, dpr);
+      return true;
     }
-    sizeTrail();
-    window.addEventListener('resize', sizeTrail);
 
-    document.addEventListener('mousemove', function (e) {
-      target = { x: e.clientX, y: e.clientY };
-      if (!follower) follower = { x: e.clientX, y: e.clientY };
+    function spawnStar() {
+      // Shallow angle (4–12° below horizontal): meteor stays in the upper sky.
+      var angle = (4 + Math.random() * 8) * Math.PI / 180;
+      // Calmer pace: gentle drift across the sky.
+      var speed = 7 + Math.random() * 3;
+      var depth = (speed - 7) / 3; // 0 (far) → 1 (near)
+      return {
+        x: -180,
+        y: -20 + Math.random() * (h * 0.5),
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        len: 110 + depth * 90,
+        width: 0.6 + depth * 0.6,
+        alpha: 0.30 + depth * 0.18      // softer overall — atmospheric, not bold
+      };
+    }
+
+    var lastSpawnAt = 0;
+    var nextSpawnDelay = 1500; // ms — first meteor after a brief moment
+    var MAX_ACTIVE = 1;
+    // Warm amber/firefly color for that "magical sky" feel
+    var STAR_R = 255, STAR_G = 212, STAR_B = 154;
+
+    function ensureInitialized() {
+      if (initialized) return true;
+      if (!sizeStars()) return false;
+      // Start empty; the spawn loop in drawStars handles introduction.
+      stars.length = 0;
+      initialized = true;
+      return true;
+    }
+
+    window.addEventListener('resize', function () {
+      if (sizeStars()) {
+        // Keep stars; just clamp y if it's now outside.
+        for (var k = 0; k < stars.length; k++) {
+          if (stars[k].y > h) stars[k].y = -40 + Math.random() * (h * 0.55);
+        }
+      }
     });
 
-    (function drawTrail() {
+    if (window.ResizeObserver) {
+      new ResizeObserver(function () { sizeStars(); }).observe(starsCanvas);
+    }
+
+    function drawStars() {
+      if (!ensureInitialized()) {
+        requestAnimationFrame(drawStars);
+        return;
+      }
       var now = performance.now();
 
-      // Advance the smoothed follower toward the cursor, then sample it into the trail.
-      if (target && follower) {
-        var dx = target.x - follower.x;
-        var dy = target.y - follower.y;
-        follower.x += dx * EASE;
-        follower.y += dy * EASE;
-        // Skip near-duplicate samples so the trail stays clean when the cursor is still.
-        var last = points[points.length - 1];
-        if (!last || (follower.x - last.x) * (follower.x - last.x) + (follower.y - last.y) * (follower.y - last.y) > 0.5) {
-          points.push({ x: follower.x, y: follower.y, t: now });
-        }
+      // Sparse spawning: 1 in flight at a time, big gap so each appearance feels like a moment.
+      if (stars.length < MAX_ACTIVE && now - lastSpawnAt > nextSpawnDelay) {
+        stars.push(spawnStar());
+        lastSpawnAt = now;
+        nextSpawnDelay = 8000 + Math.random() * 7000; // next meteor in 8–15 seconds
       }
 
-      // Drop expired points.
-      while (points.length && now - points[0].t > TRAIL_LIFE) points.shift();
+      sctx.clearRect(0, 0, w, h);
+      for (var i = stars.length - 1; i >= 0; i--) {
+        var s = stars[i];
+        s.x += s.vx;
+        s.y += s.vy;
 
-      tctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        // Position-based alpha curve: soft fade-in entering, soft fade-out exiting.
+        var fadeIn = s.x < 120 ? Math.max(0, s.x) / 120 : 1;
+        var fadeOut = s.x > w - 120 ? Math.max(0, (w - s.x) / 120) : 1;
+        var visAlpha = s.alpha * fadeIn * fadeOut;
 
-      if (points.length > 1) {
-        tctx.lineCap = 'round';
-        tctx.lineJoin = 'round';
-        for (var i = 1; i < points.length; i++) {
-          var p0 = points[i - 1];
-          var p1 = points[i];
-          var age = (now - p1.t) / TRAIL_LIFE; // 0 fresh -> 1 stale
-          var alpha = Math.max(0, 1 - age);
-          // Smooth, ease-out alpha curve makes the tail tail off softly.
-          var eased = alpha * alpha;
-          var width = 2.2 * alpha + 0.4;
-          var mx = (p0.x + p1.x) / 2;
-          var my = (p0.y + p1.y) / 2;
-          var prevMx = i > 1 ? (points[i - 2].x + p0.x) / 2 : p0.x;
-          var prevMy = i > 1 ? (points[i - 2].y + p0.y) / 2 : p0.y;
-          tctx.beginPath();
-          tctx.moveTo(prevMx, prevMy);
-          tctx.quadraticCurveTo(p0.x, p0.y, mx, my);
-          tctx.strokeStyle = 'rgba(255, 255, 255, ' + (eased * 0.75) + ')';
-          tctx.lineWidth = width;
-          tctx.stroke();
+        if (visAlpha > 0.005) {
+          var v = Math.hypot(s.vx, s.vy);
+          var tx = s.x - (s.vx / v) * s.len;
+          var ty = s.y - (s.vy / v) * s.len;
+
+          var rgb = STAR_R + ', ' + STAR_G + ', ' + STAR_B;
+          var grad = sctx.createLinearGradient(tx, ty, s.x, s.y);
+          grad.addColorStop(0,    'rgba(' + rgb + ', 0)');
+          grad.addColorStop(0.55, 'rgba(' + rgb + ', ' + (visAlpha * 0.18) + ')');
+          grad.addColorStop(0.92, 'rgba(' + rgb + ', ' + visAlpha + ')');
+          grad.addColorStop(1,    'rgba(' + rgb + ', ' + visAlpha + ')');
+
+          sctx.strokeStyle = grad;
+          sctx.lineWidth = s.width;
+          sctx.lineCap = 'round';
+          sctx.shadowColor = 'rgba(' + rgb + ', ' + (visAlpha * 0.7) + ')';
+          sctx.shadowBlur = 8;
+          sctx.beginPath();
+          sctx.moveTo(tx, ty);
+          sctx.lineTo(s.x, s.y);
+          sctx.stroke();
+        }
+
+        if (s.x > w + 80 || s.y > h + 80) {
+          stars.splice(i, 1);
         }
       }
-      requestAnimationFrame(drawTrail);
+      sctx.shadowBlur = 0;
+      requestAnimationFrame(drawStars);
+    }
+    drawStars();
+  }
+
+  // --- Cursor halo: soft amber moonlight that drifts after the cursor ---
+  var halo = document.getElementById('cursorHalo');
+  if (halo) {
+    var hx = window.innerWidth / 2;
+    var hy = window.innerHeight / 2;
+    var htx = hx, hty = hy;
+    var haloVisible = false;
+    var EASE = 0.06;
+
+    document.addEventListener('mousemove', function (e) {
+      htx = e.clientX;
+      hty = e.clientY;
+      if (!haloVisible) {
+        haloVisible = true;
+        halo.classList.add('visible');
+      }
+    });
+
+    document.addEventListener('mouseleave', function () {
+      haloVisible = false;
+      halo.classList.remove('visible');
+    });
+
+    (function loop() {
+      hx += (htx - hx) * EASE;
+      hy += (hty - hy) * EASE;
+      halo.style.transform = 'translate3d(' + hx + 'px, ' + hy + 'px, 0) translate(-50%, -50%)';
+      requestAnimationFrame(loop);
     })();
   }
 
