@@ -774,6 +774,55 @@ body.landing-page .hero-subtitle {
   color: var(--accent);
 }
 
+/* ======================================================================
+   Inner-page header-strip — full-width patterned band below the nav with
+   the page label + h1 over it; content below sits on plain dark bg.
+   ====================================================================== */
+body.header-strip .page-header {
+  max-width: none;
+  margin: 0;
+  padding: 160px 0 100px;
+  position: relative;
+  background-image: url('../../images/background.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+/* Dark wash over the image */
+body.header-strip .page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 15, 0.72);
+  pointer-events: none;
+}
+/* Soft gradient fade at the bottom edge — strip dissolves into the page bg */
+body.header-strip .page-header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+  pointer-events: none;
+  z-index: 1;
+}
+body.header-strip .page-header > * {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+/* Breathing room before the project grid begins */
+body.header-strip .project-grid {
+  margin-top: 56px;
+}
+
 /* --- Footer --- */
 .footer {
   border-top: 1px solid transparent;
