@@ -585,6 +585,99 @@ body.landing-page .hero-cta .btn {
   }
 }
 
+/* --- Coursework: index page tweaks --- */
+.coursework-intro {
+  padding-bottom: 24px;
+}
+.coursework-intro-text {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+  max-width: 720px;
+}
+.coursework-stats {
+  margin-top: 0;
+}
+
+/* Class card variant — entire card is a link to the per-class page */
+.class-card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+.class-card:hover {
+  color: inherit;
+}
+.class-card .class-term {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.class-card-meta {
+  justify-content: space-between;
+  align-items: center;
+}
+.class-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.class-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s, gap 0.2s;
+}
+.class-card:hover .class-link {
+  color: var(--accent);
+  gap: 10px;
+}
+
+/* --- Coursework: per-class page tweaks --- */
+.class-overview {
+  padding-bottom: 24px;
+}
+.class-meta-row {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.class-meta-row .back-link {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.class-meta-row .back-link:hover {
+  color: var(--accent);
+}
+.class-description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 760px;
+  margin-bottom: 18px;
+}
+.honor-code-note {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  opacity: 0.75;
+}
+
 /* --- Bio Section (About) --- */
 .bio {
   display: grid;
