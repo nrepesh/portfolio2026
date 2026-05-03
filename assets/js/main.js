@@ -76,116 +76,78 @@
     setTimeout(type, 600);
   }
 
-  // --- Mouse-following radial glow ---
-  var glow = document.getElementById('mouseGlow');
-  if (glow) {
-    var mx = 0, my = 0, gx = 0, gy = 0;
-    var glowVisible = false;
+
+  // --- Cursor trail: damped follower for soothing motion, white stroke ---
+  var trail = document.getElementById('cursorTrail');
+  if (trail) {
+    var tctx = trail.getContext('2d');
+    var dpr = window.devicePixelRatio || 1;
+    var points = []; // {x, y, t}
+    var TRAIL_LIFE = 1100; // ms — longer fade reads as soothing
+    var EASE = 0.14;       // damping factor — lower = more glide, higher = snappier
+    var target = null;     // raw cursor position
+    var follower = null;   // smoothed point sampled into the trail
+
+    function sizeTrail() {
+      trail.width = window.innerWidth * dpr;
+      trail.height = window.innerHeight * dpr;
+      tctx.setTransform(1, 0, 0, 1, 0, 0);
+      tctx.scale(dpr, dpr);
+    }
+    sizeTrail();
+    window.addEventListener('resize', sizeTrail);
 
     document.addEventListener('mousemove', function (e) {
-      mx = e.clientX;
-      my = e.clientY;
-      if (!glowVisible) {
-        glowVisible = true;
-        glow.classList.add('visible');
-      }
+      target = { x: e.clientX, y: e.clientY };
+      if (!follower) follower = { x: e.clientX, y: e.clientY };
     });
 
-    document.addEventListener('mouseleave', function () {
-      glowVisible = false;
-      glow.classList.remove('visible');
-    });
+    (function drawTrail() {
+      var now = performance.now();
 
-    (function animateGlow() {
-      // Tighter follow - higher lerp = more responsive
-      gx += (mx - gx) * 0.35;
-      gy += (my - gy) * 0.35;
-      glow.style.left = gx + 'px';
-      glow.style.top = gy + 'px';
-      requestAnimationFrame(animateGlow);
-    })();
-  }
-
-  // --- Connected nodes background (canvas) ---
-  var canvas = document.getElementById('heroCanvas');
-  if (canvas) {
-    var ctx = canvas.getContext('2d');
-    var nodes = [];
-    var NODE_COUNT = 25;
-    var CONNECTION_DIST = 180;
-    var NODE_OPACITY = 0.3;
-
-    function resize() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    }
-
-    function initNodes() {
-      nodes = [];
-      for (var n = 0; n < NODE_COUNT; n++) {
-        nodes.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          r: 1.5 + Math.random() * 1.5
-        });
-      }
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Draw connections
-      for (var i = 0; i < nodes.length; i++) {
-        for (var j = i + 1; j < nodes.length; j++) {
-          var dx = nodes[i].x - nodes[j].x;
-          var dy = nodes[i].y - nodes[j].y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECTION_DIST) {
-            var alpha = (1 - dist / CONNECTION_DIST) * NODE_OPACITY * 0.6;
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = 'rgba(0, 217, 255, ' + alpha + ')';
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
+      // Advance the smoothed follower toward the cursor, then sample it into the trail.
+      if (target && follower) {
+        var dx = target.x - follower.x;
+        var dy = target.y - follower.y;
+        follower.x += dx * EASE;
+        follower.y += dy * EASE;
+        // Skip near-duplicate samples so the trail stays clean when the cursor is still.
+        var last = points[points.length - 1];
+        if (!last || (follower.x - last.x) * (follower.x - last.x) + (follower.y - last.y) * (follower.y - last.y) > 0.5) {
+          points.push({ x: follower.x, y: follower.y, t: now });
         }
       }
 
-      // Draw nodes
-      for (var k = 0; k < nodes.length; k++) {
-        var node = nodes[k];
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0, 217, 255, ' + NODE_OPACITY + ')';
-        ctx.fill();
+      // Drop expired points.
+      while (points.length && now - points[0].t > TRAIL_LIFE) points.shift();
 
-        // Drift
-        node.x += node.vx;
-        node.y += node.vy;
+      tctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-        // Bounce off edges softly
-        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-
-        // Keep in bounds
-        node.x = Math.max(0, Math.min(canvas.width, node.x));
-        node.y = Math.max(0, Math.min(canvas.height, node.y));
+      if (points.length > 1) {
+        tctx.lineCap = 'round';
+        tctx.lineJoin = 'round';
+        for (var i = 1; i < points.length; i++) {
+          var p0 = points[i - 1];
+          var p1 = points[i];
+          var age = (now - p1.t) / TRAIL_LIFE; // 0 fresh -> 1 stale
+          var alpha = Math.max(0, 1 - age);
+          // Smooth, ease-out alpha curve makes the tail tail off softly.
+          var eased = alpha * alpha;
+          var width = 2.2 * alpha + 0.4;
+          var mx = (p0.x + p1.x) / 2;
+          var my = (p0.y + p1.y) / 2;
+          var prevMx = i > 1 ? (points[i - 2].x + p0.x) / 2 : p0.x;
+          var prevMy = i > 1 ? (points[i - 2].y + p0.y) / 2 : p0.y;
+          tctx.beginPath();
+          tctx.moveTo(prevMx, prevMy);
+          tctx.quadraticCurveTo(p0.x, p0.y, mx, my);
+          tctx.strokeStyle = 'rgba(255, 255, 255, ' + (eased * 0.75) + ')';
+          tctx.lineWidth = width;
+          tctx.stroke();
+        }
       }
-
-      requestAnimationFrame(draw);
-    }
-
-    resize();
-    initNodes();
-    draw();
-
-    window.addEventListener('resize', function () {
-      resize();
-      initNodes();
-    });
+      requestAnimationFrame(drawTrail);
+    })();
   }
 
 })();
