@@ -95,20 +95,159 @@
   <section class="section class-overview" data-aos="fade-up">
     <p class="class-meta-row">Spring 2026 · Georgia Tech OMSCS · <a href="../coursework.html" class="back-link"><i class="fas fa-arrow-left" style="font-size:0.8em"></i> All classes</a></p>
     <p class="class-description">
-      <!-- AGENT: replace with a 1–2 paragraph class description sourced from the syllabus or report intros. -->
-      Project-driven course on applying machine learning to financial market data.
-      Covers time-series manipulation, technical indicators, portfolio theory, supervised
-      learners (decision trees, random forests, bagging), and reinforcement learning
-      applied to trading strategies.
+      A project-driven course on applying machine learning to financial markets. The curriculum builds a complete algorithmic trading system across eight cumulative projects — starting with probability and portfolio theory, moving through supervised learners (decision trees, random forests, bagging), and culminating in reinforcement-learning-based trading agents. Key topics include technical indicator construction, market simulation with transaction costs, and out-of-sample strategy validation.
     </p>
     <p class="honor-code-note">// code &amp; reports shared on request to comply with the GT honor code</p>
   </section>
 
-  <!-- Project Grid — agent appends one .project-card per finished project -->
+  <!-- Project Grid -->
   <div class="project-grid coursework-grid">
 
-    <!-- Empty state. AGENT: remove this <p> when the first card is added. -->
-    <p class="coursework-empty">// projects will appear here as I document each one — request materials anytime via the email above</p>
+    <!-- 1. Martingale Simulator (Report) -->
+    <article class="project-card" data-aos="fade-up">
+      <img src="../images/ml4t-martingale.png" alt="Martingale Simulator" class="project-card-img" />
+      <div class="project-card-body">
+        <h3>Martingale Simulator</h3>
+        <p>Simulated 1,000 episodes of the Martingale betting strategy on American roulette to empirically test risk, probability, and convergence. Compared outcomes under unlimited versus realistic bankroll constraints.</p>
+        <p class="project-learning"><strong>Learning:</strong> The Martingale strategy creates an illusion of guaranteed wins, but with a realistic bankroll the expected value is negative and ruin is inevitable. Building the simulator reinforced how empirical evidence trumps intuition in probability and risk assessment.</p>
+        <div class="project-tags">
+          <span class="project-tag">Probability</span>
+          <span class="project-tag">Monte Carlo</span>
+          <span class="project-tag">NumPy</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20%E2%80%94%20Martingale%20Simulator&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2. Portfolio Optimization (Report) -->
+    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+      <img src="../images/ml4t-optimize.png" alt="Portfolio Optimization" class="project-card-img" />
+      <div class="project-card-body">
+        <h3>Portfolio Optimization</h3>
+        <p>Implemented portfolio performance metrics (Sharpe ratio, cumulative return, volatility) and used SciPy optimization to find asset allocations that maximize risk-adjusted returns for a given set of stocks.</p>
+        <p class="project-learning"><strong>Learning:</strong> Maximizing Sharpe ratio is fundamentally different from maximizing raw returns — it forces a principled trade-off between reward and risk. I also learned how sensitive optimal allocations are to input assumptions.</p>
+        <div class="project-tags">
+          <span class="project-tag">Sharpe Ratio</span>
+          <span class="project-tag">SciPy</span>
+          <span class="project-tag">Portfolio Theory</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20%E2%80%94%20Portfolio%20Optimization&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3. Assess Learners (Report) -->
+    <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+      <img src="../images/ml4t-learners.png" alt="Assess Learners" class="project-card-img" />
+      <div class="project-card-body">
+        <h3>Assess Learners</h3>
+        <p>Built Decision Tree, Random Tree, Bagging ensemble, and Linear Regression learners from scratch. Conducted experiments measuring overfitting vs leaf size, variance reduction through bagging, and training-time vs accuracy trade-offs.</p>
+        <p class="project-learning"><strong>Learning:</strong> Overfitting explodes as leaf size shrinks. Bagging reduces variance by averaging many random trees, but it is far less effective on correlated decision trees. Random trees sacrifice some accuracy for massive training speed-ups.</p>
+        <div class="project-tags">
+          <span class="project-tag">Decision Trees</span>
+          <span class="project-tag">Bagging</span>
+          <span class="project-tag">Overfitting</span>
+          <span class="project-tag">Ensembles</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20%E2%80%94%20Assess%20Learners&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4. Defeat Learners -->
+    <article class="project-card" data-aos="fade-up">
+      <img src="../images/stock.jpg" alt="Defeat Learners" class="project-card-img" />
+      <div class="project-card-body">
+        <h3>Defeat Learners</h3>
+        <p>Designed synthetic datasets that exploit the relative strengths and weaknesses of linear regression and decision tree learners. The goal was to make one learner consistently outperform the other depending on data structure.</p>
+        <p class="project-learning"><strong>Learning:</strong> Linear models excel when relationships are truly linear and smooth; tree-based models win when boundaries are non-linear or axis-aligned. Knowing a model's inductive bias lets you either exploit it or choose the right tool.</p>
+        <div class="project-tags">
+          <span class="project-tag">Model Bias</span>
+          <span class="project-tag">Synthetic Data</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20%E2%80%94%20Defeat%20Learners&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5. Market Simulator -->
+    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+      <img src="../images/stock.jpg" alt="Market Simulator" class="project-card-img" />
+      <div class="project-card-body">
+        <h3>Market Simulator</h3>
+        <p>Built a market simulator engine that reads order files, executes trades, and tracks portfolio value over time. Incorporated realistic transaction costs including commission and market impact to reflect real-world friction.</p>
+        <p class="project-learning"><strong>Learning:</strong> Transaction costs silently erode returns. A strategy that looks brilliant on paper can become mediocre once commissions and slippage are factored in. Precise order sequencing and cash-balance tracking are harder than they look.</p>
+        <div class="project-tags">
+          <span class="project-tag">Simulation</span>
+          <span class="project-tag">Transaction Costs</span>
+          <span class="project-tag">Pandas</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20%E2%80%94%20Market%20Simulator&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6. Indicator Evaluation (Report) -->
+    <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+      <img src="../images/ml4t-indicators.png" alt="Indicator Evaluation" class="project-card-img" />
+      <div class="project-card-body">
+        <h3>Indicator Evaluation</h3>
+        <p>Researched and implemented five technical indicators (Momentum, Price/SMA, RSI, Stochastic, MACD) and built a Theoretically Optimal Strategy to establish a performance ceiling for any trading approach on a given symbol.</p>
+        <p class="project-learning"><strong>Learning:</strong> No single indicator is reliable in isolation. Combining indicators — for example using Price/SMA for trend direction and RSI for momentum confirmation — filters noise significantly. The TOS reveals the absolute upper bound of what any strategy could achieve.</p>
+        <div class="project-tags">
+          <span class="project-tag">Technical Indicators</span>
+          <span class="project-tag">MACD</span>
+          <span class="project-tag">RSI</span>
+          <span class="project-tag">Benchmarking</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20%E2%80%94%20Indicator%20Evaluation&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7. Q-Learning Robot -->
+    <article class="project-card" data-aos="fade-up">
+      <img src="../images/stock.jpg" alt="Q-Learning Robot" class="project-card-img" />
+      <div class="project-card-body">
+        <h3>Q-Learning Robot</h3>
+        <p>Implemented Q-Learning and Dyna-Q reinforcement learning algorithms from scratch to solve a robot navigation problem. Dyna-Q augments real-world experience with simulated planning steps to dramatically speed up convergence.</p>
+        <p class="project-learning"><strong>Learning:</strong> Model-free RL learns purely from experience but can be sample-inefficient. Model-based additions like Dyna-Q reuse learned transition models to generate synthetic experience, cutting training time without changing the core learner architecture.</p>
+        <div class="project-tags">
+          <span class="project-tag">Q-Learning</span>
+          <span class="project-tag">Dyna-Q</span>
+          <span class="project-tag">Reinforcement Learning</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20%E2%80%94%20Q-Learning%20Robot&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 8. Strategy Evaluation (Report) -->
+    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+      <img src="../images/ml4t-strategy.png" alt="Strategy Evaluation" class="project-card-img" />
+      <div class="project-card-body">
+        <h3>Strategy Evaluation</h3>
+        <p>Capstone project: built a manual trading strategy using human-coded indicator rules, then trained a BagLearner-based strategy learner using the same three indicators. Compared both against a buy-and-hold benchmark across in-sample and out-of-sample periods.</p>
+        <p class="project-learning"><strong>Learning:</strong> The ML-based strategy discovered non-obvious indicator combinations that matched or exceeded the manual strategy. This project tied together everything in the course — indicators, simulation, learners, and ensembles — into a complete end-to-end trading system.</p>
+        <div class="project-tags">
+          <span class="project-tag">Strategy Learner</span>
+          <span class="project-tag">Random Forest</span>
+          <span class="project-tag">In-Sample / Out-of-Sample</span>
+          <span class="project-tag">Capstone</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20%E2%80%94%20Strategy%20Evaluation&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
 
   </div>
 

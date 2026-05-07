@@ -1175,6 +1175,20 @@ body.landing-page .footer::before {
 
 
 
+/* --- Coursework Project Learning Notes --- */
+.project-learning {
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  border-left: 2px solid var(--accent);
+  padding-left: 12px;
+  opacity: 0.92;
+}
+.project-learning strong {
+  color: var(--accent);
+}
+
 /* --- Print hidden --- */
 @media print {
   .nav, .footer { display: none; }
