@@ -44,153 +44,71 @@
     <h1>Machine Learning for Trading</h1>
   </header>
 
+  <!--
+  ============================================================================
+  AGENT INSTRUCTIONS — coursework class page
+  ============================================================================
+  This file lists projects for one OMSCS class. Read the source-of-truth code
+  and report from the user's OMSCS repo, then add ONE <article class="project-card">
+  per project inside the .project-grid below.
+
+  WORKFLOW (run after each project the user completes):
+    1. Read <omscs-repo>/<project_folder>/ — code, report PDF, any plots.
+    2. Write a 2–3 sentence summary of the PROBLEM and APPROACH.
+       Do NOT include solution details that would violate the GT honor code.
+    3. Pick 2–4 tags (techniques, libraries, concepts).
+    4. If a chart/plot exists, copy it to ../images/ml4t-<slug>.png and use
+       that path. Otherwise use ../images/stock.jpg as the class fallback.
+    5. Insert a new card following the TEMPLATE below.
+    6. Remove the empty-state <p class="coursework-empty"> if present.
+    7. Update the project count on coursework.html (".class-meta" span).
+
+  CARD TEMPLATE — copy, fill in placeholders <LIKE_THIS>:
+  ----------------------------------------------------------------------------
+  <article class="project-card" data-aos="fade-up">
+    <img src="../images/<IMAGE_FILE>" alt="<PROJECT_TITLE>" class="project-card-img" />
+    <div class="project-card-body">
+      <h3><PROJECT_TITLE></h3>
+      <p><SUMMARY_2_TO_3_SENTENCES></p>
+      <div class="project-tags">
+        <span class="project-tag"><TAG_1></span>
+        <span class="project-tag"><TAG_2></span>
+      </div>
+      <div class="project-links">
+        <a href="mailto:nrepesh.joshi@gmail.com?subject=Request:%20ML4T%20%E2%80%94%20<URL_ENCODED_TITLE>&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+      </div>
+    </div>
+  </article>
+  ----------------------------------------------------------------------------
+
+  MAILTO PATTERN: subject is "Request: ML4T — <project title>". Body asks for
+  the requester's GitHub username so the user can grant repo access in one
+  click. Encode spaces as %20, em-dash (—) as %E2%80%94, apostrophe as %27,
+  comma as %2C, colon as %3A, newline as %0A.
+
+  STAGGERED ANIMATION: optional `data-aos-delay="100"` or `"200"` on every
+  2nd/3rd card for visual rhythm.
+  ============================================================================
+  -->
+
   <!-- Class meta + description -->
   <section class="section class-overview" data-aos="fade-up">
     <p class="class-meta-row">Spring 2026 · Georgia Tech OMSCS · <a href="../coursework.html" class="back-link"><i class="fas fa-arrow-left" style="font-size:0.8em"></i> All classes</a></p>
     <p class="class-description">
-      Project-driven course on applying machine learning to financial market data. Covers manipulating
-      time-series data with NumPy / Pandas, computing technical indicators, portfolio optimization with
-      Sharpe ratio, training decision-tree and random-forest learners, building a market simulator from
-      scratch, and applying Q-learning to trading strategies.
+      <!-- AGENT: replace with a 1–2 paragraph class description sourced from the syllabus or report intros. -->
+      Project-driven course on applying machine learning to financial market data.
+      Covers time-series manipulation, technical indicators, portfolio theory, supervised
+      learners (decision trees, random forests, bagging), and reinforcement learning
+      applied to trading strategies.
     </p>
     <p class="honor-code-note">// code &amp; reports shared on request to comply with the GT honor code</p>
   </section>
 
-  <!-- Project Grid -->
+  <!-- Project Grid — agent appends one .project-card per finished project -->
   <div class="project-grid coursework-grid">
 
-    <!-- Project 1 — Martingale -->
-    <article class="project-card" data-aos="fade-up">
-      <img src="../images/stock.jpg" alt="Project 1: Martingale" class="project-card-img" />
-      <div class="project-card-body">
-        <h3>Project 1 — Martingale</h3>
-        <p>Monte Carlo simulation of the martingale betting strategy in roulette. Quantify expected value, win probability, and outcomes under realistic bankroll constraints.</p>
-        <div class="project-tags">
-          <span class="project-tag">Probability</span>
-          <span class="project-tag">Monte Carlo</span>
-          <span class="project-tag">NumPy</span>
-        </div>
-        <div class="project-links">
-          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request:%20ML4T%20%E2%80%94%20Project%201%20(Martingale)"><i class="fas fa-envelope"></i> Request materials</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 2 — Optimize Something -->
-    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
-      <img src="../images/stock.jpg" alt="Project 2: Optimize Something" class="project-card-img" />
-      <div class="project-card-body">
-        <h3>Project 2 — Optimize Something</h3>
-        <p>Build a portfolio optimizer that maximizes Sharpe ratio across a basket of equities, using SciPy's constrained optimization routines and historical price data.</p>
-        <div class="project-tags">
-          <span class="project-tag">Portfolio Theory</span>
-          <span class="project-tag">SciPy</span>
-          <span class="project-tag">Sharpe Ratio</span>
-        </div>
-        <div class="project-links">
-          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request:%20ML4T%20%E2%80%94%20Project%202%20(Optimize%20Something)"><i class="fas fa-envelope"></i> Request materials</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 3 — Assess Learners -->
-    <article class="project-card" data-aos="fade-up" data-aos-delay="200">
-      <img src="../images/stock.jpg" alt="Project 3: Assess Learners" class="project-card-img" />
-      <div class="project-card-body">
-        <h3>Project 3 — Assess Learners</h3>
-        <p>Implement Decision Tree, Random Tree, and Bagging learners from scratch. Compare overfitting behavior, leaf-size sensitivity, and ensemble effects on regression error.</p>
-        <div class="project-tags">
-          <span class="project-tag">Decision Trees</span>
-          <span class="project-tag">Bagging</span>
-          <span class="project-tag">Overfitting</span>
-        </div>
-        <div class="project-links">
-          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request:%20ML4T%20%E2%80%94%20Project%203%20(Assess%20Learners)"><i class="fas fa-envelope"></i> Request materials</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 4 — Defeat Learners -->
-    <article class="project-card" data-aos="fade-up">
-      <img src="../images/stock.jpg" alt="Project 4: Defeat Learners" class="project-card-img" />
-      <div class="project-card-body">
-        <h3>Project 4 — Defeat Learners</h3>
-        <p>Reverse engineering exercise: generate synthetic datasets that maximally favor linear regression while defeating decision-tree learners (and vice versa).</p>
-        <div class="project-tags">
-          <span class="project-tag">Adversarial Data</span>
-          <span class="project-tag">Linear Regression</span>
-        </div>
-        <div class="project-links">
-          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request:%20ML4T%20%E2%80%94%20Project%204%20(Defeat%20Learners)"><i class="fas fa-envelope"></i> Request materials</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 5 — Marketsim -->
-    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
-      <img src="../images/stock.jpg" alt="Project 5: Market Simulator" class="project-card-img" />
-      <div class="project-card-body">
-        <h3>Project 5 — Market Simulator</h3>
-        <p>Build a market simulator that consumes order ledgers and historical prices, then computes time-series of portfolio value, returns, and standard performance statistics.</p>
-        <div class="project-tags">
-          <span class="project-tag">Pandas</span>
-          <span class="project-tag">Backtesting</span>
-        </div>
-        <div class="project-links">
-          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request:%20ML4T%20%E2%80%94%20Project%205%20(Market%20Simulator)"><i class="fas fa-envelope"></i> Request materials</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 6 — Manual Strategy -->
-    <article class="project-card" data-aos="fade-up" data-aos-delay="200">
-      <img src="../images/stock.jpg" alt="Project 6: Manual Strategy" class="project-card-img" />
-      <div class="project-card-body">
-        <h3>Project 6 — Indicator Evaluation &amp; Manual Strategy</h3>
-        <p>Implement five technical indicators (Bollinger Bands, MACD, RSI, momentum, etc.) and combine them into a rule-based manual trading strategy. Benchmark against buy-and-hold.</p>
-        <div class="project-tags">
-          <span class="project-tag">Technical Indicators</span>
-          <span class="project-tag">Strategy Design</span>
-        </div>
-        <div class="project-links">
-          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request:%20ML4T%20%E2%80%94%20Project%206%20(Manual%20Strategy)"><i class="fas fa-envelope"></i> Request materials</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 7 — Q-Learning Robot -->
-    <article class="project-card" data-aos="fade-up">
-      <img src="../images/stock.jpg" alt="Project 7: Q-Learning Robot" class="project-card-img" />
-      <div class="project-card-body">
-        <h3>Project 7 — Q-Learning Robot</h3>
-        <p>Implement tabular Q-learning with Dyna planning to navigate a stochastic gridworld. Tune learning rate, discount, and exploration to converge on optimal policies.</p>
-        <div class="project-tags">
-          <span class="project-tag">Reinforcement Learning</span>
-          <span class="project-tag">Q-Learning</span>
-          <span class="project-tag">Dyna</span>
-        </div>
-        <div class="project-links">
-          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request:%20ML4T%20%E2%80%94%20Project%207%20(Q-Learning%20Robot)"><i class="fas fa-envelope"></i> Request materials</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 8 — Strategy Learner -->
-    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
-      <img src="../images/stock.jpg" alt="Project 8: Strategy Learner" class="project-card-img" />
-      <div class="project-card-body">
-        <h3>Project 8 — Strategy Learner</h3>
-        <p>Capstone: combine technical indicators with a learner (random-forest or Q-learner) to generate trading signals. Compare against the manual strategy from Project 6.</p>
-        <div class="project-tags">
-          <span class="project-tag">Capstone</span>
-          <span class="project-tag">Random Forest</span>
-          <span class="project-tag">Strategy Comparison</span>
-        </div>
-        <div class="project-links">
-          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request:%20ML4T%20%E2%80%94%20Project%208%20(Strategy%20Learner)"><i class="fas fa-envelope"></i> Request materials</a>
-        </div>
-      </div>
-    </article>
+    <!-- Empty state. AGENT: remove this <p> when the first card is added. -->
+    <p class="coursework-empty">// projects will appear here as I document each one — request materials anytime via the email above</p>
 
   </div>
 

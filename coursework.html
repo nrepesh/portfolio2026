@@ -78,9 +78,50 @@
       <h2>Classes</h2>
     </div>
 
+    <!--
+    ========================================================================
+    AGENT INSTRUCTIONS — coursework index (class list)
+    ========================================================================
+    Each <a class="project-card class-card"> below is one OMSCS class. The
+    entire card is a link to that class's detail page in coursework/.
+
+    WHEN A NEW CLASS STARTS:
+      1. Create coursework/<class-slug>.html (copy ml4t.html as the template).
+      2. Add a new card here using the TEMPLATE below, newest term first.
+      3. Pick a representative class image; if none, reuse images/stock.jpg
+         or another generic from images/.
+      4. Update the "X classes completed" stat tile above when a class wraps.
+
+    WHEN A PROJECT IS ADDED TO AN EXISTING CLASS:
+      Update that class's card .class-meta count (e.g., "3 projects" → "4
+      projects"). The card description and tags can stay the same unless the
+      class scope shifts.
+
+    CARD TEMPLATE — copy, fill in <PLACEHOLDERS>:
+    ------------------------------------------------------------------------
+    <a href="coursework/<CLASS_SLUG>.html" class="project-card class-card" data-aos="fade-up">
+      <img src="images/<CLASS_IMAGE>" alt="<CLASS_NAME>" class="project-card-img" />
+      <div class="project-card-body">
+        <p class="class-term"><TERM> · <CLASS_CODE></p>
+        <h3><CLASS_NAME></h3>
+        <p><1–2_SENTENCE_DESCRIPTION_OF_CLASS_FOCUS></p>
+        <div class="project-tags">
+          <span class="project-tag"><TAG_1></span>
+          <span class="project-tag"><TAG_2></span>
+        </div>
+        <div class="project-links class-card-meta">
+          <span class="class-meta"><N> projects</span>
+          <span class="class-link">View projects <i class="fas fa-arrow-right" style="font-size:0.8em"></i></span>
+        </div>
+      </div>
+    </a>
+    ------------------------------------------------------------------------
+    ========================================================================
+    -->
+
     <div class="project-grid">
 
-      <!-- ML4T -->
+      <!-- ML4T — Spring 2026 -->
       <a href="coursework/ml4t.html" class="project-card class-card" data-aos="fade-up">
         <img src="images/stock.jpg" alt="Machine Learning for Trading" class="project-card-img" />
         <div class="project-card-body">
@@ -94,7 +135,7 @@
             <span class="project-tag">Python</span>
           </div>
           <div class="project-links class-card-meta">
-            <span class="class-meta">8 projects</span>
+            <span class="class-meta">in progress</span>
             <span class="class-link">View projects <i class="fas fa-arrow-right" style="font-size:0.8em"></i></span>
           </div>
         </div>
