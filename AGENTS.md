@@ -1,4 +1,4 @@
-# Agent Instructions — Portfolio2026
+# Agent Instructions - Portfolio2026
 
 This repo is a static HTML/CSS portfolio site. **Every edit is direct HTML/CSS edits.** There is no build step, no JS framework, no CMS.
 
@@ -61,7 +61,7 @@ Do this when a project is finished.
 3. **Write a LEARNING paragraph.**
    - Extract the user’s personal takeaways from their report or ask them directly.
    - Use the `<p class="project-learning">` element (see `ml4t.html` for examples).
-   - Keep it honest and specific — generic fluff reads as filler.
+   - Keep it honest and specific - generic fluff reads as filler.
 
 4. **Pick tags.**
    - 2–4 tags covering techniques, libraries, or concepts.
@@ -97,7 +97,7 @@ The portfolio uses a dark theme. All images should match:
 **For SVG charts:** generate inline with these colors. Avoid white backgrounds.
 
 **For report figures:** if the report figure has a white background, it will look jarring against the dark cards. Options:
-1. Leave it — the image will have its own contrast (acceptable for honest report screenshots).
+1. Leave it - the image will have its own contrast (acceptable for honest report screenshots).
 2. Generate a dark-themed recreation as SVG.
 3. Use a relevant dark-themed stock image instead.
 
@@ -115,7 +115,7 @@ The portfolio uses a dark theme. All images should match:
 
 - **Do NOT paste code, pseudocode, or solution strategies from OMSCS repos.**
 - **Do NOT link to private OMSCS repos.**
-- Problem statements are OK — they are public assignment descriptions.
+- Problem statements are OK - they are public assignment descriptions.
 - Report content: ask user if OK to quote. Default to paraphrasing in the user’s own words.
 - If unsure: ask the user before committing.
 

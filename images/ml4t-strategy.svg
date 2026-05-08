@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="280" viewBox="0 0 480 280">
+  <rect width="480" height="280" fill="#111118"/>
+  
+  <text x="240" y="24" text-anchor="middle" fill="#F0F0F0" font-size="15" font-weight="bold" font-family="'Space Grotesk', sans-serif">Manual vs. Strategy Learner Performance</text>
+  
+  <!-- Chart area -->
+  <rect x="55" y="45" width="385" height="185" fill="none" stroke="#1E1E2E" stroke-width="1"/>
+  
+  <!-- Y axis labels -->
+  <text x="48" y="55" text-anchor="end" fill="#A09897" font-size="9">1.6x</text>
+  <text x="48" y="95" text-anchor="end" fill="#A09897" font-size="9">1.2x</text>
+  <text x="48" y="137" text-anchor="end" fill="#A09897" font-size="9">0.8x</text>
+  <text x="48" y="180" text-anchor="end" fill="#A09897" font-size="9">0.4x</text>
+  <text x="48" y="222" text-anchor="end" fill="#A09897" font-size="9">0.0x</text>
+  
+  <!-- X axis labels -->
+  <text x="58" y="237" fill="#A09897" font-size="9">Jan 2008</text>
+  <text x="175" y="237" fill="#A09897" font-size="9">Jul 2008</text>
+  <text x="290" y="237" fill="#A09897" font-size="9">Jan 2009</text>
+  <text x="410" y="237" fill="#A09897" font-size="9">Jul 2009</text>
+  
+  <!-- Benchmark (buy & hold) line -->
+  <polyline points="60,220 110,200 160,180 210,210 260,160 310,140 360,120 410,110 440,118" fill="none" stroke="#A09897" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+  <text x="445" y="120" fill="#A09897" font-size="9" font-family="monospace">benchmark</text>
+  
+  <!-- Manual Strategy line -->
+  <polyline points="60,220 100,200 150,170 200,220 250,140 300,115 350,95 400,88 440,85" fill="none" stroke="#F0F0F0" stroke-width="2" opacity="0.8"/>
+  <text x="445" y="87" fill="#F0F0F0" font-size="9" font-family="monospace">manual</text>
+  
+  <!-- Strategy Learner line -->
+  <polyline points="60,220 105,195 155,165 205,210 255,130 305,100 355,82 405,75 440,70" fill="none" stroke="#C9FB50" stroke-width="2"/>
+  <text x="445" y="72" fill="#C9FB50" font-size="9" font-family="monospace">AI learner</text>
+  
+  <!-- Trade arrows (long/short markers) -->
+  <polygon points="160,185 165,195 155,195" fill="#C9FB50" opacity="0.7"/>
+  <polygon points="260,150 270,145 270,155" fill="#C44444" opacity="0.7"/>
+  <polygon points="350,102 345,112 355,112" fill="#C9FB50" opacity="0.7"/>
+  
+  <!-- Legend -->
+  <text x="55" y="265" fill="#A09897" font-size="10" font-family="monospace">In-sample: Jan 2008 - Dec 2009 | Out-of-sample: Jan 2010 - Dec 2011</text>
+</svg>

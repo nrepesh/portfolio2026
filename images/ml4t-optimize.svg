@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="280" viewBox="0 0 480 280">
+  <rect width="480" height="280" fill="#111118"/>
+  
+  <!-- Chart area -->
+  <rect x="55" y="45" width="385" height="190" fill="none" stroke="#1E1E2E" stroke-width="1"/>
+  
+  <text x="240" y="28" text-anchor="middle" fill="#F0F0F0" font-size="15" font-weight="bold" font-family="'Space Grotesk', sans-serif">Maximizing Sharpe Ratio</text>
+  
+  <!-- X axis: Risk (Std Dev) -->
+  <text x="250" y="255" text-anchor="middle" fill="#A09897" font-size="11" font-family="monospace">Risk (Std Dev)</text>
+  <text x="62" y="248" fill="#A09897" font-size="9">0</text>
+  <text x="200" y="248" fill="#A09897" font-size="9">0.15</text>
+  <text x="370" y="248" fill="#A09897" font-size="9">0.30</text>
+  
+  <!-- Y axis: Return -->
+  <text x="15" y="140" text-anchor="middle" fill="#A09897" font-size="11" font-family="monospace" transform="rotate(-90 15 140)">Expected Return</text>
+  <text x="48" y="225" text-anchor="end" fill="#A09897" font-size="9">0</text>
+  <text x="48" y="145" text-anchor="end" fill="#A09897" font-size="9">10%</text>
+  <text x="48" y="65" text-anchor="end" fill="#A09897" font-size="9">20%</text>
+  
+  <!-- Efficient frontier curve -->
+  <path d="M100,220 Q150,200 200,160 T300,100 T420,65" fill="none" stroke="#C9FB50" stroke-width="2.5"/>
+  
+  <!-- Random portfolio points -->
+  <circle cx="120" cy="195" r="3" fill="#A09897" opacity="0.6"/>
+  <circle cx="160" cy="175" r="3" fill="#A09897" opacity="0.5"/>
+  <circle cx="180" cy="190" r="3" fill="#A09897" opacity="0.6"/>
+  <circle cx="220" cy="140" r="3" fill="#A09897" opacity="0.5"/>
+  <circle cx="260" cy="145" r="3" fill="#A09897" opacity="0.5"/>
+  <circle cx="280" cy="125" r="3" fill="#A09897" opacity="0.4"/>
+  <circle cx="340" cy="130" r="3" fill="#A09897" opacity="0.5"/>
+  <circle cx="380" cy="115" r="3" fill="#A09897" opacity="0.5"/>
+  
+  <!-- Optimal point (star) -->
+  <circle cx="215" cy="155" r="6" fill="none" stroke="#C9FB50" stroke-width="2"/>
+  <circle cx="215" cy="155" r="3" fill="#C9FB50"/>
+  <text x="230" y="150" fill="#C9FB50" font-size="10" font-family="monospace">optimal</text>
+  
+  <!-- Pie chart (bottom right inset) -->
+  <circle cx="420" cy="100" r="35" fill="none" stroke="#1E1E2E" stroke-width="1"/>
+  <path d="M420,65 A35,35 0 0,1 449,90 L420,100 Z" fill="#C9FB50" opacity="0.7"/>
+  <path d="M449,90 A35,35 0 0,1 435,132 L420,100 Z" fill="#3A3A4A" opacity="0.7"/>
+  <path d="M435,132 A35,35 0 0,1 405,132 L420,100 Z" fill="#A09897" opacity="0.7"/>
+  <path d="M405,132 A35,35 0 0,1 420,65 L420,100 Z" fill="#2A2A3A" opacity="0.7"/>
+</svg>
