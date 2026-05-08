@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Market Simulator - ML4T Project 5</title>
+  <meta name="description" content="Project 5 from CS 7646: Building a market simulator that processes trading orders and tracks portfolio value with transaction costs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body class="header-strip">
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Nrepesh Joshi</a>
+      <div class="nav-links">
+        <a href="../about.html">About Me</a>
+        <a href="../coursework.html" class="active">Coursework</a>
+        <a href="../ml.html">ML</a>
+        <a href="../software.html">Software</a>
+        <a href="../physics.html">Physics</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="../about.html">About Me</a><a href="../coursework.html" class="active">Coursework</a><a href="../ml.html">ML</a><a href="../software.html">Software</a><a href="../physics.html">Physics</a>
+  </div>
+
+  <header class="page-header">
+    <p class="section-label">// ML4T - Project 5</p>
+    <h1>Market Simulator</h1>
+  </header>
+
+  <section class="section" style="padding-bottom: 8px;" data-aos="fade-up">
+    <p class="class-meta-row">
+      <a href="../coursework.html" class="back-link"><i class="fas fa-arrow-left"></i> Coursework</a>
+      <span style="color: var(--border);">/</span>
+      <a href="ml4t.html" class="back-link">ML4T</a>
+      <span style="color: var(--border);">/</span>
+      <span>Market Simulator</span>
+    </p>
+  </section>
+
+  <section class="section" style="padding-top: 8px;" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
+    <p class="class-description" style="max-width: none;">
+      I built a market simulator that reads order files, executes trades at daily closing prices, and tracks portfolio value over time. The simulator handles real-world friction in two forms: <strong>commission</strong> ($9.95 per trade) and <strong>market impact</strong> (0.5% adjustment per order). It maintains accurate cash balances, share counts, and portfolio valuations across the full trading period. This engine became the backend for every later trading strategy project.
+    </p>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Key Results</h2>
+
+    <div style="overflow-x: auto; margin-bottom: 24px;">
+      <table style="width: 100%; max-width: 700px; border-collapse: collapse; font-size: 0.9rem;">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <th style="text-align: left; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Test Case</th>
+            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Fund Sharpe</th>
+            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">$SPX Sharpe</th>
+            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Final Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">orders.csv (2011)</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--accent); font-weight: 600;">0.998</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">0.018</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">$1,106,026</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">orders2.csv (2011)</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--accent); font-weight: 600;">0.553</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">-0.177</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">$1,053,841</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 12px; color: var(--text-secondary);">orders-short.csv (Jan 2011)</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">-1.000</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">0.882</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">$993,036</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bio-stats" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 0; max-width: 500px;">
+      <div class="bio-stat"><span class="bio-stat-num">13/13</span><span class="bio-stat-label">tests passed</span></div>
+      <div class="bio-stat"><span class="bio-stat-num">87.0</span><span class="bio-stat-label">points earned</span></div>
+      <div class="bio-stat"><span class="bio-stat-num">$1M</span><span class="bio-stat-label">start value</span></div>
+    </div>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      Building a market simulator from scratch taught me that the "simple" parts of trading systems are where the bugs live. Cash balance tracking seems trivial until you realize that buy orders require available cash, sell orders require owned shares, and both need to update after the daily close price is applied. I had to be careful about order sequencing: chronological within a day matters because a sell cannot execute before the corresponding buy.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      The transaction cost calculations were a revelation. On paper, a strategy might look brilliant. But when I factored in $9.95 per trade plus 0.5% market impact, profitable-looking strategies turned mediocre. The commission is a fixed cost that punishes high-frequency approaches. The impact is a variable cost that scales with position size. Together they created a floor below which no trading strategy could profit - regardless of its predictive accuracy.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      I also learned to be suspicious of naive backtests. The simulator forces me to account for market impact, which means strategies that would work on paper often collapse in simulation. This was my first real taste of the gap between research code and production trading infrastructure, and it made me much more careful about claiming any strategy "works" without accounting for friction.
+    </p>
+  </section>
+
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <div class="project-tags" style="margin-bottom: 16px;">
+      <span class="project-tag">Simulation</span>
+      <span class="project-tag">Transaction Costs</span>
+      <span class="project-tag">Pandas</span>
+      <span class="project-tag">Backtesting</span>
+    </div>
+    <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code shared on request</p>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Market%20Simulator&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;"><i class="fas fa-envelope"></i> Request materials</a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Nrepesh Joshi</p>
+      <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/nrepeshjoshi" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/nrepesh" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Nrepesh Joshi</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

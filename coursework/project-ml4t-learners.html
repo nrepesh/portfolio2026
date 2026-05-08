@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Assess Learners - ML4T Project 3</title>
+  <meta name="description" content="Project 3 from CS 7646: Building and evaluating Decision Tree, Random Tree, and Bagging learners from scratch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body class="header-strip">
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Nrepesh Joshi</a>
+      <div class="nav-links">
+        <a href="../about.html">About Me</a>
+        <a href="../coursework.html" class="active">Coursework</a>
+        <a href="../ml.html">ML</a>
+        <a href="../software.html">Software</a>
+        <a href="../physics.html">Physics</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="../about.html">About Me</a><a href="../coursework.html" class="active">Coursework</a><a href="../ml.html">ML</a><a href="../software.html">Software</a><a href="../physics.html">Physics</a>
+  </div>
+
+  <header class="page-header">
+    <p class="section-label">// ML4T - Project 3</p>
+    <h1>Assess Learners</h1>
+  </header>
+
+  <section class="section" style="padding-bottom: 8px;" data-aos="fade-up">
+    <p class="class-meta-row">
+      <a href="../coursework.html" class="back-link"><i class="fas fa-arrow-left"></i> Coursework</a>
+      <span style="color: var(--border);">/</span>
+      <a href="ml4t.html" class="back-link">ML4T</a>
+      <span style="color: var(--border);">/</span>
+      <span>Assess Learners</span>
+    </p>
+  </section>
+
+  <section class="section" style="padding-top: 8px;" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
+    <p class="class-description" style="max-width: none;">
+      I built four supervised learners from scratch in pure Python: a Decision Tree (DT), a Random Tree (RT), a Bagging ensemble, and a Linear Regression baseline. I then designed three controlled experiments to understand their behaviors: measuring overfitting as leaf size shrinks, testing whether bagging reduces overfitting, and comparing training time and predictive accuracy between DT and RT. All experiments ran on the Istanbul dataset using a 60/40 train-test split.
+    </p>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Key Results</h2>
+
+    <div style="overflow-x: auto; margin-bottom: 24px;">
+      <table style="width: 100%; max-width: 750px; border-collapse: collapse; font-size: 0.9rem;">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <th style="text-align: left; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Experiment</th>
+            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Finding</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Overfitting vs leaf size</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">At leaf_size=1, test RMSE was <strong style="color: var(--accent);">0.0078</strong> vs training RMSE of 0.0. Gap reduced to near-zero at leaf_size=6.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Bagging reduces overfitting?</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">Yes, but not eliminated. DT bag ensemble test RMSE dropped to <strong style="color: var(--accent);">0.0060</strong> (from 0.0078). RT bag ensemble: 0.0064.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">DT vs RT speed</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">RT trained <strong style="color: var(--accent);">~12x faster</strong> (0.025s vs 0.303s at leaf_size=1).</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 12px; color: var(--text-secondary);">DT vs RT accuracy</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">DT slightly higher R-squared (<strong style="color: var(--accent);">0.524</strong> vs 0.488) due to correlated feature selection.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bio-stats" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 0; max-width: 500px;">
+      <div class="bio-stat">
+        <span class="bio-stat-num">18/18</span>
+        <span class="bio-stat-label">tests passed</span>
+      </div>
+      <div class="bio-stat">
+        <span class="bio-stat-num">40.0</span>
+        <span class="bio-stat-label">points earned</span>
+      </div>
+      <div class="bio-stat">
+        <span class="bio-stat-num">4</span>
+        <span class="bio-stat-label">learners built</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      Building a Decision Tree from the ground up was the most instructive coding exercise of the term. Until you actually write the recursive split logic, you don't truly appreciate why leaf_size is the single most important hyperparameter. At leaf_size=1, the tree memorizes every data point. The training RMSE hits zero, and the model becomes useless outside the training set. Watching that gap shrink as I increased leaf_size was the clearest "aha" moment so far.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      Bagging was fascinating. The intuition is simple: average many noisy models and the noise cancels out. But the reality is more nuanced. Bagging with Decision Trees helps modestly because the trees are correlated (they all pick the same best feature first). Bagging with Random Trees helps more because the trees are decorrelated (they pick random features). The ensemble of 20 Random Trees achieved competitive accuracy while being dramatically faster to train.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      The speed difference between DT and RT was counterintuitive at first. DT is slower because it's exhaustively searching for the best feature at every split. RT is faster because it just picks a feature at random. The trade-off is that individual RTs are weaker learners, but that weakness is exactly why ensembles of them work so well. Random Forests (which this project essentially builds the foundation for) exploit this beautifully.
+    </p>
+  </section>
+
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <div class="project-tags" style="margin-bottom: 16px;">
+      <span class="project-tag">Decision Trees</span>
+      <span class="project-tag">Bagging</span>
+      <span class="project-tag">Overfitting</span>
+      <span class="project-tag">Ensembles</span>
+    </div>
+    <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; report shared on request</p>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Assess%20Learners&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;"><i class="fas fa-envelope"></i> Request materials</a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Nrepesh Joshi</p>
+      <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/nrepeshjoshi" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/nrepesh" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Nrepesh Joshi</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

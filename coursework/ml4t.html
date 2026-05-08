@@ -107,7 +107,7 @@
     <article class="project-card" data-aos="fade-up">
       <img src="../images/ml4t-martingale.svg" alt="Martingale Simulator" class="project-card-img" />
       <div class="project-card-body">
-        <h3>Martingale Simulator</h3>
+        <h3><a href="project-ml4t-martingale.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Martingale Simulator</a></h3>
         <p>Simulated 1,000 episodes of the Martingale betting strategy on American roulette to empirically test risk, probability, and convergence. Compared outcomes under unlimited versus realistic bankroll constraints.</p>
         <p class="project-learning"><strong>Learning:</strong> The Martingale strategy creates an illusion of guaranteed wins, but with a realistic bankroll the expected value is negative and ruin is inevitable. Building the simulator reinforced how empirical evidence trumps intuition in probability and risk assessment.</p>
         <div class="project-tags">
@@ -125,7 +125,7 @@
     <article class="project-card" data-aos="fade-up" data-aos-delay="100">
       <img src="../images/ml4t-optimize.svg" alt="Portfolio Optimization" class="project-card-img" />
       <div class="project-card-body">
-        <h3>Portfolio Optimization</h3>
+        <h3><a href="project-ml4t-optimize.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Portfolio Optimization</a></h3>
         <p>Implemented portfolio performance metrics (Sharpe ratio, cumulative return, volatility) and used SciPy optimization to find asset allocations that maximize risk-adjusted returns for a given set of stocks.</p>
         <p class="project-learning"><strong>Learning:</strong> Maximizing Sharpe ratio is fundamentally different from maximizing raw returns - it forces a principled trade-off between reward and risk. I also learned how sensitive optimal allocations are to input assumptions.</p>
         <div class="project-tags">
@@ -143,7 +143,7 @@
     <article class="project-card" data-aos="fade-up" data-aos-delay="200">
       <img src="../images/ml4t-learners.svg" alt="Assess Learners" class="project-card-img" />
       <div class="project-card-body">
-        <h3>Assess Learners</h3>
+        <h3><a href="project-ml4t-learners.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Assess Learners</a></h3>
         <p>Built Decision Tree, Random Tree, Bagging ensemble, and Linear Regression learners from scratch. Conducted experiments measuring overfitting vs leaf size, variance reduction through bagging, and training-time vs accuracy trade-offs.</p>
         <p class="project-learning"><strong>Learning:</strong> Overfitting explodes as leaf size shrinks. Bagging reduces variance by averaging many random trees, but it is far less effective on correlated decision trees. Random trees sacrifice some accuracy for massive training speed-ups.</p>
         <div class="project-tags">
@@ -162,7 +162,7 @@
     <article class="project-card" data-aos="fade-up">
       <img src="../images/ml4t-defeat.svg" alt="Defeat Learners" class="project-card-img" />
       <div class="project-card-body">
-        <h3>Defeat Learners</h3>
+        <h3><a href="project-ml4t-defeat.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Defeat Learners</a></h3>
         <p>Designed synthetic datasets that exploit the relative strengths and weaknesses of linear regression and decision tree learners. The goal was to make one learner consistently outperform the other depending on data structure.</p>
         <p class="project-learning"><strong>Learning:</strong> Linear models excel when relationships are truly linear and smooth; tree-based models win when boundaries are non-linear or axis-aligned. Knowing a model's inductive bias lets you either exploit it or choose the right tool.</p>
         <div class="project-tags">
@@ -179,7 +179,7 @@
     <article class="project-card" data-aos="fade-up" data-aos-delay="100">
       <img src="../images/ml4t-marketsim.svg" alt="Market Simulator" class="project-card-img" />
       <div class="project-card-body">
-        <h3>Market Simulator</h3>
+        <h3><a href="project-ml4t-marketsim.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Market Simulator</a></h3>
         <p>Built a market simulator engine that reads order files, executes trades, and tracks portfolio value over time. Incorporated realistic transaction costs including commission and market impact to reflect real-world friction.</p>
         <p class="project-learning"><strong>Learning:</strong> Transaction costs silently erode returns. A strategy that looks brilliant on paper can become mediocre once commissions and slippage are factored in. Precise order sequencing and cash-balance tracking are harder than they look.</p>
         <div class="project-tags">
@@ -197,7 +197,7 @@
     <article class="project-card" data-aos="fade-up" data-aos-delay="200">
       <img src="../images/ml4t-indicators.svg" alt="Indicator Evaluation" class="project-card-img" />
       <div class="project-card-body">
-        <h3>Indicator Evaluation</h3>
+        <h3><a href="project-ml4t-indicators.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Indicator Evaluation</a></h3>
         <p>Researched and implemented five technical indicators (Momentum, Price/SMA, RSI, Stochastic, MACD) and built a Theoretically Optimal Strategy to establish a performance ceiling for any trading approach on a given symbol.</p>
         <p class="project-learning"><strong>Learning:</strong> No single indicator is reliable in isolation. Combining indicators - for example using Price/SMA for trend direction and RSI for momentum confirmation - filters noise significantly. The TOS reveals the absolute upper bound of what any strategy could achieve.</p>
         <div class="project-tags">
@@ -216,7 +216,7 @@
     <article class="project-card" data-aos="fade-up">
       <img src="../images/ml4t-qlrobot.svg" alt="Q-Learning Robot" class="project-card-img" />
       <div class="project-card-body">
-        <h3>Q-Learning Robot</h3>
+        <h3><a href="project-ml4t-qlrobot.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Q-Learning Robot</a></h3>
         <p>Implemented Q-Learning and Dyna-Q reinforcement learning algorithms from scratch to solve a robot navigation problem. Dyna-Q augments real-world experience with simulated planning steps to dramatically speed up convergence.</p>
         <p class="project-learning"><strong>Learning:</strong> Model-free RL learns purely from experience but can be sample-inefficient. Model-based additions like Dyna-Q reuse learned transition models to generate synthetic experience, cutting training time without changing the core learner architecture.</p>
         <div class="project-tags">
@@ -234,7 +234,7 @@
     <article class="project-card" data-aos="fade-up" data-aos-delay="100">
       <img src="../images/ml4t-strategy.svg" alt="Strategy Evaluation" class="project-card-img" />
       <div class="project-card-body">
-        <h3>Strategy Evaluation</h3>
+        <h3><a href="project-ml4t-strategy.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Strategy Evaluation</a></h3>
         <p>Capstone project: built a manual trading strategy using human-coded indicator rules, then trained a BagLearner-based strategy learner using the same three indicators. Compared both against a buy-and-hold benchmark across in-sample and out-of-sample periods.</p>
         <p class="project-learning"><strong>Learning:</strong> The ML-based strategy discovered non-obvious indicator combinations that matched or exceeded the manual strategy. This project tied together everything in the course - indicators, simulation, learners, and ensembles - into a complete end-to-end trading system.</p>
         <div class="project-tags">

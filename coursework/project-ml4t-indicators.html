@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Indicator Evaluation - ML4T Project 6</title>
+  <meta name="description" content="Project 6 from CS 7646: Implementing 5 technical indicators and a Theoretically Optimal Strategy for stock trading." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body class="header-strip">
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Nrepesh Joshi</a>
+      <div class="nav-links">
+        <a href="../about.html">About Me</a>
+        <a href="../coursework.html" class="active">Coursework</a>
+        <a href="../ml.html">ML</a>
+        <a href="../software.html">Software</a>
+        <a href="../physics.html">Physics</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="../about.html">About Me</a><a href="../coursework.html" class="active">Coursework</a><a href="../ml.html">ML</a><a href="../software.html">Software</a><a href="../physics.html">Physics</a>
+  </div>
+
+  <header class="page-header">
+    <p class="section-label">// ML4T - Project 6</p>
+    <h1>Indicator Evaluation</h1>
+  </header>
+
+  <section class="section" style="padding-bottom: 8px;" data-aos="fade-up">
+    <p class="class-meta-row">
+      <a href="../coursework.html" class="back-link"><i class="fas fa-arrow-left"></i> Coursework</a>
+      <span style="color: var(--border);">/</span>
+      <a href="ml4t.html" class="back-link">ML4T</a>
+      <span style="color: var(--border);">/</span>
+      <span>Indicator Evaluation</span>
+    </p>
+  </section>
+
+  <section class="section" style="padding-top: 8px;" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
+    <p class="class-description" style="max-width: none;">
+      I built five technical indicators from scratch in Python and evaluated whether they produce actionable trading signals. I also implemented the Theoretically Optimal Strategy (TOS) for JPM stock over a 2-year period. The TOS represents the upper bound of what any trading strategy could achieve given perfect foresight - it buys at local minima and sells at local maxima. Every real strategy I built in later projects was measured against this ceiling.
+    </p>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Key Results</h2>
+
+    <div style="overflow-x: auto; margin-bottom: 24px;">
+      <table style="width: 100%; max-width: 750px; border-collapse: collapse; font-size: 0.9rem;">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <th style="text-align: left; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Indicator</th>
+            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Period</th>
+            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Signal Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Momentum</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">12 days</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">Crosses through zero</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Price/SMA Ratio</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">20 days</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">Above/below threshold (1.05/0.95)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">RSI</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">14 days</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">Overbought (>70), Oversold (<30)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Stochastic</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">14 days</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">%K/%D crossovers</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 12px; color: var(--text-secondary);">MACD</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">12 fast / 26 slow</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">Histogram + signal line crossover</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="overflow-x: auto; margin-bottom: 16px;">
+      <table style="width: 100%; max-width: 600px; border-collapse: collapse; font-size: 0.9rem;">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <th style="text-align: left; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Strategy</th>
+            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Cumulative Return</th>
+            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Sharpe Ratio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Buy &amp; Hold Benchmark</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">1.23%</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">0.157</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 12px; color: var(--text-secondary);"><strong>Theoretically Optimal Strategy</strong></td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--accent); font-weight: 600;"><strong>578.6%</strong></td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--accent); font-weight: 600;"><strong>13.32</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      No single indicator is reliable in isolation. Momentum tells you how fast price is moving, but not where it's going. Price/SMA tells you the trend direction, but generates false signals during range-bound periods. RSI catches extremity, but can stay in overbought territory for weeks during strong trends. The breakthrough realization was that indicators are like instruments in an orchestra. Each plays a different role, and you need at least three before the ensemble starts to make sense.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      The Theoretically Optimal Strategy was a humbling calibration exercise. Knowing that the absolute ceiling for JPM in 2008-2009 was a 578% cumulative return and a Sharpe ratio of 13.32 puts every real strategy into perspective. My manual strategy in Project 8 achieved ~25% return. The strategy learner achieved ~164% in-sample. Neither comes close to TOS, but TOS sets the scale. It answers the vital question: "How much of the available alpha am I actually capturing?"
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      I also learned that parameter tuning matters dramatically. The choice of 12 days for momentum, 20 days for SMA, 14 days for RSI - these are not universal constants. They are hyperparameters. Changing the SMA window from 20 to 50 days completely changes the signal timing. I spent significant time experimenting with different periods before settling on combinations that produced clean, non-overlapping signals.
+    </p>
+  </section>
+
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <div class="project-tags" style="margin-bottom: 16px;">
+      <span class="project-tag">Technical Indicators</span>
+      <span class="project-tag">MACD</span>
+      <span class="project-tag">RSI</span>
+      <span class="project-tag">Benchmarking</span>
+      <span class="project-tag">Time Series</span>
+    </div>
+    <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; report shared on request</p>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Indicator%20Evaluation&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;"><i class="fas fa-envelope"></i> Request materials</a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Nrepesh Joshi</p>
+      <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/nrepeshjoshi" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/nrepesh" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Nrepesh Joshi</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

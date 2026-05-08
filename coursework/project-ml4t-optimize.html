@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio Optimization - ML4T Project 2</title>
+  <meta name="description" content="Project 2 from CS 7646: Optimizing stock portfolio allocations using SciPy to maximize Sharpe ratio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body class="header-strip">
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Nrepesh Joshi</a>
+      <div class="nav-links">
+        <a href="../about.html">About Me</a>
+        <a href="../coursework.html" class="active">Coursework</a>
+        <a href="../ml.html">Machine Learning</a>
+        <a href="../software.html">Software</a>
+        <a href="../physics.html">Physics</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="../about.html">About Me</a><a href="../coursework.html" class="active">Coursework</a><a href="../ml.html">ML</a><a href="../software.html">Software</a><a href="../physics.html">Physics</a>
+  </div>
+
+  <header class="page-header">
+    <p class="section-label">// ML4T - Project 2</p>
+    <h1>Portfolio Optimization</h1>
+  </header>
+
+  <section class="section" style="padding-bottom: 8px;" data-aos="fade-up">
+    <p class="class-meta-row">
+      <a href="../coursework.html" class="back-link"><i class="fas fa-arrow-left"></i> Coursework</a>
+      <span style="color: var(--border);">/</span>
+      <a href="ml4t.html" class="back-link">ML4T</a>
+      <span style="color: var(--border);">/</span>
+      <span>Portfolio Optimization</span>
+    </p>
+  </section>
+
+  <section class="section" style="padding-top: 8px;" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
+    <p class="class-description" style="max-width: none;">
+      I implemented a full portfolio analysis toolkit and used SciPy's optimization routines to find the allocation mix that maximizes the Sharpe ratio for a given set of equities. The project covered four core metrics: cumulative return, average daily return, standard deviation (volatility), and Sharpe ratio. I then built an optimization solver that searches the simplex of valid allocations (summing to 1.0, all positive) to find the point of highest risk-adjusted return.
+    </p>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Key Results</h2>
+
+    <div style="overflow-x: auto; margin-bottom: 16px;">
+      <table style="width: 100%; max-width: 700px; border-collapse: collapse; font-size: 0.9rem;">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <th style="text-align: left; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Metric</th>
+            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Optimized Portfolio</th>
+            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Equal-Weighted</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Cumulative return</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--accent); font-weight: 600;">+32.6%</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">+18.4%</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Sharpe ratio (252-day)</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--accent); font-weight: 600;">2.06</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">1.28</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Volatility (daily std)</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">0.0103</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">0.0137</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Max allocation</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">JPM (43%)</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">20% each</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 12px;">
+      The optimized allocation shifted heavily into JPM (43%) and reduced exposure to AAPL and XOM, which had lower risk-adjusted returns individually. This was not obvious from looking at raw returns alone: JPM had moderate absolute returns but very low volatility, making it a Sharpe-ratio star.
+    </p>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      The first thing that struck me was how differently the optimal portfolio looks when you optimize for Sharpe ratio versus raw return. A max-return optimization puts everything into the single best-performing stock, giving you maximum upside but also maximum volatility. Sharpe ratio forces a fundamentally different mindset: it rewards consistency and penalizes noise.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      I also learned that the optimization surface is surprisingly sensitive to input assumptions. Small changes in expected return estimates can swing the optimal allocation by double digits. This taught me to be cautious about treating optimizer output as gospel. The optimal portfolio is a function of the data you fed it, and that data is backward-looking.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      On the technical side, working with SciPy's minimize function for the first time gave me hands-on experience with constrained optimization. I had to set up linear constraints (sum of allocations = 1.0) and bounds (0 <= x <= 1) correctly, or the optimizer would produce portfolios that don't make financial sense. Getting the constraints right was as important as choosing the objective function.
+    </p>
+  </section>
+
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <div class="project-tags" style="margin-bottom: 16px;">
+      <span class="project-tag">Sharpe Ratio</span>
+      <span class="project-tag">SciPy</span>
+      <span class="project-tag">Portfolio Theory</span>
+      <span class="project-tag">Constrained Optimization</span>
+    </div>
+    <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; report shared on request to comply with the GT honor code</p>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Portfolio%20Optimization&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;"><i class="fas fa-envelope"></i> Request materials</a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Nrepesh Joshi</p>
+      <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/nrepeshjoshi" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/nrepesh" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Nrepesh Joshi</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

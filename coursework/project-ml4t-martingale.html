@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Martingale Simulator - ML4T Project 1</title>
+  <meta name="description" content="Project 1 from CS 7646: Simulating the Martingale betting strategy on American roulette across 1000 episodes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body class="header-strip">
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Nrepesh Joshi</a>
+      <div class="nav-links">
+        <a href="../about.html">About Me</a>
+        <a href="../coursework.html" class="active">Coursework</a>
+        <a href="../ml.html">Machine Learning</a>
+        <a href="../software.html">Software</a>
+        <a href="../physics.html">Physics</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="../about.html">About Me</a>
+    <a href="../coursework.html" class="active">Coursework</a>
+    <a href="../ml.html">Machine Learning</a>
+    <a href="../software.html">Software</a>
+    <a href="../physics.html">Physics</a>
+  </div>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <p class="section-label">// ML4T - Project 1</p>
+    <h1>Martingale Simulator</h1>
+  </header>
+
+  <!-- Breadcrumb -->
+  <section class="section" style="padding-bottom: 8px;" data-aos="fade-up">
+    <p class="class-meta-row">
+      <a href="../coursework.html" class="back-link"><i class="fas fa-arrow-left"></i> Coursework</a>
+      <span style="color: var(--border);">/</span>
+      <a href="ml4t.html" class="back-link">ML4T</a>
+      <span style="color: var(--border);">/</span>
+      <span>Martingale Simulator</span>
+    </p>
+  </section>
+
+  <!-- Overview -->
+  <section class="section" style="padding-top: 8px;" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
+    <p class="class-description" style="max-width: none;">
+      I built a Monte Carlo simulator for the Martingale betting strategy on American roulette. Unlike a simple script that runs once, this simulator runs <strong>1,000 independent episodes</strong> of 1,000 spins each, collecting aggregate statistics across the full distribution of outcomes. I then compared two scenarios: an idealized unlimited bankroll versus a realistic bankroll capped at $256.
+    </p>
+  </section>
+
+  <!-- Key Results -->
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Key Results</h2>
+
+    <div class="bio-stats" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 24px; max-width: 600px;">
+      <div class="bio-stat">
+        <span class="bio-stat-num">1,000</span>
+        <span class="bio-stat-label">episodes</span>
+      </div>
+      <div class="bio-stat">
+        <span class="bio-stat-num">1M</span>
+        <span class="bio-stat-label">total spins</span>
+      </div>
+      <div class="bio-stat">
+        <span class="bio-stat-num">18/38</span>
+        <span class="bio-stat-label">win probability</span>
+      </div>
+    </div>
+
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; max-width: 700px; border-collapse: collapse; font-size: 0.9rem;" data-aos="fade-up">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <th style="text-align: left; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Metric</th>
+            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Unlimited Bankroll</th>
+            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Limited ($256)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Win rate (reaching +$80)</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--accent); font-weight: 600;">100%</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">66%</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Expected value</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--accent); font-weight: 600;">+$80.00</td>
+            <td style="padding: 10px 12px; text-align: center; color: #C44444; font-weight: 600;">-$33.73</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Median outcome</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">$80</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">$80</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 12px; color: var(--text-secondary);">Outcome at worst</td>
+            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">no bankruptcy</td>
+            <td style="padding: 10px 12px; text-align: center; color: #C44444; font-weight: 600;">-$256 (34%)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- What I Learned -->
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      The unlimited bankroll experiment confirms what probability theory predicts: if you can keep doubling forever, you will eventually recover every loss. But the variance is extreme. During any individual episode, the running balance can swing deep into negative territory before snapping back. The standard deviation is enormous because some spins require enormous bets to recoup.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      The limited bankroll experiment is where it gets sobering. 34% of episodes end in bankruptcy at -$256. The expected value is negative because the losses in those bankruptcy episodes outweigh the gains from the 66% that succeed. The median stays at $80 because most episodes do reach the target, but the mean is dragged down by the catastrophic tail.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      The biggest insight for me was the gap between <em>median</em> and <em>expected value</em>. A gambler who looks only at "I usually win" misses the fact that the losses, when they happen, are devastating enough to make the whole strategy unprofitable. This is the exact risk-reward asymmetry that makes casino games unbeatable in the long run.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      From an engineering perspective, this project taught me the discipline of running large-scale simulations. A single run is noise. A thousand runs is data. I built the simulator to track every spin, compute running means/stds on the fly, and export clean aggregate statistics. That habit of reproducible, large-N experimentation carried into every later project.
+    </p>
+  </section>
+
+  <!-- Tags -->
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <div class="project-tags" style="margin-bottom: 16px;">
+      <span class="project-tag">Probability</span>
+      <span class="project-tag">Monte Carlo</span>
+      <span class="project-tag">NumPy</span>
+      <span class="project-tag">American Roulette</span>
+    </div>
+    <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; report shared on request to comply with the GT honor code</p>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Martingale%20Simulator&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;">
+      <i class="fas fa-envelope"></i> Request materials
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Nrepesh Joshi</p>
+      <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/nrepeshjoshi" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/nrepesh" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Nrepesh Joshi</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
