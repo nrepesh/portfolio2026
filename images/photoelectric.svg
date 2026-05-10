@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="lightBeam" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  <rect fill="#fafafa" width="800" height="450"/>
+  <circle cx="150" cy="225" r="40" fill="#fbbf24" opacity="0.3"/>
+  <circle cx="150" cy="225" r="25" fill="#fbbf24"/>
+  <rect x="200" y="180" width="200" height="90" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+  <rect x="220" y="200" width="160" height="50" fill="#f3f4f6"/>
+  <line x1="190" y1="225" x2="400" y2="225" stroke="url(#lightBeam)" stroke-width="3"/>
+  <circle cx="450" cy="225" r="8" fill="#3b82f6"/>
+  <path d="M460 225 L500 200" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="400" y="400" font-family="Inter, sans-serif" font-size="18" fill="#374151" text-anchor="middle">Photoelectric Effect</text>
+</svg>

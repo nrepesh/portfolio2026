@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect fill="#fafafa" width="800" height="450"/>
+  <circle cx="400" cy="225" r="80" fill="none" stroke="#e5e7eb" stroke-width="2"/>
+  <circle cx="400" cy="225" r="55" fill="none" stroke="#d1d5db" stroke-width="1"/>
+  <circle cx="400" cy="225" r="30" fill="#f3f4f6" stroke="#9ca3af" stroke-width="2"/>
+  <circle cx="400" cy="225" r="8" fill="#374151"/>
+  <line x1="280" y1="150" x2="350" y2="200" stroke="#fbbf24" stroke-width="3"/>
+  <line x1="280" y1="300" x2="350" y2="250" stroke="#fbbf24" stroke-width="3"/>
+  <line x1="450" y1="200" x2="520" y2="150" stroke="#3b82f6" stroke-width="2"/>
+  <line x1="450" y1="250" x2="520" y2="300" stroke="#3b82f6" stroke-width="2"/>
+  <text x="400" y="400" font-family="Inter, sans-serif" font-size="18" fill="#374151" text-anchor="middle">X-ray Fluorescence</text>
+</svg>
