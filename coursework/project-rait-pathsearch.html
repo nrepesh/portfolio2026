@@ -72,7 +72,7 @@
     </p>
 
     <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      What surprised me is that averaging did not fix the corners. I ended up measuring the sharpest turn angle along the path directly and repairing that corner explicitly, then re-checking, rather than trusting the smoothing pass to have taken care of it. The general point is one I keep coming back to: a smoothing pass optimises an aggregate, and an aggregate improving says nothing about whether any individual point satisfies the property you care about. If the requirement is a bound on curvature <em>everywhere</em>, you have to test for it and enforce it, not hope a global objective delivers it as a side effect.
+      What surprised me is that averaging did not fix the corners. I ended up measuring the sharpest turn angle along the path directly and repairing that corner explicitly, then re-checking, rather than trusting the smoothing pass to have taken care of it. The general point is one I keep coming back to: a smoothing pass optimizes an aggregate, and an aggregate improving says nothing about whether any individual point satisfies the property you care about. If the requirement is a bound on curvature <em>everywhere</em>, you have to test for it and enforce it, not hope a global objective delivers it as a side effect.
     </p>
 
     <p class="class-description" style="max-width: none; margin-bottom: 16px;">
@@ -80,7 +80,7 @@
     </p>
 
     <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      Two smaller things stuck. First, cheapest and shortest are different objectives. Because motion types are priced differently, the route with the fewest steps is routinely not the route with the lowest cost, and once you internalise that, "shortest path" stops being a useful phrase. Second, the robot lifts the box from an adjacent square, so the goal was never a single cell, it was any cell touching the box. Search is almost always taught with one goal state, and my instinct was to run a search per candidate square. The actual fix was to widen the termination test and let one search find whichever of them was cheapest to reach. Recognising when a goal is a set rather than a point is a small reframing that saved a lot of work.
+      Two smaller things stuck. First, cheapest and shortest are different objectives. Because motion types are priced differently, the route with the fewest steps is routinely not the route with the lowest cost, and once you internalise that, "shortest path" stops being a useful phrase. Second, the robot lifts the box from an adjacent square, so the goal was never a single cell, it was any cell touching the box. Search is almost always taught with one goal state, and my instinct was to run a search per candidate square. The actual fix was to widen the termination test and let one search find whichever of them was cheapest to reach. Recognizing when a goal is a set rather than a point is a small reframing that saved a lot of work.
     </p>
   </section>
 
