@@ -136,10 +136,26 @@ to crop. A light-background figure treated this way reads as a deliberate
 figure card rather than an accident.
 
 Pillow / ImageMagick / ffmpeg are **not installed** and should not be installed.
-A dependency-free pure-Python PNG letterboxing script (stdlib `zlib` + `struct`,
-handles all five PNG scanline filters) was written for the CS 7638 thumbnails -
-reuse that approach. Downsample by averaging source pixels, not nearest
-neighbour, or fine screenshot detail aliases badly.
+Use **`tools/letterbox.py`** - a dependency-free pure-Python PNG letterboxer
+(stdlib `zlib` + `struct`; handles all five PNG scanline filters, colour types
+0/2/4/6 at 8-bit, and fails loudly on palette / 16-bit / interlaced input).
+
+```bash
+RAIT_PROJECTS=~/github/omscs-rait-summer2026/Projects python3 tools/letterbox.py
+```
+
+It regenerates every course thumbnail from the job table at the bottom of the
+file, and reproduces the committed images byte-for-byte. To add a class, append
+entries to `JOBS`. Each entry takes an optional `crop=(x0,y0,x1,y1)` and
+`fills=[(x,y,w,h,feather)]`, the latter inpainting a rectangle by interpolating
+each row between its true left and right neighbours - used to remove simulator
+UI chrome from a screenshot.
+
+Two rules the script encodes, worth keeping if you ever replace it: downsample
+by **averaging** source pixels rather than nearest-neighbour, or fine screenshot
+detail aliases badly; and make every card image land at the **same placed
+height** (502px on a 960x540 canvas), or one card visibly renders shorter than
+its neighbours.
 
 ---
 
