@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Policy Search - RAIT Project 5</title>
+  <meta name="description" content="Project 5 from CS 7638: using dynamic programming and value iteration to produce a warehouse delivery policy that works from any starting square, including under stochastic motion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body class="header-strip">
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Nrepesh Joshi</a>
+      <div class="nav-links">
+        <a href="../pages/about.html">About Me</a>
+        <a href="../pages/coursework.html" class="active">Coursework</a>
+        <a href="../pages/ml.html">Machine Learning</a>
+        <a href="../pages/software.html">Software</a>
+        <a href="../pages/physics.html">Physics</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="../pages/about.html">About Me</a>
+    <a href="../pages/coursework.html" class="active">Coursework</a>
+    <a href="../pages/ml.html">Machine Learning</a>
+    <a href="../pages/software.html">Software</a>
+    <a href="../pages/physics.html">Physics</a>
+  </div>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <p class="section-label">// RAIT - Project 5</p>
+    <h1>Policy Search</h1>
+  </header>
+
+  <!-- Breadcrumb -->
+  <section class="section" style="padding-bottom: 8px;" data-aos="fade-up">
+    <p class="class-meta-row">
+      <a href="../pages/coursework.html" class="back-link"><i class="fas fa-arrow-left"></i> Coursework</a>
+      <span style="color: var(--border);">/</span>
+      <a href="rait.html" class="back-link">RAIT</a>
+      <span style="color: var(--border);">/</span>
+      <span>Policy Search</span>
+    </p>
+  </section>
+
+  <!-- Overview -->
+  <section class="section" style="padding-top: 8px;" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
+    <p class="class-description" style="max-width: none;">
+      Same warehouse as the previous project, but the question changed. The robot's starting position is not given, so the answer can no longer be a route. It has to be a <strong>policy</strong>: an action for every square in the grid, so that wherever the robot wakes up it knows what to do. The warehouse floor is also uneven and imposes its own traversal cost on top of the cost of moving, so the cheapest way across is not always the most direct. I solved it with <strong>dynamic programming</strong>, computing a cost-to-go for every state and reading the policy off those values. Part A assumes the robot moves exactly as instructed. Part B makes motion stochastic: the intended move only succeeds some of the time and otherwise slips to a neighboring direction, so the policy has to be optimal with respect to where the robot might actually end up rather than where it meant to go.
+    </p>
+  </section>
+
+  <!-- What I Learned -->
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      The plan-versus-policy distinction is the real content of this project, and I did not appreciate it until I had to work without a start state. A path answers "what do I do from here". A policy answers "what do I do from anywhere". Solving for a value at every single state looks wasteful next to a search that expands only what it needs, but that exhaustiveness is exactly what you are buying: the result survives the robot being dropped in an unknown spot, and it survives the robot being knocked off course halfway through, because there is no plan to invalidate. You pay once, up front, across the whole state space, and in exchange you never have to replan.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      Part B is where it got genuinely interesting. I expected the stochastic policy to be the deterministic one with a bit of noise tolerance bolted on. It is not. The optimal policy <em>changes shape</em>. Because a slip near a wall is expensive and the value update is an expectation over every outcome, the arithmetic starts routing the robot the long way around, keeping a margin from walls and costly squares, spending extra distance to buy down the risk of an unlucky sideways step. Nowhere did I write a rule that says "stay away from walls". I wrote down an expectation over outcomes and caution came out the other end. That was the most satisfying moment of the course for me: risk-aware behavior as a consequence of the objective rather than as a hand-coded heuristic layered on top.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      I also learned to be honest about what the state actually is. Reaching the box and delivering the box look like one task, but they are two, because carrying the box changes the problem: the target is different, and the square the box used to occupy stops being an obstacle the moment it is lifted. Solving each phase as its own separately optimal problem, with its own value function, made that clear in a way a single search with a "holding the box" flag would have obscured. Anything that changes the dynamics belongs in the state, and if you are not willing to put it there, you owe yourself a separate problem instead.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      One process lesson, less flattering. Part A did not work until I rebuilt it. I spent far too long patching an implementation whose structure was slightly wrong, bolting on special cases for the edges of the grid and for the squares around the box and the dropzone. Restructuring it around one clean value update, applied uniformly until nothing changes, removed most of those special cases rather than handling them. Repeated special-casing is a signal that the abstraction is off, and the fix that feels most expensive - throwing the structure away and starting again - is very often the cheapest one available.
+    </p>
+  </section>
+
+  <!-- Tags -->
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <div class="project-tags" style="margin-bottom: 16px;">
+      <span class="project-tag">Dynamic Programming</span>
+      <span class="project-tag">Value Iteration</span>
+      <span class="project-tag">Stochastic Motion</span>
+      <span class="project-tag">MDP</span>
+    </div>
+    <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; reports shared on request to comply with the GT honor code</p>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20RAIT%20%E2%80%94%20Policy%20Search&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;">
+      <i class="fas fa-envelope"></i> Request materials
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Nrepesh Joshi</p>
+      <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/nrepeshjoshi" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/nrepesh" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Nrepesh Joshi</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

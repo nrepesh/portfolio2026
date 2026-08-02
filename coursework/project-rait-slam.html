@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Indiana Drones (SLAM) - RAIT Project 6</title>
+  <meta name="description" content="Project 6 from CS 7638: a drone maps a jungle and localises itself with GraphSLAM from noisy range and bearing readings, then navigates to the treasure without hitting a tree." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body class="header-strip">
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Nrepesh Joshi</a>
+      <div class="nav-links">
+        <a href="../pages/about.html">About Me</a>
+        <a href="../pages/coursework.html" class="active">Coursework</a>
+        <a href="../pages/ml.html">Machine Learning</a>
+        <a href="../pages/software.html">Software</a>
+        <a href="../pages/physics.html">Physics</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="../pages/about.html">About Me</a>
+    <a href="../pages/coursework.html" class="active">Coursework</a>
+    <a href="../pages/ml.html">Machine Learning</a>
+    <a href="../pages/software.html">Software</a>
+    <a href="../pages/physics.html">Physics</a>
+  </div>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <p class="section-label">// RAIT - Project 6</p>
+    <h1>Indiana Drones (SLAM)</h1>
+  </header>
+
+  <!-- Breadcrumb -->
+  <section class="section" style="padding-bottom: 8px;" data-aos="fade-up">
+    <p class="class-meta-row">
+      <a href="../pages/coursework.html" class="back-link"><i class="fas fa-arrow-left"></i> Coursework</a>
+      <span style="color: var(--border);">/</span>
+      <a href="rait.html" class="back-link">RAIT</a>
+      <span style="color: var(--border);">/</span>
+      <span>Indiana Drones (SLAM)</span>
+    </p>
+  </section>
+
+  <!-- Overview -->
+  <section class="section" style="padding-top: 8px;" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
+    <p class="class-description" style="max-width: none;">
+      A drone has to recover a piece of ancient treasure from a jungle too dense to walk into. Part A is <strong>SLAM</strong>: the drone lands with no map at all, flies a prescripted sequence of turns and moves through the trees, and from noisy distance, bearing and size readings has to estimate both its own position and the position of every tree, which drift in and out of sensor range as it travels. I built this with <strong>GraphSLAM</strong>, accumulating every movement and every sighting as a constraint in a single linear system and solving that system for the drone and the landmarks together. Part B puts a navigator on top: fly to the treasure and extract it, steering around tree canopies using nothing but the map my own estimator is producing as it goes.
+    </p>
+  </section>
+
+  <!-- What I Learned -->
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      Localization and mapping are not two problems that happen to run at the same time, they are one problem. You cannot build a map without knowing where you observed from, and you cannot know where you are without a map to place yourself against. That looks circular right up until you stop treating them as stages and write both down as constraints in the same system, and then it simply dissolves: solving once gives you both. The part that genuinely changed how I think about estimation is that a constraint is not consumed when you add it. Every new sighting of a tree the drone has seen before tightens everything that tree is linked to, retroactively, not just the current estimate. Landmarks leaving and re-entering sensor range is precisely what makes re-observation valuable, because a tree you see, lose and see again ties together two stretches of trajectory that were otherwise only connected through a chain of noisy movements.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      The tidy version of GraphSLAM assumes the noise is independent and Gaussian in x and y. The sensors do not deliver that. The noise lives in distance and bearing, and converting a range and bearing reading into a displacement in x and y turns a well-behaved uncertainty into a wedge that is stretched along the bearing direction and grows with range. Treating every constraint as equally trustworthy in both axes is a simplification, and you can feel it in the output: distant landmarks end up with more influence than they have earned. The same gap shows up in orientation. GraphSLAM as taught estimates position, but heading accumulates error too, and a heading that is quietly drifting corrupts every measurement you convert afterwards, because the conversion depends on it. I carried orientation forward from the commanded turns, which is the honest weak point of what I built, and knowing exactly where a model is lying to you is worth almost as much as fixing it.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      Part B taught me a geometric lesson I will not forget: collision checking has to be against the swept path, not the endpoints. Two positions can both sit comfortably outside every canopy while the straight line between them passes right through one, and if you only ever ask "is where I am going safe", you will fly through a tree and never see it in your own checks. Testing the segment against each obstacle instead changed what avoidance even looks like. Rather than planning a route around the jungle, the drone proposes a move toward the goal, tests whether that move is geometrically safe, and if it is not, swings its heading off the direct bearing or shortens the step until it finds one that is. Because it re-senses every step, locally safe and roughly goal-directed at each step is enough. That is a very different mindset from the path search project, where I committed to an entire route in advance, and it took me a while to accept that the reactive version was not a cop-out.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      Mostly, though, this project works only because everything earlier in the course works. The obstacles the navigator avoids are the estimator's guesses, not the real trees, so a mediocre map is not a cosmetic problem, it is a crash. Filtering noisy measurements, planning under constraints and controlling a vehicle stopped being three topics and became three dependencies of one system, with failure modes that cross the seams between them: from the outside, a navigation bug and an estimation bug look identical, and the only way to tell them apart is to trust each layer's output enough to interrogate the next. That compounding was the real payoff of the semester.
+    </p>
+  </section>
+
+  <!-- Tags -->
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <div class="project-tags" style="margin-bottom: 16px;">
+      <span class="project-tag">GraphSLAM</span>
+      <span class="project-tag">Localization</span>
+      <span class="project-tag">Landmark Mapping</span>
+      <span class="project-tag">Obstacle Avoidance</span>
+    </div>
+    <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; reports shared on request to comply with the GT honor code</p>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20RAIT%20%E2%80%94%20Indiana%20Drones%20%28SLAM%29&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;">
+      <i class="fas fa-envelope"></i> Request materials
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Nrepesh Joshi</p>
+      <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/nrepeshjoshi" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/nrepesh" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Nrepesh Joshi</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

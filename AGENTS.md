@@ -126,6 +126,21 @@ The portfolio uses a dark theme. All images should match:
 2. Generate a dark-themed recreation as SVG.
 3. Use a relevant dark-themed stock image instead.
 
+**For simulator screenshots - letterbox them first.** `.project-card-img` is
+`width:100%; height:200px; object-fit:cover`. Source screenshots are usually
+square-ish, so dropping one in raw center-crops roughly half of it away. Before
+using a screenshot as a thumbnail, composite it onto a **960x540 `#111118`
+canvas**, scaled to fit (never stretched, never cropped) with ~3-4% padding and
+a 1px `#1E1E2E` hairline around the placed image. Then `cover` has nothing left
+to crop. A light-background figure treated this way reads as a deliberate
+figure card rather than an accident.
+
+Pillow / ImageMagick / ffmpeg are **not installed** and should not be installed.
+A dependency-free pure-Python PNG letterboxing script (stdlib `zlib` + `struct`,
+handles all five PNG scanline filters) was written for the CS 7638 thumbnails -
+reuse that approach. Downsample by averaging source pixels, not nearest
+neighbour, or fine screenshot detail aliases badly.
+
 ---
 
 ## Commit Rules
@@ -144,18 +159,39 @@ The portfolio uses a dark theme. All images should match:
 - Report content: ask user if OK to quote. Default to paraphrasing in the user’s own words.
 - If unsure: ask the user before committing.
 
+**Autograded classes (no written report) - e.g. CS 7638.** The user was explicit
+that test cases and grading machinery are GT property. Do **not** publish test
+case counts, per-test point values, scoring formulas, pass thresholds, time
+limits, or grading tolerances. Do not publish tuned parameter values either.
+Describe the problem scenario and the named technique, and put the weight of the
+page on what the user learned. Source files in these repos carry a "You may NOT
+publish this file" header - honor it. That header covers the code, not the
+user's own reflections on it.
+
 ---
 
 ## Quick Reference: Mailto Encoding
 
-Subject: `Request%3A%20ML4T%20%E2%80%94%20<Project%20Title>`  
+Subject: `Request%3A%20<CLASS>%20%E2%80%94%20<Project%20Title>`  
 Body: `Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20`
+
+`<CLASS>` is the short class name - `ML4T`, `RAIT`. Parentheses in a project
+title encode as `%28` and `%29`.
+
+---
+
+## Known Issue
+
+The eight `coursework/project-ml4t-*.html` detail pages have broken nav and
+breadcrumb links - they point at `../about.html`, `../coursework.html` etc., but
+those pages live in `pages/`. The RAIT detail pages use the correct `../pages/`
+prefix. The ML4T pages have not been touched pending the user's go-ahead.
 
 ---
 
 ## Last Updated
 
-Branch: `update/ml4t-syllabus-link`  
-Classes documented: ML4T (CS 7646, Spring 2026)  
-Projects documented: 8  
-Syllabus hosted: `assets/docs/cs7646-syllabus-sp26.pdf`
+Branch: `update/rait-summer2026`  
+Classes documented: ML4T (CS 7646, Spring 2026), RAIT (CS 7638, Summer 2026)  
+Projects documented: 14 (8 ML4T + 6 RAIT)  
+Syllabi hosted: `assets/docs/cs7646-syllabus-sp26.pdf`, `assets/docs/cs7638-syllabus-su26.pdf`

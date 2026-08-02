@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robotics: AI Techniques - Coursework</title>
+  <meta name="description" content="CS 7638 - Robotics: AI Techniques projects from the OMSCS program." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body class="header-strip">
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Nrepesh Joshi</a>
+      <div class="nav-links">
+        <a href="../pages/about.html">About Me</a>
+        <a href="../pages/coursework.html" class="active">Coursework</a>
+        <a href="../pages/ml.html">Machine Learning</a>
+        <a href="../pages/software.html">Software</a>
+        <a href="../pages/physics.html">Physics</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="../pages/about.html">About Me</a>
+    <a href="../pages/coursework.html" class="active">Coursework</a>
+    <a href="../pages/ml.html">Machine Learning</a>
+    <a href="../pages/software.html">Software</a>
+    <a href="../pages/physics.html">Physics</a>
+  </div>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <p class="section-label">// CS 7638</p>
+    <h1>Robotics: AI Techniques</h1>
+  </header>
+
+  <!--
+  ============================================================================
+  AGENT INSTRUCTIONS - coursework class page
+  ============================================================================
+  This file lists projects for one OMSCS class. Read the source-of-truth code
+  and problem statement from the user's OMSCS repo, then add ONE
+  <article class="project-card"> per project inside the .project-grid below.
+
+  WORKFLOW (run after each project the user completes):
+    1. Read <omscs-repo>/Projects/<project_folder>/ - code and the spec PDF.
+    2. Write a 2-3 sentence summary of the PROBLEM and APPROACH.
+    3. Write a <p class="project-learning"> paragraph - the personal takeaway.
+    4. Pick 2-4 tags (techniques, libraries, concepts).
+    5. Add a thumbnail at ../images/rait-<slug>.png. The RAIT screenshots are
+       square-ish while .project-card-img is 100% x 200px with object-fit:cover,
+       so raw screenshots get center-cropped in half. Letterbox each one onto a
+       960x540 #111118 canvas first - see AGENTS.md "Image Style Guide".
+    6. Add a matching detail page at project-rait-<slug>.html.
+    7. Update the project count on coursework.html (".class-meta" span).
+
+  HONOR CODE - CS 7638 SPECIFIC:
+    Test cases, scoring formulas, point values, pass thresholds and grading
+    tolerances are GT property and must NOT appear on this site. Describe the
+    problem scenario and the named technique; keep the weight on what was
+    learned. No code, no tuned parameter values, no solution walkthroughs.
+
+  CARD TEMPLATE - copy, fill in placeholders <LIKE_THIS>:
+  ----------------------------------------------------------------------------
+  <article class="project-card" data-aos="fade-up">
+    <img src="../images/<IMAGE_FILE>" alt="<PROJECT_TITLE>" class="project-card-img" />
+    <div class="project-card-body">
+      <h3><PROJECT_TITLE></h3>
+      <p><SUMMARY_2_TO_3_SENTENCES></p>
+      <p class="project-learning"><strong>Learning:</strong> <TAKEAWAY></p>
+      <div class="project-tags">
+        <span class="project-tag"><TAG_1></span>
+        <span class="project-tag"><TAG_2></span>
+      </div>
+      <div class="project-links">
+        <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20RAIT%20%E2%80%94%20<URL_ENCODED_TITLE>&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+      </div>
+    </div>
+  </article>
+  ----------------------------------------------------------------------------
+
+  MAILTO PATTERN: subject is "Request: RAIT - <project title>". Body asks for
+  the requester's GitHub username so the user can grant repo access in one
+  click. Encode spaces as %20, em-dash as %E2%80%94, apostrophe as %27,
+  comma as %2C, colon as %3A, parentheses as %28 and %29.
+
+  STAGGERED ANIMATION: optional `data-aos-delay="100"` or `"200"` on every
+  2nd/3rd card for visual rhythm.
+  ============================================================================
+  -->
+
+  <!-- Class meta + description -->
+  <section class="section class-overview" data-aos="fade-up">
+    <p class="class-meta-row">Summer 2026 · Georgia Tech OMSCS · <a href="../pages/coursework.html" class="back-link"><i class="fas fa-arrow-left" style="font-size:0.8em"></i> All classes</a></p>
+    <p class="class-description">
+      A project-driven course on the algorithms that let a robot perceive, decide and act when nothing it measures is exact. Six projects work through the full stack: tracking moving objects with Kalman filters, localizing from sparse and ambiguous sensor readings with particle filters, closing the loop on a physical system with PID control, planning routes with A* and continuous path smoothing, computing whole policies with dynamic programming under stochastic motion, and finally SLAM - building a map and locating yourself in it at the same time. Every project is graded on behavior in simulation rather than on a written report, so the work is judged by whether the robot actually completes its task.
+    </p>
+    <div class="syllabus-seam">
+      <a class="syllabus-inline" href="../assets/docs/cs7638-syllabus-su26.pdf" target="_blank" rel="noopener">
+        <i class="fas fa-file-pdf"></i>
+        Course syllabus
+        <span class="syllabus-meta">PDF · 115 KB</span>
+      </a>
+    </div>
+    <p class="honor-code-note">// code &amp; reports shared on request to comply with the GT honor code</p>
+  </section>
+
+  <!-- Project Grid -->
+  <div class="project-grid coursework-grid">
+
+    <!-- 1. Hopscotch (Kalman Filters) -->
+    <article class="project-card" data-aos="fade-up">
+      <img src="../images/rait-kalman.png" alt="Hopscotch: Kalman Filters" class="project-card-img" />
+      <div class="project-card-body">
+        <h3><a href="project-rait-kalman.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Hopscotch: Kalman Filters (2026)</a></h3>
+        <p>A crippled spaceship can only travel by hopping between drifting asteroids. Built a Kalman filter that tracks every asteroid in the field from noisy position readings alone and predicts where each one will be a timestep ahead, then used those predictions to choose which asteroid to ride toward home base.</p>
+        <p class="project-learning"><strong>Learning:</strong> The filter has to estimate velocity and acceleration it never directly observes, so how much initial uncertainty you assign each part of the state matters as much as the update equations. The subtler lesson was ordering - measuring and predicting belong to different timesteps, and getting that sequence backwards quietly desynchronizes the whole estimate. A good estimate is also not a plan: choosing a jump means committing on incomplete information, and refusing to commit is its own decision.</p>
+        <div class="project-tags">
+          <span class="project-tag">Kalman Filter</span>
+          <span class="project-tag">State Estimation</span>
+          <span class="project-tag">Sensor Noise</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20RAIT%20%E2%80%94%20Hopscotch%20%28Kalman%20Filters%29&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2. Solar System (Particle Filters) -->
+    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+      <img src="../images/rait-particle.png" alt="Solar System: Particle Filters" class="project-card-img" />
+      <div class="project-card-body">
+        <h3><a href="project-rait-particle.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Solar System: Particle Filters (2026)</a></h3>
+        <p>A satellite is dumped through a wormhole into a solar system with no idea where it is. Implemented a particle filter that localizes it from a single noisy scalar per timestep - the combined gravitational pull of the planets - then re-localizes from per-planet illumination readings in order to aim a message home.</p>
+        <p class="project-learning"><strong>Learning:</strong> One scalar reading is wildly ambiguous, and many positions in the system explain it equally well. Localization only emerges by accumulating weak evidence over time while moving. That ambiguity is exactly why a particle filter beats a Kalman filter here - the belief starts genuinely multi-modal, which a single Gaussian cannot represent. Resampling alone collapses that diversity, so keeping hypotheses alive through fuzzing is what makes convergence possible at all.</p>
+        <div class="project-tags">
+          <span class="project-tag">Particle Filter</span>
+          <span class="project-tag">Localization</span>
+          <span class="project-tag">Monte Carlo</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20RAIT%20%E2%80%94%20Solar%20System%20%28Particle%20Filters%29&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3. Drone Control (PID) -->
+    <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+      <img src="../images/rait-pid.png" alt="Drone Control: PID" class="project-card-img" />
+      <div class="project-card-body">
+        <h3><a href="project-rait-pid.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Drone Control: PID (2026)</a></h3>
+        <p>Implemented PID controllers for a simulated dual-rotor drone so it climbs to a target elevation, translates horizontally by rolling, and holds a hover. Gains were found automatically with twiddle rather than tuned by hand.</p>
+        <p class="project-learning"><strong>Learning:</strong> Each term earns its place - proportional drives toward the target, derivative damps the overshoot proportional guarantees, integral erases the steady-state offset a persistent disturbance leaves behind. The real lesson was integral wind-up: once an actuator saturates, the integral term keeps banking error it cannot spend, then unwinds straight past the target. A controller has to know when it is out of authority. Automated tuning is also only as good as the error metric you hand it.</p>
+        <div class="project-tags">
+          <span class="project-tag">PID Control</span>
+          <span class="project-tag">Twiddle</span>
+          <span class="project-tag">Feedback Control</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20RAIT%20%E2%80%94%20Drone%20Control%20%28PID%29&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4. Path Search -->
+    <article class="project-card" data-aos="fade-up">
+      <img src="../images/rait-pathsearch.png" alt="Path Search" class="project-card-img" />
+      <div class="project-card-body">
+        <h3><a href="project-rait-pathsearch.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Path Search (2026)</a></h3>
+        <p>Planned warehouse delivery routes for a robot with A* search over a grid, moving in eight directions with different costs for straight moves, diagonal moves and handling a box. The second half converts that grid path into a smooth continuous path a real robot could actually drive.</p>
+        <p class="project-learning"><strong>Learning:</strong> The planner and the smoother are really one problem split across two functions. Smoothing trades fidelity to the planned route against lower curvature, and pushed too far it drifts into the obstacle the search carefully routed around. The sharp corners A* produces are a real defect that has to be found and repaired deliberately, not averaged away and hoped for. The heuristic turned out to be a correctness question rather than a speed one - overestimate the remaining cost and you quietly stop finding the best path at all.</p>
+        <div class="project-tags">
+          <span class="project-tag">A* Search</span>
+          <span class="project-tag">Path Smoothing</span>
+          <span class="project-tag">Heuristics</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20RAIT%20%E2%80%94%20Path%20Search&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5. Policy Search -->
+    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+      <img src="../images/rait-policysearch.png" alt="Policy Search" class="project-card-img" />
+      <div class="project-card-body">
+        <h3><a href="project-rait-policysearch.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Policy Search (2026)</a></h3>
+        <p>Same warehouse, different output. Instead of one route, used dynamic programming to compute a full policy - an action for every square - because the robot's starting position is unknown. Here the floor carries an uneven traversal cost, and the second half makes motion stochastic, so an intended move sometimes slips sideways.</p>
+        <p class="project-learning"><strong>Learning:</strong> A path answers "what do I do from here"; a policy answers "what do I do from anywhere", and paying to evaluate every state is what buys that robustness. With an uneven floor, shortest and cheapest stop being the same objective. Then stochastic motion changes the optimal policy's shape rather than just adding noise tolerance - value iteration starts routing the robot the long way around to keep clearance from walls, because a slip in a tight corridor costs more than the detour. Risk-aware behavior falls out of the arithmetic instead of being hand-coded.</p>
+        <div class="project-tags">
+          <span class="project-tag">Dynamic Programming</span>
+          <span class="project-tag">Value Iteration</span>
+          <span class="project-tag">Stochastic Motion</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20RAIT%20%E2%80%94%20Policy%20Search&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6. Indiana Drones (SLAM) -->
+    <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+      <img src="../images/rait-slam.png" alt="Indiana Drones: SLAM" class="project-card-img" />
+      <div class="project-card-body">
+        <h3><a href="project-rait-slam.html" style="text-decoration:none;color:inherit;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">Indiana Drones: SLAM (2026)</a></h3>
+        <p>Capstone project: a drone drops into an unmapped jungle to recover treasure. Implemented GraphSLAM to estimate the drone's position and every tree's position simultaneously from noisy range and bearing readings, then flew it to the treasure without clipping a canopy.</p>
+        <p class="project-learning"><strong>Learning:</strong> Localization and mapping are the same problem - you cannot map without knowing where you are, and you cannot know where you are without a map, so both get solved at once as one accumulated system of constraints. Re-seeing a tree you passed earlier improves your estimate of where you were then, not just where you are now. The navigation half taught geometry the hard way: collisions have to be checked against the swept path, because a straight line between two safe points can still cut through a tree.</p>
+        <div class="project-tags">
+          <span class="project-tag">GraphSLAM</span>
+          <span class="project-tag">Landmark Mapping</span>
+          <span class="project-tag">Obstacle Avoidance</span>
+          <span class="project-tag">Capstone</span>
+        </div>
+        <div class="project-links">
+          <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20RAIT%20%E2%80%94%20Indiana%20Drones%20%28SLAM%29&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20"><i class="fas fa-envelope"></i> Request materials</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Nrepesh Joshi</p>
+      <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/nrepeshjoshi" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/nrepesh" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Nrepesh Joshi</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

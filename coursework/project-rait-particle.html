@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solar System (Particle Filters) - RAIT Project 2</title>
+  <meta name="description" content="Project 2 from CS 7638: localizing a lost satellite in a solar system with a particle filter, first from gravimeter readings and then from planetary illumination." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body class="header-strip">
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Nrepesh Joshi</a>
+      <div class="nav-links">
+        <a href="../pages/about.html">About Me</a>
+        <a href="../pages/coursework.html" class="active">Coursework</a>
+        <a href="../pages/ml.html">Machine Learning</a>
+        <a href="../pages/software.html">Software</a>
+        <a href="../pages/physics.html">Physics</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="../pages/about.html">About Me</a>
+    <a href="../pages/coursework.html" class="active">Coursework</a>
+    <a href="../pages/ml.html">Machine Learning</a>
+    <a href="../pages/software.html">Software</a>
+    <a href="../pages/physics.html">Physics</a>
+  </div>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <p class="section-label">// RAIT - Project 2</p>
+    <h1>Solar System (Particle Filters)</h1>
+  </header>
+
+  <!-- Breadcrumb -->
+  <section class="section" style="padding-bottom: 8px;" data-aos="fade-up">
+    <p class="class-meta-row">
+      <a href="../pages/coursework.html" class="back-link"><i class="fas fa-arrow-left"></i> Coursework</a>
+      <span style="color: var(--border);">/</span>
+      <a href="rait.html" class="back-link">RAIT</a>
+      <span style="color: var(--border);">/</span>
+      <span>Solar System (Particle Filters)</span>
+    </p>
+  </section>
+
+  <!-- Overview -->
+  <section class="section" style="padding-top: 8px;" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
+    <p class="class-description" style="max-width: none;">
+      My satellite comes out of a wormhole somewhere in a solar system and has no idea where it is. In the first half of the project the only thing it can sense is a single noisy number each timestep: the magnitude of the combined gravitational pull of the planets, which pointedly excludes the sun. From that one scalar per day, and the satellite's own motion, I had to work out where it actually is. The second half hands me a completely different sense - the percent illumination of each planet, which follows from the sun-planet-satellite phase angle - and asks me to localize again from that signal and then aim a radio message at the home planet on the outer edge of the system. I solved both halves with a <strong>particle filter</strong>: scatter a large population of candidate positions across the region the satellite could plausibly be in, weight each one by how well it explains the reading that just arrived, resample toward the survivors, perturb them so the population keeps some spread, and move every candidate forward with the same motion model the real satellite follows.
+    </p>
+  </section>
+
+  <!-- What I Learned -->
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      The most striking thing was how little a single gravimeter reading actually tells you. One scalar is consistent with an enormous set of positions scattered all over the system, so no amount of cleverness extracts a location from one measurement. Localization is not an inference you make, it is something that <em>emerges</em> - each new reading is weak evidence, but as the satellite and the planets both move, the geometry keeps changing, and the positions that only matched by coincidence stop matching while the true one keeps matching. Watching the particle cloud sit stubbornly spread out for a long while and then collapse onto the answer in a handful of timesteps was the clearest picture of accumulating evidence I have had.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      The noise sigma in the measurement model is a sharpness knob, and I badly underestimated how much rides on it. It decides how harshly a candidate is punished for disagreeing with the reading. Set it too tight and almost every particle gets an effectively zero weight, so the filter stakes everything on the handful that survive - which is catastrophic early on, when the survivors are as likely to be lucky as correct. Set it too loose and every particle looks about equally good, resampling does nothing, and the filter never commits to anything. What helped was to stop treating it as a free tuning knob and think of it as a claim about how much I trust the sensor, which is a question with a real answer.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      Resampling is the step that makes the filter work and also the step that kills it. Every resample duplicates the good particles and drops the bad ones, so diversity only ever decreases, and a population that collapses onto one spot early cannot recover no matter what evidence arrives afterwards - there is nothing left to reweight. Fuzzing the particles is what buys the filter time: by scattering the survivors slightly, a hypothesis that is nearly right gets to stay in the population long enough for later measurements to confirm or kill it. The tension is direct - too little fuzz and the cloud collapses prematurely onto a confident wrong answer, too much and it never sharpens into an answer at all.
+    </p>
+
+    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
+      The second half changed the character of the problem more than I expected. Instead of one number per timestep I get a reading for every planet, and requiring a candidate position to agree with all of them at once is a far stronger constraint than any single one - accidental agreement on one planet is common, accidental agreement across the whole set is rare. A single timestep now pins the position down sharply, and the filter converges almost immediately. It also clarified why this project follows the Kalman filter project rather than replacing it. A Kalman filter assumes the belief is one Gaussian blob, which is a fine assumption when you are tracking something you have already found. Here the belief genuinely starts multi-modal, with many disconnected regions equally plausible, and that is precisely the situation where you give up the closed form and represent the distribution with samples instead.
+    </p>
+  </section>
+
+  <!-- Tags -->
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <div class="project-tags" style="margin-bottom: 16px;">
+      <span class="project-tag">Particle Filter</span>
+      <span class="project-tag">Localization</span>
+      <span class="project-tag">Monte Carlo</span>
+      <span class="project-tag">Bayesian Inference</span>
+    </div>
+    <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; reports shared on request to comply with the GT honor code</p>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20RAIT%20%E2%80%94%20Solar%20System%20%28Particle%20Filters%29&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;">
+      <i class="fas fa-envelope"></i> Request materials
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Nrepesh Joshi</p>
+      <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/nrepeshjoshi" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/nrepesh" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Nrepesh Joshi</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
