@@ -57,8 +57,7 @@ Do this when a new term starts.
      class blurb from the project grid. Both classes already exist in `main.css` -
      do not redefine them.
    - Update `<SIZE>` to the real file size. Check with `ls -la assets/docs/`.
-   - **Ask the user before committing the PDF.** GT treats course materials as
-     faculty IP (see Safety / Honor Code below). The user has approved hosting
+   - **Ask the user before committing the PDF.** The user has approved hosting
      the CS 7646 syllabus; that approval does not carry to other classes.
 
 3. **Add a class card to `coursework.html`.**
@@ -142,11 +141,6 @@ The portfolio uses a dark theme. All images should match:
 - **Do NOT paste code, pseudocode, or solution strategies from OMSCS repos.**
 - **Do NOT link to private OMSCS repos.**
 - Problem statements are OK - they are public assignment descriptions.
-- Course documents (syllabi, schedules) are GT/faculty intellectual property.
-  GT's [Responsible Use of Course Materials](https://generalcounsel.gatech.edu/legal-affairs/responsible-use-course-materials)
-  says publicly posting them without permission is prohibited. GT publishes some
-  ML4T syllabi itself at <https://lucylabs.gatech.edu/ml4t/> - prefer linking
-  those when the term is covered. Otherwise ask the user before hosting a copy.
 - Report content: ask user if OK to quote. Default to paraphrasing in the user’s own words.
 - If unsure: ask the user before committing.
 
