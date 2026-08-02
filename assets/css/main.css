@@ -678,6 +678,57 @@ body.landing-page .hero-cta .btn {
   opacity: 0.75;
 }
 
+/* Slim link to a class syllabus PDF, centered on an accent hairline that
+   seams the class blurb off from the project grid. Rule matches .footer::before. */
+.syllabus-seam {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 22px;
+}
+.syllabus-seam::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
+  opacity: 0.3;
+}
+/* pill sits on the rule and masks it with the page ground */
+.syllabus-seam .syllabus-inline {
+  position: relative;
+  margin-bottom: 0;
+  background: var(--bg);
+}
+
+.syllabus-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 8px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  transition: border-color 0.2s, color 0.2s;
+}
+.syllabus-inline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.syllabus-inline .syllabus-meta {
+  opacity: 0.65;
+  padding-left: 10px;
+  border-left: 1px solid var(--border);
+}
+
 /* Empty-state on a class page before any projects are documented */
 .coursework-empty {
   grid-column: 1 / -1;
