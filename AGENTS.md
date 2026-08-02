@@ -155,6 +155,7 @@ Body: `Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%2
 
 ## Last Updated
 
-Branch: `update/ml4t-coursework`  
+Branch: `update/ml4t-syllabus-link`  
 Classes documented: ML4T (CS 7646, Spring 2026)  
-Projects documented: 8
+Projects documented: 8  
+Syllabus hosted: `assets/docs/cs7646-syllabus-sp26.pdf`
