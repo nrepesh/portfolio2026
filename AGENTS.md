@@ -35,13 +35,39 @@ Do this when a new term starts.
    - Update nav links (all `../` relative references stay the same).
    - **Leave Agent Instructions comments in place.**
 
-2. **Add a class card to `coursework.html`.**
+2. **Add the class syllabus.**
+   - Copy the syllabus PDF out of the OMSCS repo to
+     `assets/docs/<class-slug>-syllabus-<term>.pdf` (e.g. `cs7646-syllabus-sp26.pdf`).
+     It must live in this repo - the OMSCS repos are private, so linking into
+     one 404s for every visitor.
+   - Add the link inside `.class-overview`, between `.class-description` and
+     `.honor-code-note`:
+
+   ```html
+   <div class="syllabus-seam">
+     <a class="syllabus-inline" href="../assets/docs/<FILE>.pdf" target="_blank" rel="noopener">
+       <i class="fas fa-file-pdf"></i>
+       Course syllabus
+       <span class="syllabus-meta">PDF · <SIZE> KB</span>
+     </a>
+   </div>
+   ```
+
+   - `.syllabus-seam` centers the pill on an accent hairline that separates the
+     class blurb from the project grid. Both classes already exist in `main.css` -
+     do not redefine them.
+   - Update `<SIZE>` to the real file size. Check with `ls -la assets/docs/`.
+   - **Ask the user before committing the PDF.** GT treats course materials as
+     faculty IP (see Safety / Honor Code below). The user has approved hosting
+     the CS 7646 syllabus; that approval does not carry to other classes.
+
+3. **Add a class card to `coursework.html`.**
    - Insert a new `<a class="project-card class-card">` in the `.project-grid`.
    - Cards are ordered **newest term first**.
    - Pick a representative image from `images/` or use `images/stock.jpg`.
    - Update the `<N> classes completed` stat tile.
 
-3. **Update `coursework.html` stat tile.**
+4. **Update `coursework.html` stat tile.**
    - If a class completed: increment the `classes completed` stat.
 
 ---
@@ -116,6 +142,11 @@ The portfolio uses a dark theme. All images should match:
 - **Do NOT paste code, pseudocode, or solution strategies from OMSCS repos.**
 - **Do NOT link to private OMSCS repos.**
 - Problem statements are OK - they are public assignment descriptions.
+- Course documents (syllabi, schedules) are GT/faculty intellectual property.
+  GT's [Responsible Use of Course Materials](https://generalcounsel.gatech.edu/legal-affairs/responsible-use-course-materials)
+  says publicly posting them without permission is prohibited. GT publishes some
+  ML4T syllabi itself at <https://lucylabs.gatech.edu/ml4t/> - prefer linking
+  those when the term is covered. Otherwise ask the user before hosting a copy.
 - Report content: ask user if OK to quote. Default to paraphrasing in the user’s own words.
 - If unsure: ask the user before committing.
 
