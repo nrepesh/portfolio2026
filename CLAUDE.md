@@ -83,7 +83,12 @@ to the crop. Every card image must also land at the **same placed height**
 (502px on a 960x540 canvas), or one card visibly renders shorter than its
 neighbours.
 
-Pillow, ImageMagick and ffmpeg are not installed. Use the pure-stdlib tool:
+For photos, resize with Pillow in a throwaway venv outside the repo -
+`python3 -m venv /tmp/venv && /tmp/venv/bin/pip install Pillow`. LANCZOS to
+2560px max, JPEG quality 82, `optimize=True, progressive=True`. That took
+background.jpg from 5.6 MB to 172 KB at 46 dB PSNR. Do not commit the venv.
+
+For course thumbnails use the pure-stdlib tool, which needs no dependencies:
 
 ```bash
 RAIT_PROJECTS=~/github/omscs-rait-summer2026/Projects python3 tools/letterbox.py
