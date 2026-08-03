@@ -15,7 +15,7 @@ pages/                  about, coursework, ml, software, physics
 coursework/             <class>.html and project-<class>-<slug>.html
 images/                 thumbnails, named <class>-<slug>.png|svg
 assets/css/main.css     the single stylesheet
-assets/js/main.js       nav, mobile toggle, AOS, cursor halo
+assets/js/main.js       nav, mobile toggle, reveal-on-scroll, cursor halo
 assets/docs/            hosted syllabus PDFs
 tools/letterbox.py      thumbnail generator
 ```
