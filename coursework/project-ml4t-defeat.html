@@ -47,15 +47,27 @@
   </section>
 
   <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
-    <p class="class-description" style="max-width: none;">
-      I built a data generator that produces synthetic datasets specifically designed to make one learner dominate another. The challenge was twofold: first, create data where a Linear Regression learner consistently outperforms a Decision Tree; second, create data where a Decision Tree consistently outperforms a Linear Regression learner. The generated data had to be deterministic given a seed (same seed = same dataset) but different across seeds.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
+    <p class="class-description" style="max-width: 780px;">Generate synthetic datasets that make one learner reliably beat another, in both directions.</p>
   </section>
 
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Key Results</h2>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <ul class="project-points">
+      <li>A strictly linear relationship with light Gaussian noise, favoring the linear regressor</li>
+      <li>Piecewise-constant regions with axis-aligned boundaries, favoring the decision tree</li>
+      <li>Generation written as a pure function of the seed: same seed, same data; different seeds, different data</li>
+    </ul>
+  </section>
 
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Results</h2>
+    <div class="bio-stats" style="grid-template-columns: repeat(1, 1fr); margin-bottom: 24px; max-width: 600px;">
+      <div class="bio-stat">
+        <span class="bio-stat-num">2</span>
+        <span class="bio-stat-label">datasets</span>
+      </div>
+    </div>
     <div style="overflow-x: auto; margin-bottom: 24px;">
       <table style="width: 100%; max-width: 700px; border-collapse: collapse; font-size: 0.9rem;">
         <thead>
@@ -79,28 +91,10 @@
         </tbody>
       </table>
     </div>
-
-    <div class="bio-stats" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 0; max-width: 500px;">
-      <div class="bio-stat"><span class="bio-stat-num">3/3</span><span class="bio-stat-label">tests passed</span></div>
-      <div class="bio-stat"><span class="bio-stat-num">100.0</span><span class="bio-stat-label">points earned</span></div>
-      <div class="bio-stat"><span class="bio-stat-num">2</span><span class="bio-stat-label">datasets</span></div>
-    </div>
   </section>
 
-  <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      This project flipped my perspective on model selection. Before, I thought "try a bunch of models and pick the best one" was a lazy approach. Now I see it as principled: different models have fundamentally different inductive biases, and matching the right bias to the right data structure is where the real skill is.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      For the linear regression dataset, the key was purity: add noise, just enough to make it look real, but keep the underlying relationship strictly linear. For the decision tree dataset, the trick was piecewise-constant regions with sharp boundaries. Linear regression tries to fit a single line through constant plateaus, producing terrible predictions everywhere except the boundaries. The tree, meanwhile, splits on the axis-aligned thresholds naturally and nails every region.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      I also learned that seed-dependence is a real engineering constraint. The autograder passes a seed and expects the exact same data back. That meant precomputing nothing, deriving everything from the seed deterministically. It taught me to design generation functions that are pure functions of their inputs, which is a habit that pays off in many other contexts.
-    </p>
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <p class="project-note">Matching a model's inductive bias to the structure of the data is the actual skill, which makes “try several models” principled rather than lazy.</p>
   </section>
 
   <section class="section" data-aos="fade-up" style="padding-top: 0;">
@@ -110,10 +104,12 @@
       <span class="project-tag">Inductive Bias</span>
     </div>
     <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code shared on request</p>
-    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Defeat%20Learners&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;"><i class="fas fa-envelope"></i> Request materials</a>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Defeat%20Learners&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;">
+      <i class="fas fa-envelope"></i> Request materials
+    </a>
   </section>
 
-  <footer class="footer">
+<footer class="footer">
     <div class="footer-inner">
       <p class="footer-name">Nrepesh Joshi</p>
       <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>

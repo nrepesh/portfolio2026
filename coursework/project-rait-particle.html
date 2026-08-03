@@ -55,36 +55,26 @@
     </p>
   </section>
 
-  <!-- Overview -->
   <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
-    <p class="class-description" style="max-width: none;">
-      My satellite comes out of a wormhole somewhere in a solar system and has no idea where it is. In the first half of the project the only thing it can sense is a single noisy number each timestep: the magnitude of the combined gravitational pull of the planets, which pointedly excludes the sun. From that one scalar per day, and the satellite's own motion, I had to work out where it actually is. The second half hands me a completely different sense - the percent illumination of each planet, which follows from the sun-planet-satellite phase angle - and asks me to localize again from that signal and then aim a radio message at the home planet on the outer edge of the system. I solved both halves with a <strong>particle filter</strong>: scatter a large population of candidate positions across the region the satellite could plausibly be in, weight each one by how well it explains the reading that just arrived, resample toward the survivors, perturb them so the population keeps some spread, and move every candidate forward with the same motion model the real satellite follows.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
+    <p class="class-description" style="max-width: 780px;">Localize a satellite released at an unknown point in a solar system. The first half provides a single noisy scalar per timestep, the summed gravitational pull of the planets. The second substitutes per-planet illumination readings and requires aiming a transmission at the home planet.</p>
   </section>
 
-  <!-- What I Learned -->
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The most striking thing was how little a single gravimeter reading actually tells you. One scalar is consistent with an enormous set of positions scattered all over the system, so no amount of cleverness extracts a location from one measurement. Localization is not an inference you make, it is something that <em>emerges</em> - each new reading is weak evidence, but as the satellite and the planets both move, the geometry keeps changing, and the positions that only matched by coincidence stop matching while the true one keeps matching. Watching the particle cloud sit stubbornly spread out for a long while and then collapse onto the answer in a handful of timesteps was the clearest picture of accumulating evidence I have had.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The noise sigma in the measurement model is a sharpness knob, and I badly underestimated how much rides on it. It decides how harshly a candidate is punished for disagreeing with the reading. Set it too tight and almost every particle gets an effectively zero weight, so the filter stakes everything on the handful that survive - which is catastrophic early on, when the survivors are as likely to be lucky as correct. Set it too loose and every particle looks about equally good, resampling does nothing, and the filter never commits to anything. What helped was to stop treating it as a free tuning knob and think of it as a claim about how much I trust the sensor, which is a question with a real answer.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      Resampling is the step that makes the filter work and also the step that kills it. Every resample duplicates the good particles and drops the bad ones, so diversity only ever decreases, and a population that collapses onto one spot early cannot recover no matter what evidence arrives afterwards - there is nothing left to reweight. Fuzzing the particles is what buys the filter time: by scattering the survivors slightly, a hypothesis that is nearly right gets to stay in the population long enough for later measurements to confirm or kill it. The tension is direct - too little fuzz and the cloud collapses prematurely onto a confident wrong answer, too much and it never sharpens into an answer at all.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The second half changed the character of the problem more than I expected. Instead of one number per timestep I get a reading for every planet, and requiring a candidate position to agree with all of them at once is a far stronger constraint than any single one - accidental agreement on one planet is common, accidental agreement across the whole set is rare. A single timestep now pins the position down sharply, and the filter converges almost immediately. It also clarified why this project follows the Kalman filter project rather than replacing it. A Kalman filter assumes the belief is one Gaussian blob, which is a fine assumption when you are tracking something you have already found. Here the belief genuinely starts multi-modal, with many disconnected regions equally plausible, and that is precisely the situation where you give up the closed form and represent the distribution with samples instead.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <ul class="project-points">
+      <li>Particle filter over position and heading, chosen because the belief is genuinely multi-modal at the outset</li>
+      <li>Importance weights from a Gaussian measurement model, where sigma sets how sharply particles are discriminated</li>
+      <li>Resampling proportional to weight, with fuzzing to restore the diversity resampling destroys</li>
+      <li>Particles advanced on a bicycle motion model matching the satellite's own dynamics</li>
+      <li>The second half supplies a measurement vector rather than one scalar, constraining position far harder per timestep</li>
+    </ul>
   </section>
 
-  <!-- Tags -->
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <p class="project-note">A single scalar is consistent with many positions, so localization comes from accumulating weak evidence over time rather than from one clever inference.</p>
+  </section>
+
   <section class="section" data-aos="fade-up" style="padding-top: 0;">
     <div class="project-tags" style="margin-bottom: 16px;">
       <span class="project-tag">Particle Filter</span>
@@ -98,7 +88,7 @@
     </a>
   </section>
 
-  <!-- Footer -->
+<!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
       <p class="footer-name">Nrepesh Joshi</p>

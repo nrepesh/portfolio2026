@@ -47,15 +47,22 @@
   </section>
 
   <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
-    <p class="class-description" style="max-width: none;">
-      I implemented a full portfolio analysis toolkit and used SciPy's optimization routines to find the allocation mix that maximizes the Sharpe ratio for a given set of equities. The project covered four core metrics: cumulative return, average daily return, standard deviation (volatility), and Sharpe ratio. I then built an optimization solver that searches the simplex of valid allocations (summing to 1.0, all positive) to find the point of highest risk-adjusted return.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
+    <p class="class-description" style="max-width: 780px;">Find the asset allocation that maximizes risk-adjusted return for a basket of equities.</p>
   </section>
 
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Key Results</h2>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <ul class="project-points">
+      <li>Portfolio metrics implemented from scratch: cumulative return, average daily return, volatility and Sharpe ratio</li>
+      <li>SciPy constrained minimization over the allocation simplex, with weights summing to one and no short positions</li>
+      <li>Objective set to negative Sharpe so the minimizer maximizes risk-adjusted return</li>
+      <li>Benchmarked against an equal-weighted allocation over the same period</li>
+    </ul>
+  </section>
 
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Results</h2>
     <div style="overflow-x: auto; margin-bottom: 16px;">
       <table style="width: 100%; max-width: 700px; border-collapse: collapse; font-size: 0.9rem;">
         <thead>
@@ -89,26 +96,10 @@
         </tbody>
       </table>
     </div>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 12px;">
-      The optimized allocation shifted heavily into JPM (43%) and reduced exposure to AAPL and XOM, which had lower risk-adjusted returns individually. This was not obvious from looking at raw returns alone: JPM had moderate absolute returns but very low volatility, making it a Sharpe-ratio star.
-    </p>
   </section>
 
-  <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The first thing that struck me was how differently the optimal portfolio looks when you optimize for Sharpe ratio versus raw return. A max-return optimization puts everything into the single best-performing stock, giving you maximum upside but also maximum volatility. Sharpe ratio forces a fundamentally different mindset: it rewards consistency and penalizes noise.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      I also learned that the optimization surface is surprisingly sensitive to input assumptions. Small changes in expected return estimates can swing the optimal allocation by double digits. This taught me to be cautious about treating optimizer output as gospel. The optimal portfolio is a function of the data you fed it, and that data is backward-looking.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      On the technical side, working with SciPy's minimize function for the first time gave me hands-on experience with constrained optimization. I had to set up linear constraints (sum of allocations = 1.0) and bounds (0 <= x <= 1) correctly, or the optimizer would produce portfolios that don't make financial sense. Getting the constraints right was as important as choosing the objective function.
-    </p>
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <p class="project-note">Maximizing Sharpe rewards consistency where maximizing return concentrates everything in one name, and the optimizer is only ever as forward-looking as the data behind it.</p>
   </section>
 
   <section class="section" data-aos="fade-up" style="padding-top: 0;">
@@ -119,10 +110,12 @@
       <span class="project-tag">Constrained Optimization</span>
     </div>
     <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; report shared on request to comply with the GT honor code</p>
-    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Portfolio%20Optimization&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;"><i class="fas fa-envelope"></i> Request materials</a>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Portfolio%20Optimization&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;">
+      <i class="fas fa-envelope"></i> Request materials
+    </a>
   </section>
 
-  <footer class="footer">
+<footer class="footer">
     <div class="footer-inner">
       <p class="footer-name">Nrepesh Joshi</p>
       <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>

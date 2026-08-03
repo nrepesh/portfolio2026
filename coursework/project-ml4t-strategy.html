@@ -47,15 +47,29 @@
   </section>
 
   <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
-    <p class="class-description" style="max-width: none;">
-      This was the capstone project. I built two complete trading strategies for JPM stock and compared their performance against a buy-and-hold benchmark. The <strong>Manual Strategy</strong> used human-coded rules combining Price/SMA, RSI, and MACD indicators to make long/short decisions. The <strong>Strategy Learner</strong> used a BagLearner ensemble of Random Trees trained on the same three indicators, learning to classify future price movements into BUY/HOLD/SELL signals. I evaluated both strategies in-sample (2008-2009) and out-of-sample (2010-2011) to test for overfitting.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
+    <p class="class-description" style="max-width: 780px;">Build a rules-based trading strategy and a learned one on the same three indicators, then compare both against buy-and-hold in and out of sample.</p>
   </section>
 
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Key Results: In-Sample (2008-2009)</h2>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <ul class="project-points">
+      <li>Manual strategy: human-coded rules over Price/SMA, RSI and MACD driving long and short entries</li>
+      <li>Strategy Learner: a bagged ensemble of random trees classifying forward price movement into buy, hold and sell</li>
+      <li>Both evaluated over identical periods through the market simulator built earlier in the course</li>
+      <li>Manual rules redesigned with a neutral band once trade frequency ate the returns through commission and impact</li>
+    </ul>
+  </section>
 
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Results</h2>
+    <div class="bio-stats" style="grid-template-columns: repeat(1, 1fr); margin-bottom: 24px; max-width: 600px;">
+      <div class="bio-stat">
+        <span class="bio-stat-num">2</span>
+        <span class="bio-stat-label">strategies</span>
+      </div>
+    </div>
+    <p class="class-meta-row" style="margin-bottom: 8px;">In-Sample (2008-2009)</p>
     <div style="overflow-x: auto; margin-bottom: 24px;">
       <table style="width: 100%; max-width: 750px; border-collapse: collapse; font-size: 0.9rem;">
         <thead>
@@ -88,9 +102,7 @@
         </tbody>
       </table>
     </div>
-
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px; margin-top: 32px;">Key Results: Out-of-Sample (2010-2011)</h2>
-
+    <p class="class-meta-row" style="margin-bottom: 8px;">Out-of-Sample (2010-2011)</p>
     <div style="overflow-x: auto; margin-bottom: 24px;">
       <table style="width: 100%; max-width: 750px; border-collapse: collapse; font-size: 0.9rem;">
         <thead>
@@ -123,36 +135,10 @@
         </tbody>
       </table>
     </div>
-
-    <div class="bio-stats" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 0; max-width: 500px;">
-      <div class="bio-stat"><span class="bio-stat-num">4/4</span><span class="bio-stat-label">tests passed</span></div>
-      <div class="bio-stat"><span class="bio-stat-num">60.0</span><span class="bio-stat-label">points earned</span></div>
-      <div class="bio-stat"><span class="bio-stat-num">2</span><span class="bio-stat-label">strategies</span></div>
-    </div>
   </section>
 
-  <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The in-sample results make the Strategy Learner look superhuman. A 164.4% cumulative return on JPM during the 2008-2009 period, when the benchmark only achieved 1.23%, is staggering. But the real test is out-of-sample. On 2010-2011 data the Strategy Learner essentially broke even (-0.02%), while the benchmark lost 8.36%. This is the key insight: it is not about in-sample performance. It is about out-of-sample robustness. The Strategy Learner avoided the benchmark's losses entirely.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The Manual Strategy was designed around three specific rules: enter long when Price/SMA crosses above 0.95 with RSI confirmation between 30-50, enter short when it drops below 1.05 with RSI confirmation between 50-70, and use MACD histogram to filter momentum direction. These rules worked during the volatile 2008-2009 period, but the manual approach struggled when market dynamics shifted in 2010-2011. The Strategy Learner, by contrast, discovered non-obvious threshold combinations that generalized better.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The most surprising discovery was that the Strategy Learner achieved lower volatility than both the benchmark and the manual strategy. A standard deviation of 0.0093 in-sample and 0.0082 out-of-sample means the AI wasn't just finding profitable trades - it was systematically avoiding the worst drawdowns. This is where machine learning truly shines: it captures second-order effects that human intuition misses.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      Commission and impact costs were devastating to high-frequency manual strategies. My initial manual implementation made too many trades, and the $9.95 commission plus 0.5% impact per trade eroded all alpha. I had to redesign the rules with a "dead zone" between 0.95 and 1.05 to limit trades to genuine signals. This single change improved the manual strategy's Sharpe ratio by 40%.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      This project tied together everything from the course: indicators (P6), simulation with transaction costs (P5), supervised learners (P3), bagging ensembles (P3), and out-of-sample testing guidelines. The end-to-end system I built, from data ingestion to trade execution to performance reporting, is the most complete piece of software I've written so far in the program. It gave me real confidence that I can build production-quality trading infrastructure, not just toy models.
-    </p>
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <p class="project-note">In-sample performance is not the result. The learner's out-of-sample edge came from lower volatility, avoiding drawdowns rather than finding more winners.</p>
   </section>
 
   <section class="section" data-aos="fade-up" style="padding-top: 0;">
@@ -163,10 +149,12 @@
       <span class="project-tag">Capstone</span>
     </div>
     <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; report shared on request to comply with the GT honor code</p>
-    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Strategy%20Evaluation&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;"><i class="fas fa-envelope"></i> Request materials</a>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Strategy%20Evaluation&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;">
+      <i class="fas fa-envelope"></i> Request materials
+    </a>
   </section>
 
-  <footer class="footer">
+<footer class="footer">
     <div class="footer-inner">
       <p class="footer-name">Nrepesh Joshi</p>
       <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>

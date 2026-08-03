@@ -55,36 +55,26 @@
     </p>
   </section>
 
-  <!-- Overview -->
   <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
-    <p class="class-description" style="max-width: none;">
-      A robot in a warehouse has to reach a box and carry it to a dropzone. In Part A I planned that route across the warehouse grid with <strong>A* search</strong>: the robot moves in eight directions, the different kinds of motion do not all cost the same, and the map is not handed over as an array up front but read one cell at a time through a viewer, so the search has to be deliberate about where it looks. Part B leaves the grid behind. A real robot cannot execute the hard right-angle corners a grid search produces, so I took the discrete path and turned it into a smooth continuous one that stays drivable and still clears the obstacles the original route was planned around.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
+    <p class="class-description" style="max-width: 780px;">Route a warehouse robot to a box and deliver it to a dropzone, then convert the resulting grid path into a continuous path a real vehicle could actually drive.</p>
   </section>
 
-  <!-- What I Learned -->
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The two halves of this project pull against each other, and that turned out to be the whole lesson. Smoothing is a negotiation between two objectives that genuinely conflict: staying faithful to the path the search produced, and lowering the curvature of the path so the robot can actually follow it. How hard you lean on each side is a choice, and there is no setting that is simply better. Push too far toward smooth and the path bows off the corridor A* routed it down and drifts into an obstacle the search had deliberately avoided. Push too far toward faithful and the corners survive intact and stay too sharp to drive. The obstacle map is what decides how much slack you really have, which means the planner and the smoother are not two independent stages so much as one problem split across two functions.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      What surprised me is that averaging did not fix the corners. I ended up measuring the sharpest turn angle along the path directly and repairing that corner explicitly, then re-checking, rather than trusting the smoothing pass to have taken care of it. The general point is one I keep coming back to: a smoothing pass optimizes an aggregate, and an aggregate improving says nothing about whether any individual point satisfies the property you care about. If the requirement is a bound on curvature <em>everywhere</em>, you have to test for it and enforce it, not hope a global objective delivers it as a side effect.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The heuristic is not a free choice either. With eight-way movement and direction-dependent motion costs, the obvious candidates behave differently than intuition suggests. A straight-line estimate is safely optimistic but loose, so the search wanders and touches far more cells than it needs to. A grid-distance estimate borrowed from four-way movement is tighter but can quietly exceed the true remaining cost along diagonal stretches, and the moment a heuristic overestimates it stops being admissible: A* still returns a path, it just is no longer the cheapest one, and nothing in the output tells you that happened. Matching the heuristic to the actual motion model is what makes the search correct and fast at the same time, and those are not separate concerns.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      Two smaller things stuck. First, cheapest and shortest are different objectives. Because motion types are priced differently, the route with the fewest steps is routinely not the route with the lowest cost, and once you internalise that, "shortest path" stops being a useful phrase. Second, the robot lifts the box from an adjacent square, so the goal was never a single cell, it was any cell touching the box. Search is almost always taught with one goal state, and my instinct was to run a search per candidate square. The actual fix was to widen the termination test and let one search find whichever of them was cheapest to reach. Recognizing when a goal is a set rather than a point is a small reframing that saved a lot of work.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <ul class="project-points">
+      <li>A* over the warehouse grid, eight-connected, with distinct costs for straight moves, diagonals and box handling</li>
+      <li>The goal is the set of squares adjacent to the box, not the box square itself</li>
+      <li>Heuristic kept admissible; an overestimate silently forfeits optimality rather than failing loudly</li>
+      <li>Gradient-descent smoothing trading fidelity to the planned path against curvature</li>
+      <li>Worst turn angle located and repaired explicitly, then duplicate and corner points cleaned up</li>
+    </ul>
   </section>
 
-  <!-- Tags -->
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <p class="project-note">Smoothing pushed too far drifts into the obstacle the search routed around, so the two halves of the project optimize against each other.</p>
+  </section>
+
   <section class="section" data-aos="fade-up" style="padding-top: 0;">
     <div class="project-tags" style="margin-bottom: 16px;">
       <span class="project-tag">A* Search</span>
@@ -98,7 +88,7 @@
     </a>
   </section>
 
-  <!-- Footer -->
+<!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
       <p class="footer-name">Nrepesh Joshi</p>

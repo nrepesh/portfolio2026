@@ -83,29 +83,47 @@ Do this when a project is finished.
    - 2–3 sentences. No solution details, no code snippets, no report quotes.
    - This preserves the GT honor code.
 
-3. **Write a LEARNING paragraph.**
-   - Extract the user’s personal takeaways from their report or ask them directly.
-   - Use the `<p class="project-learning">` element (see `ml4t.html` for examples).
-   - Keep it honest and specific - generic fluff reads as filler.
+3. **Keep it short. This is the rule that gets broken.**
+   These pages are scanned, not read. Prose paragraphs describing what you
+   learned were removed in Aug 2026 - do not reintroduce them.
 
-4. **Pick tags.**
+   - **Card:** ONE sentence. Name the technique and what it does. ~35 words.
+   - **Detail page:** `Problem` (2 lines) → `Approach` (4–5 bullets in
+     `<ul class="project-points">`) → ONE `<p class="project-note">` line.
+   - Bullets ≤ 20 words. No lead-ins, no "This taught me that…".
+   - Budget: ~40 words per card, ~150 per detail page.
+
+   The single `.project-note` line is the only editorial voice on the page. It
+   exists because Problem + Approach alone is just the assignment handout, which
+   every classmate could publish. Make it a real judgement, not a summary.
+
+4. **Voice: professional, third person about the system.**
+   - Do NOT narrate the assignment's fiction. "My spaceship loses its engine"
+     reads as roleplay; "Asteroid field simulation. Track ~100 objects…" does not.
+   - Name the domain, then drop it. No possessives on the scenario.
+   - Strip "I" from descriptions of the system. Keep it only where a judgement is
+     genuinely personal.
+   - American spelling - the site is consistent on this (optimization, behavior,
+     modeling, localization).
+
+5. **Pick tags.**
    - 2–4 tags covering techniques, libraries, or concepts.
 
-5. **Get or make an image.**
+6. **Get or make an image.**
    - If the project has a report chart/figure, copy it to `images/ml4t-<slug>.<ext>`.
    - If not, generate an SVG or use a relevant stock image from `images/`.
    - **All images must be styled for the dark theme** (bg `#111118`, accent `#C9FB50`).
    - See "Image Style Guide" below.
 
-6. **Insert the project card into `coursework/<class>.html`.**
+7. **Insert the project card into `coursework/<class>.html`.**
    - Add inside `.project-grid`.
    - Use `data-aos-delay="100"` or `"200"` to stagger every 2nd/3rd card.
    - Generate the mailto link with URL-encoded subject/body (copy from existing card).
 
-7. **Update class card meta count on `coursework.html`.**
+8. **Update class card meta count on `coursework.html`.**
    - Increment the `.class-meta` count (e.g., "5 projects" → "6 projects").
 
-8. **Remove the empty-state paragraph** if this is the first project.
+9. **Remove the empty-state paragraph** if this is the first project.
 
 ---
 
