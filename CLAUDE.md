@@ -1,5 +1,10 @@
 # Agent Instructions - Portfolio2026
 
+> Named `CLAUDE.md` deliberately: Claude Code auto-loads this file into every
+> session. It was `AGENTS.md`, which is a cross-tool convention Claude Code does
+> **not** pick up automatically - so these rules were only followed when someone
+> happened to open the file. Do not rename it back.
+
 This repo is a static HTML/CSS portfolio site. **Every edit is direct HTML/CSS edits.** There is no build step, no JS framework, no CMS.
 
 ---
@@ -21,7 +26,7 @@ This repo is a static HTML/CSS portfolio site. **Every edit is direct HTML/CSS e
 │   └── ...                 # Other portfolio images
 ├── assets/css/main.css     # Single stylesheet
 ├── assets/js/main.js       # Nav, mobile toggle, AOS init
-└── AGENTS.md               # ← You are here
+└── CLAUDE.md               # ← You are here (auto-loaded by Claude Code)
 ```
 
 ---
