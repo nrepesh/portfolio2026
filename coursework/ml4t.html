@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <link rel="stylesheet" href="../assets/css/main.css" />
+  <noscript><style>[data-aos]{opacity:1;transform:none}</style></noscript>
 </head>
 <body class="header-strip">
 
@@ -137,7 +137,7 @@
 
     <!-- 2. Portfolio Optimization (Report) -->
     <article class="project-card" data-aos="fade-up" data-aos-delay="100">
-      <img src="../images/ml4t-optimize.svg" alt="Portfolio Optimization" class="project-card-img" />
+      <img src="../images/ml4t-optimize.svg" alt="Portfolio Optimization" class="project-card-img" loading="lazy" decoding="async" />
       <div class="project-card-body">
         <h3><a class="project-card-link" href="project-ml4t-optimize.html">Portfolio Optimization (2026)</a></h3>
         <p>Portfolio metrics built from scratch and a SciPy constrained optimizer searching the allocation simplex for maximum Sharpe ratio.</p>
@@ -155,7 +155,7 @@
 
     <!-- 3. Assess Learners (Report) -->
     <article class="project-card" data-aos="fade-up" data-aos-delay="200">
-      <img src="../images/ml4t-learners.svg" alt="Assess Learners" class="project-card-img" />
+      <img src="../images/ml4t-learners.svg" alt="Assess Learners" class="project-card-img" loading="lazy" decoding="async" />
       <div class="project-card-body">
         <h3><a class="project-card-link" href="project-ml4t-learners.html">Assess Learners (2026)</a></h3>
         <p>Decision Tree, Random Tree, Bagging ensemble and Linear Regression implemented in pure Python, then characterized for overfitting, variance reduction and training cost.</p>
@@ -174,7 +174,7 @@
 
     <!-- 4. Defeat Learners -->
     <article class="project-card" data-aos="fade-up">
-      <img src="../images/ml4t-defeat.svg" alt="Defeat Learners" class="project-card-img" />
+      <img src="../images/ml4t-defeat.svg" alt="Defeat Learners" class="project-card-img" loading="lazy" decoding="async" />
       <div class="project-card-body">
         <h3><a class="project-card-link" href="project-ml4t-defeat.html">Defeat Learners (2026)</a></h3>
         <p>Synthetic dataset generation designed to expose model inductive bias, making linear regression and decision trees each dominate in turn.</p>
@@ -191,7 +191,7 @@
 
     <!-- 5. Market Simulator -->
     <article class="project-card" data-aos="fade-up" data-aos-delay="100">
-      <img src="../images/ml4t-marketsim.svg" alt="Market Simulator" class="project-card-img" />
+      <img src="../images/ml4t-marketsim.svg" alt="Market Simulator" class="project-card-img" loading="lazy" decoding="async" />
       <div class="project-card-body">
         <h3><a class="project-card-link" href="project-ml4t-marketsim.html">Market Simulator (2026)</a></h3>
         <p>Order-file execution engine tracking cash, holdings and portfolio value under commission and market-impact friction.</p>
@@ -209,7 +209,7 @@
 
     <!-- 6. Indicator Evaluation (Report) -->
     <article class="project-card" data-aos="fade-up" data-aos-delay="200">
-      <img src="../images/ml4t-indicators.svg" alt="Indicator Evaluation" class="project-card-img" />
+      <img src="../images/ml4t-indicators.svg" alt="Indicator Evaluation" class="project-card-img" loading="lazy" decoding="async" />
       <div class="project-card-body">
         <h3><a class="project-card-link" href="project-ml4t-indicators.html">Indicator Evaluation (2026)</a></h3>
         <p>Five technical indicators built from scratch, plus a perfect-foresight strategy establishing the performance ceiling for the symbol.</p>
@@ -228,7 +228,7 @@
 
     <!-- 7. Q-Learning Robot -->
     <article class="project-card" data-aos="fade-up">
-      <img src="../images/ml4t-qlrobot.svg" alt="Q-Learning Robot" class="project-card-img" />
+      <img src="../images/ml4t-qlrobot.svg" alt="Q-Learning Robot" class="project-card-img" loading="lazy" decoding="async" />
       <div class="project-card-body">
         <h3><a class="project-card-link" href="project-ml4t-qlrobot.html">Q-Learning Robot (2026)</a></h3>
         <p>Q-Learning and Dyna-Q implemented from scratch, comparing model-free learning against model-based planning on grid-world navigation.</p>
@@ -246,7 +246,7 @@
 
     <!-- 8. Strategy Evaluation (Report) -->
     <article class="project-card" data-aos="fade-up" data-aos-delay="100">
-      <img src="../images/ml4t-strategy.svg" alt="Strategy Evaluation" class="project-card-img" />
+      <img src="../images/ml4t-strategy.svg" alt="Strategy Evaluation" class="project-card-img" loading="lazy" decoding="async" />
       <div class="project-card-body">
         <h3><a class="project-card-link" href="project-ml4t-strategy.html">Strategy Evaluation (2026)</a></h3>
         <p>Capstone. A rules-based strategy and a random-forest strategy learner on identical indicators, compared against buy-and-hold in and out of sample.</p>
@@ -278,7 +278,6 @@
     </div>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

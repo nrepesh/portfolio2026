@@ -6,14 +6,25 @@
 (function () {
   'use strict';
 
-  // --- AOS Init ---
-  if (typeof AOS !== 'undefined') {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-out',
-      once: true,
-      offset: 80
-    });
+  // --- Reveal on scroll (replaces the AOS library) ---
+  // Same [data-aos] / [data-aos-delay] markup, no third-party CSS or JS.
+  var reveal = document.querySelectorAll('[data-aos]');
+  if (reveal.length) {
+    if (!('IntersectionObserver' in window) ||
+        matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      for (var i = 0; i < reveal.length; i++) reveal[i].classList.add('aos-in');
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        for (var j = 0; j < entries.length; j++) {
+          if (!entries[j].isIntersecting) continue;
+          var el = entries[j].target;
+          el.style.transitionDelay = (el.dataset.aosDelay || 0) + 'ms';
+          el.classList.add('aos-in');
+          io.unobserve(el);
+        }
+      }, { rootMargin: '0px 0px -80px 0px' });
+      for (var k = 0; k < reveal.length; k++) io.observe(reveal[k]);
+    }
   }
 
   // --- Nav scroll behavior ---
