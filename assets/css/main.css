@@ -1366,3 +1366,15 @@ body.landing-page .footer::before {
     transition: none;
   }
 }
+
+/* --- Inline SVG icons ------------------------------------------------------
+   Replaces the Font Awesome CDN stylesheet and its font downloads. Each page
+   inlines only the symbols it uses. Sized in em so icons track their adjacent
+   text, and filled with currentColor so every existing hover rule still works. */
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+}
