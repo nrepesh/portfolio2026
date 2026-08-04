@@ -17,7 +17,7 @@
 <body class="header-strip">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-arrow-left" viewBox="0 0 448 512"><path transform="translate(0,448) scale(1,-1)" d="M257.5 2.90039l-22.2002 -22.2002c-9.39941 -9.40039 -24.5996 -9.40039 -33.8994 0l-194.4 194.3c-9.40039 9.40039 -9.40039 24.5996 0 33.9004l194.4 194.399c9.39941 9.40039 24.5996 9.40039 33.8994 0l22.2002 -22.2002c9.5 -9.5 9.2998 -25 -0.400391 -34.2998
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><symbol id="i-arrow-left" viewBox="0 0 448 512"><path transform="translate(0,448) scale(1,-1)" d="M257.5 2.90039l-22.2002 -22.2002c-9.39941 -9.40039 -24.5996 -9.40039 -33.8994 0l-194.4 194.3c-9.40039 9.40039 -9.40039 24.5996 0 33.9004l194.4 194.399c9.39941 9.40039 24.5996 9.40039 33.8994 0l22.2002 -22.2002c9.5 -9.5 9.2998 -25 -0.400391 -34.2998
 l-120.5 -114.8h287.4c13.2998 0 24 -10.7002 24 -24v-32c0 -13.2998 -10.7002 -24 -24 -24h-287.4l120.5 -114.8c9.80078 -9.2998 10 -24.7998 0.400391 -34.2998z"/></symbol><symbol id="i-envelope" viewBox="0 0 512 512"><path transform="translate(0,448) scale(1,-1)" d="M502.3 257.2c3.90039 3.09961 9.7002 0.200195 9.7002 -4.7002v-204.5c0 -26.5 -21.5 -48 -48 -48h-416c-26.5 0 -48 21.5 -48 48v204.4c0 5 5.7002 7.7998 9.7002 4.69922c22.3994 -17.3994 52.0996 -39.5 154.1 -113.6
 c21.1006 -15.4004 56.7002 -47.7998 92.2002 -47.5996c35.7002 -0.300781 72 32.7998 92.2998 47.5996c102 74.0996 131.601 96.2998 154 113.7zM256 128c-23.2002 -0.400391 -56.5996 29.2002 -73.4004 41.4004c-132.699 96.2998 -142.8 104.8 -173.399 128.699
 c-5.7998 4.60059 -9.2002 11.5 -9.2002 18.9004v19c0 26.5 21.5 48 48 48h416c26.5 0 48 -21.5 48 -48v-19c0 -7.40039 -3.40039 -14.4004 -9.2002 -18.9004c-30.5996 -24 -40.7002 -32.3994 -173.399 -128.699c-16.8008 -12.2002 -50.2002 -41.8008 -73.4004 -41.4004z"/></symbol><symbol id="i-linkedin" viewBox="0 0 512 512"><path transform="translate(0,448) scale(1,-1)" d="M416 416c17.5996 0 32 -14.5 32 -32.2998v-383.4c0 -17.7998 -14.4004 -32.2998 -32 -32.2998h-384.1c-17.6006 0 -31.9004 14.5 -31.9004 32.2998v383.4c0 17.7998 14.2998 32.2998 31.9004 32.2998h384.1zM135.4 32h0.0996094v213.8h-66.5v-213.8h66.4004zM102.2 275
@@ -44,7 +44,7 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
         <a href="../pages/software.html">Software</a>
         <a href="../pages/physics.html">Physics</a>
       </div>
-      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
   <div class="nav-mobile" id="mobileNav">
@@ -58,23 +58,23 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
     <h1>Assess Learners</h1>
   </header>
 
-  <section class="section" style="padding-bottom: 8px;" data-aos="fade-up">
+  <section class="section pb-8" data-aos="fade-up">
     <p class="class-meta-row">
       <a href="../pages/coursework.html" class="back-link"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg> Coursework</a>
-      <span style="color: var(--border);">/</span>
+      <span class="crumb-sep">/</span>
       <a href="ml4t.html" class="back-link">ML4T</a>
-      <span style="color: var(--border);">/</span>
+      <span class="crumb-sep">/</span>
       <span>Assess Learners</span>
     </p>
   </section>
 
-  <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
-    <p class="class-description" style="max-width: 780px;">Build four supervised learners from scratch and characterize their behavior under controlled experiments.</p>
+  <section class="section pt-8" data-aos="fade-up">
+    <h2 class="section-title">Problem</h2>
+    <p class="class-description prose">Build four supervised learners from scratch and characterize their behavior under controlled experiments.</p>
   </section>
 
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <h2 class="section-title">Approach</h2>
     <ul class="project-points">
       <li>Decision Tree, Random Tree, Bagging ensemble and Linear Regression, written in pure Python</li>
       <li>Recursive split logic implemented directly, which exposes leaf size as the overfitting control</li>
@@ -84,56 +84,56 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
   </section>
 
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Results</h2>
-    <div class="bio-stats" style="grid-template-columns: repeat(1, 1fr); margin-bottom: 24px; max-width: 600px;">
+    <h2 class="section-title">Results</h2>
+    <div class="bio-stats stat-row stat-row-single">
       <div class="bio-stat">
         <span class="bio-stat-num">4</span>
         <span class="bio-stat-label">learners built</span>
       </div>
     </div>
-    <div style="overflow-x: auto; margin-bottom: 24px;">
-      <table style="width: 100%; max-width: 750px; border-collapse: collapse; font-size: 0.9rem;">
+    <div class="table-scroll">
+      <table class="results-table">
         <thead>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <th style="text-align: left; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Experiment</th>
-            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Finding</th>
+          <tr>
+            <th>Experiment</th>
+            <th>Finding</th>
           </tr>
         </thead>
         <tbody>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 10px 12px; color: var(--text-secondary);">Overfitting vs leaf size</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">At leaf_size=1, test RMSE was <strong style="color: var(--accent);">0.0078</strong> vs training RMSE of 0.0. Gap reduced to near-zero at leaf_size=6.</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 10px 12px; color: var(--text-secondary);">Bagging reduces overfitting?</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">Yes, but not eliminated. DT bag ensemble test RMSE dropped to <strong style="color: var(--accent);">0.0060</strong> (from 0.0078). RT bag ensemble: 0.0064.</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 10px 12px; color: var(--text-secondary);">DT vs RT speed</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">RT trained <strong style="color: var(--accent);">~12x faster</strong> (0.025s vs 0.303s at leaf_size=1).</td>
+          <tr>
+            <td>Overfitting vs leaf size</td>
+            <td>At leaf_size=1, test RMSE was <strong class="accent">0.0078</strong> vs training RMSE of 0.0. Gap reduced to near-zero at leaf_size=6.</td>
           </tr>
           <tr>
-            <td style="padding: 10px 12px; color: var(--text-secondary);">DT vs RT accuracy</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">DT slightly higher R-squared (<strong style="color: var(--accent);">0.524</strong> vs 0.488) due to correlated feature selection.</td>
+            <td>Bagging reduces overfitting?</td>
+            <td>Yes, but not eliminated. DT bag ensemble test RMSE dropped to <strong class="accent">0.0060</strong> (from 0.0078). RT bag ensemble: 0.0064.</td>
+          </tr>
+          <tr>
+            <td>DT vs RT speed</td>
+            <td>RT trained <strong class="accent">~12x faster</strong> (0.025s vs 0.303s at leaf_size=1).</td>
+          </tr>
+          <tr>
+            <td>DT vs RT accuracy</td>
+            <td>DT slightly higher R-squared (<strong class="accent">0.524</strong> vs 0.488) due to correlated feature selection.</td>
           </tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+  <section class="section pt-0" data-aos="fade-up">
     <p class="project-note">Bagging helps less on decision trees because they correlate, all selecting the same first feature; random trees decorrelate, which is exactly why weak learners ensemble well.</p>
   </section>
 
-  <section class="section" data-aos="fade-up" style="padding-top: 0;">
-    <div class="project-tags" style="margin-bottom: 16px;">
+  <section class="section pt-0" data-aos="fade-up">
+    <div class="project-tags mb-16">
       <span class="project-tag">Decision Trees</span>
       <span class="project-tag">Bagging</span>
       <span class="project-tag">Overfitting</span>
       <span class="project-tag">Ensembles</span>
     </div>
-    <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; report shared on request</p>
-    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Assess%20Learners&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;">
+    <p class="meta-note">// code &amp; report shared on request</p>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Assess%20Learners&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small mt-8">
       <svg class="icon" aria-hidden="true"><use href="#i-envelope"/></svg> Request materials
     </a>
   </section>

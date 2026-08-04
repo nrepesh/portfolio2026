@@ -17,7 +17,7 @@
 <body class="header-strip">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-arrow-left" viewBox="0 0 448 512"><path transform="translate(0,448) scale(1,-1)" d="M257.5 2.90039l-22.2002 -22.2002c-9.39941 -9.40039 -24.5996 -9.40039 -33.8994 0l-194.4 194.3c-9.40039 9.40039 -9.40039 24.5996 0 33.9004l194.4 194.399c9.39941 9.40039 24.5996 9.40039 33.8994 0l22.2002 -22.2002c9.5 -9.5 9.2998 -25 -0.400391 -34.2998
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><symbol id="i-arrow-left" viewBox="0 0 448 512"><path transform="translate(0,448) scale(1,-1)" d="M257.5 2.90039l-22.2002 -22.2002c-9.39941 -9.40039 -24.5996 -9.40039 -33.8994 0l-194.4 194.3c-9.40039 9.40039 -9.40039 24.5996 0 33.9004l194.4 194.399c9.39941 9.40039 24.5996 9.40039 33.8994 0l22.2002 -22.2002c9.5 -9.5 9.2998 -25 -0.400391 -34.2998
 l-120.5 -114.8h287.4c13.2998 0 24 -10.7002 24 -24v-32c0 -13.2998 -10.7002 -24 -24 -24h-287.4l120.5 -114.8c9.80078 -9.2998 10 -24.7998 0.400391 -34.2998z"/></symbol><symbol id="i-envelope" viewBox="0 0 512 512"><path transform="translate(0,448) scale(1,-1)" d="M502.3 257.2c3.90039 3.09961 9.7002 0.200195 9.7002 -4.7002v-204.5c0 -26.5 -21.5 -48 -48 -48h-416c-26.5 0 -48 21.5 -48 48v204.4c0 5 5.7002 7.7998 9.7002 4.69922c22.3994 -17.3994 52.0996 -39.5 154.1 -113.6
 c21.1006 -15.4004 56.7002 -47.7998 92.2002 -47.5996c35.7002 -0.300781 72 32.7998 92.2998 47.5996c102 74.0996 131.601 96.2998 154 113.7zM256 128c-23.2002 -0.400391 -56.5996 29.2002 -73.4004 41.4004c-132.699 96.2998 -142.8 104.8 -173.399 128.699
 c-5.7998 4.60059 -9.2002 11.5 -9.2002 18.9004v19c0 26.5 21.5 48 48 48h416c26.5 0 48 -21.5 48 -48v-19c0 -7.40039 -3.40039 -14.4004 -9.2002 -18.9004c-30.5996 -24 -40.7002 -32.3994 -173.399 -128.699c-16.8008 -12.2002 -50.2002 -41.8008 -73.4004 -41.4004z"/></symbol><symbol id="i-linkedin" viewBox="0 0 512 512"><path transform="translate(0,448) scale(1,-1)" d="M416 416c17.5996 0 32 -14.5 32 -32.2998v-383.4c0 -17.7998 -14.4004 -32.2998 -32 -32.2998h-384.1c-17.6006 0 -31.9004 14.5 -31.9004 32.2998v383.4c0 17.7998 14.2998 32.2998 31.9004 32.2998h384.1zM135.4 32h0.0996094v213.8h-66.5v-213.8h66.4004zM102.2 275
@@ -67,23 +67,23 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
   </header>
 
   <!-- Breadcrumb -->
-  <section class="section" style="padding-bottom: 8px;" data-aos="fade-up">
+  <section class="section pb-8" data-aos="fade-up">
     <p class="class-meta-row">
       <a href="../pages/coursework.html" class="back-link"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg> Coursework</a>
-      <span style="color: var(--border);">/</span>
+      <span class="crumb-sep">/</span>
       <a href="rait.html" class="back-link">RAIT</a>
-      <span style="color: var(--border);">/</span>
+      <span class="crumb-sep">/</span>
       <span>Indiana Drones (SLAM)</span>
     </p>
   </section>
 
-  <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
-    <p class="class-description" style="max-width: 780px;">A drone enters an unmapped area, flies a prescripted route, and must estimate both its own position and the position of every tree from noisy range and bearing readings. The second half navigates it to a target and extracts it without striking a canopy.</p>
+  <section class="section pt-8" data-aos="fade-up">
+    <h2 class="section-title">Problem</h2>
+    <p class="class-description prose">A drone enters an unmapped area, flies a prescripted route, and must estimate both its own position and the position of every tree from noisy range and bearing readings. The second half navigates it to a target and extracts it without striking a canopy.</p>
   </section>
 
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <h2 class="section-title">Approach</h2>
     <ul class="project-points">
       <li>GraphSLAM: every movement and every sighting accumulated as a constraint in one linear system, solved for drone and landmarks together</li>
       <li>Re-observing a known landmark tightens earlier trajectory estimates, not just the current pose</li>
@@ -93,19 +93,19 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
     </ul>
   </section>
 
-  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+  <section class="section pt-0" data-aos="fade-up">
     <p class="project-note">GraphSLAM assumes independent Gaussian noise in x and y while the real noise lives in range and bearing; heading was carried forward from commanded turns, the weakest part of the build.</p>
   </section>
 
-  <section class="section" data-aos="fade-up" style="padding-top: 0;">
-    <div class="project-tags" style="margin-bottom: 16px;">
+  <section class="section pt-0" data-aos="fade-up">
+    <div class="project-tags mb-16">
       <span class="project-tag">GraphSLAM</span>
       <span class="project-tag">Localization</span>
       <span class="project-tag">Landmark Mapping</span>
       <span class="project-tag">Obstacle Avoidance</span>
     </div>
-    <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; reports shared on request to comply with the GT honor code</p>
-    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20RAIT%20%E2%80%94%20Indiana%20Drones%20%28SLAM%29&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;">
+    <p class="meta-note">// code &amp; reports shared on request to comply with the GT honor code</p>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20RAIT%20%E2%80%94%20Indiana%20Drones%20%28SLAM%29&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small mt-8">
       <svg class="icon" aria-hidden="true"><use href="#i-envelope"/></svg> Request materials
     </a>
   </section>
