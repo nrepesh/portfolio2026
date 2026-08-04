@@ -223,17 +223,6 @@ h1, h2, h3, h4 {
   }
 }
 
-/* --- Shooting stars: subtle background meteors on the landing hero --- */
-.shooting-stars {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(0.4px);
-}
-
 /* --- Cursor halo: soft amber moonlight that drifts after the cursor --- */
 .cursor-halo {
   position: fixed;
@@ -302,7 +291,7 @@ body.landing-page .hero-subtitle {
   color: rgba(240, 240, 245, 0.88);
 }
 
-/* Subtle depth: hero content pops forward of the streaking stars */
+/* Subtle depth: hero content pops forward of the background image */
 body.landing-page .hero-content {
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
 }
