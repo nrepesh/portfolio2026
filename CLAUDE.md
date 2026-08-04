@@ -99,6 +99,17 @@ Append to its `JOBS` table. Each entry takes an optional `crop=(x0,y0,x1,y1)` an
 simulator UI chrome, and to cut a test-case label and a set of tuned gain values
 that were visible in two screenshots.
 
+## Before shipping a layout change
+
+Structural checks pass on markup that renders wrong. Wrapping the pages in
+`<main>` was valid HTML, balanced on all 22 pages, and broke the landing page,
+because `body.landing-page` is a flex column and the hero grows to fill it.
+Screenshot the page and diff it against the previous state:
+
+```bash
+npm i playwright && npx playwright install chromium
+```
+
 ## Commits
 
 - Never push to `main`. Branch `update/<description>` and let the user merge.

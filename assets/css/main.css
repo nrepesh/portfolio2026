@@ -71,6 +71,16 @@ body.landing-page .hero-compact {
   flex: 1 1 auto;
   min-height: 0;
 }
+
+/* The landing page is a flex column and the hero grows to fill it. The <main>
+   landmark added for accessibility sits between the two, so it has to pass the
+   flex context through rather than swallow it. */
+body.landing-page > main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
 body.landing-page .footer {
   flex: 0 0 auto;
 }
