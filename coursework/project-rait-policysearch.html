@@ -55,36 +55,26 @@
     </p>
   </section>
 
-  <!-- Overview -->
   <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
-    <p class="class-description" style="max-width: none;">
-      Same warehouse as the previous project, but the question changed. The robot's starting position is not given, so the answer can no longer be a route. It has to be a <strong>policy</strong>: an action for every square in the grid, so that wherever the robot wakes up it knows what to do. The warehouse floor is also uneven and imposes its own traversal cost on top of the cost of moving, so the cheapest way across is not always the most direct. I solved it with <strong>dynamic programming</strong>, computing a cost-to-go for every state and reading the policy off those values. Part A assumes the robot moves exactly as instructed. Part B makes motion stochastic: the intended move only succeeds some of the time and otherwise slips to a neighboring direction, so the policy has to be optimal with respect to where the robot might actually end up rather than where it meant to go.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
+    <p class="class-description" style="max-width: 780px;">The same warehouse, but the robot's starting square is unknown, so the output has to be a policy giving an action for every square rather than a single route. The floor carries an uneven traversal cost, and in the second half motion is stochastic, so an intended move sometimes slips sideways.</p>
   </section>
 
-  <!-- What I Learned -->
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The plan-versus-policy distinction is the real content of this project, and I did not appreciate it until I had to work without a start state. A path answers "what do I do from here". A policy answers "what do I do from anywhere". Solving for a value at every single state looks wasteful next to a search that expands only what it needs, but that exhaustiveness is exactly what you are buying: the result survives the robot being dropped in an unknown spot, and it survives the robot being knocked off course halfway through, because there is no plan to invalidate. You pay once, up front, across the whole state space, and in exchange you never have to replan.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      Part B is where it got genuinely interesting. I expected the stochastic policy to be the deterministic one with a bit of noise tolerance bolted on. It is not. The optimal policy <em>changes shape</em>. Because a slip near a wall is expensive and the value update is an expectation over every outcome, the arithmetic starts routing the robot the long way around, keeping a margin from walls and costly squares, spending extra distance to buy down the risk of an unlucky sideways step. Nowhere did I write a rule that says "stay away from walls". I wrote down an expectation over outcomes and caution came out the other end. That was the most satisfying moment of the course for me: risk-aware behavior as a consequence of the objective rather than as a hand-coded heuristic layered on top.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      I also learned to be honest about what the state actually is. Reaching the box and delivering the box look like one task, but they are two, because carrying the box changes the problem: the target is different, and the square the box used to occupy stops being an obstacle the moment it is lifted. Solving each phase as its own separately optimal problem, with its own value function, made that clear in a way a single search with a "holding the box" flag would have obscured. Anything that changes the dynamics belongs in the state, and if you are not willing to put it there, you owe yourself a separate problem instead.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      One process lesson, less flattering. Part A did not work until I rebuilt it. I spent far too long patching an implementation whose structure was slightly wrong, bolting on special cases for the edges of the grid and for the squares around the box and the dropzone. Restructuring it around one clean value update, applied uniformly until nothing changes, removed most of those special cases rather than handling them. Repeated special-casing is a signal that the abstraction is off, and the fix that feels most expensive - throwing the structure away and starting again - is very often the cheapest one available.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <ul class="project-points">
+      <li>Value iteration across the grid, run twice: one policy to reach the box, a second to deliver it</li>
+      <li>Carrying the box changes the state enough to warrant its own value function</li>
+      <li>Action cost combines the motion cost with the floor cost of the destination square</li>
+      <li>Under stochastic motion the update takes an expectation over every outcome of an intended move, not just the intended one</li>
+      <li>The deterministic half was restructured rather than patched once the state representation proved wrong</li>
+    </ul>
   </section>
 
-  <!-- Tags -->
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <p class="project-note">Stochastic motion changes the shape of the optimal policy, not merely its confidence: value iteration buys clearance from walls because a slip in a corridor costs more than the detour.</p>
+  </section>
+
   <section class="section" data-aos="fade-up" style="padding-top: 0;">
     <div class="project-tags" style="margin-bottom: 16px;">
       <span class="project-tag">Dynamic Programming</span>
@@ -98,7 +88,7 @@
     </a>
   </section>
 
-  <!-- Footer -->
+<!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
       <p class="footer-name">Nrepesh Joshi</p>

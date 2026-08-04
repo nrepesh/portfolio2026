@@ -55,36 +55,26 @@
     </p>
   </section>
 
-  <!-- Overview -->
   <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
-    <p class="class-description" style="max-width: none;">
-      My spaceship loses its engine in the middle of an asteroid field, so the only way home is to hop from one drifting asteroid to the next until I reach the base at the top of the field. The project splits into two halves. In the first, I get a noisy position reading for every asteroid still in the field each timestep and have to say where each one will be one timestep later - which means tracking a lot of independent objects at once, one <strong>Kalman filter</strong> per asteroid, each carrying a state of position, velocity and acceleration in x and y even though only position is ever measured. In the second half those predictions stop being the answer and become the input: given where I believe every asteroid is heading, decide which one to jump onto next so that the ride carries me upward toward home base.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
+    <p class="class-description" style="max-width: 780px;">Asteroid field simulation. Track roughly a hundred objects moving under constant acceleration from noisy position readings, predict each one step ahead, then chain transfers across the field to reach the far boundary.</p>
   </section>
 
-  <!-- What I Learned -->
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The asteroids move under constant acceleration, and the thing that finally made Kalman filtering click for me was watching the filter recover velocity and acceleration when neither is ever measured. The sensor only reports position. Velocity and acceleration are inferred entirely from how those positions evolve, through the correlations that the motion model builds up inside the covariance matrix. That is the whole trick: the model tells the filter that these hidden quantities <em>cause</em> the thing it can see, so evidence about the visible quantity flows back into the invisible ones. Before this project I understood that as an equation. Now I understand it as a mechanism.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The initial covariance turned out to be a real modeling decision rather than a value to copy from a slide. It is a statement of how much I actually know about each quantity at the moment a new asteroid appears. Position I have just measured, so I can start reasonably confident. Velocity and acceleration I am simply guessing, so the honest thing is to start with far more uncertainty there and let the filter decide. Getting this wrong is quietly damaging in a way that is hard to debug: an over-confident prior on a quantity you are actually guessing makes the filter reluctant to accept the evidence that would correct it, so it converges slowly and looks like a broken model rather than a bad assumption.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The lesson that cost me the most time was about ordering. The measurement I receive and the state I am currently holding describe the same instant, so the measurement update belongs first; if I predict first, I have advanced the state a timestep and then corrected it with an observation from the past, and the two quietly fall out of sync. The symptom looks like a modeling error - estimates consistently offset in the direction of travel - but the cause is bookkeeping. In a recursive filter the time indices are not commentary, they are part of the algorithm, and I now write down which timestep every variable belongs to before I write any of the math.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The second half taught me something different in kind: a good estimate is not a plan. Having accurate predictions did not tell me where to jump. I first wrote a cautious rule that would only commit when the filter was confident and the target asteroid was genuinely moving the right way, and it worked well in open field and stranded me at the edges, where cautious asteroids simply were not on offer. Loosening the rule near the boundaries fixed it, and the general point stuck with me: refusing to act is itself a decision, and it carries consequences like any other. Waiting for a better option is only free if a better option is coming.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <ul class="project-points">
+      <li>One Kalman filter per tracked object; six-state, covering position, velocity and acceleration in x and y</li>
+      <li>Velocity and acceleration are never observed, only inferred through covariance coupling in the motion model</li>
+      <li>Initial covariance tight on measured position, deliberately loose on the unmeasured terms</li>
+      <li>Measurement update runs before prediction, keeping the observation and the state on the same timestep</li>
+      <li>Transfer selection gated on filter confidence and target trajectory, relaxed near the field boundaries</li>
+    </ul>
   </section>
 
-  <!-- Tags -->
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <p class="project-note">An overconfident prior on a quantity you are actually guessing presents as a broken filter rather than a bad assumption, which makes it expensive to find.</p>
+  </section>
+
   <section class="section" data-aos="fade-up" style="padding-top: 0;">
     <div class="project-tags" style="margin-bottom: 16px;">
       <span class="project-tag">Kalman Filter</span>
@@ -98,7 +88,7 @@
     </a>
   </section>
 
-  <!-- Footer -->
+<!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
       <p class="footer-name">Nrepesh Joshi</p>

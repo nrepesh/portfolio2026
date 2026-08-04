@@ -1054,6 +1054,50 @@ body.landing-page .hero-cta .btn {
   color: var(--accent);
 }
 
+/* --- Project detail pages: scannable bullets instead of prose ------------- */
+.project-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 780px;
+}
+
+.project-points li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.project-points li:last-child {
+  margin-bottom: 0;
+}
+
+.project-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 8px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* One line of judgement per project - the part that is the author's rather
+   than the assignment's. Deliberately capped at a single sentence. */
+.project-note {
+  border-left: 2px solid var(--accent);
+  padding-left: 14px;
+  margin-top: 20px;
+  max-width: 780px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
 /* --- Coursework project cards: the whole card is the click target ---------
    These cards link to a per-project page. Previously only the title text was
    clickable, which nobody could be expected to guess. The title link's ::after

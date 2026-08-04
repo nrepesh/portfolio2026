@@ -55,18 +55,23 @@
     </p>
   </section>
 
-  <!-- Overview -->
   <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
-    <p class="class-description" style="max-width: none;">
-      I built a Monte Carlo simulator for the Martingale betting strategy on American roulette. Unlike a simple script that runs once, this simulator runs <strong>1,000 independent episodes</strong> of 1,000 spins each, collecting aggregate statistics across the full distribution of outcomes. I then compared two scenarios: an idealized unlimited bankroll versus a realistic bankroll capped at $256.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
+    <p class="class-description" style="max-width: 780px;">Quantify the Martingale betting strategy on American roulette under an idealized unlimited bankroll against a realistic capped one.</p>
   </section>
 
-  <!-- Key Results -->
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Key Results</h2>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <ul class="project-points">
+      <li>Monte Carlo across 1,000 independent episodes of 1,000 spins, rather than a single run</li>
+      <li>Aggregate statistics collected over the full distribution of outcomes</li>
+      <li>Running means and standard deviations computed during the sweep</li>
+      <li>Bet doubled after each loss and reset after each win, against fixed 18/38 odds</li>
+    </ul>
+  </section>
 
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Results</h2>
     <div class="bio-stats" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 24px; max-width: 600px;">
       <div class="bio-stat">
         <span class="bio-stat-num">1,000</span>
@@ -81,7 +86,6 @@
         <span class="bio-stat-label">win probability</span>
       </div>
     </div>
-
     <div style="overflow-x: auto;">
       <table style="width: 100%; max-width: 700px; border-collapse: collapse; font-size: 0.9rem;" data-aos="fade-up">
         <thead>
@@ -117,28 +121,10 @@
     </div>
   </section>
 
-  <!-- What I Learned -->
-  <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The unlimited bankroll experiment confirms what probability theory predicts: if you can keep doubling forever, you will eventually recover every loss. But the variance is extreme. During any individual episode, the running balance can swing deep into negative territory before snapping back. The standard deviation is enormous because some spins require enormous bets to recoup.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The limited bankroll experiment is where it gets sobering. 34% of episodes end in bankruptcy at -$256. The expected value is negative because the losses in those bankruptcy episodes outweigh the gains from the 66% that succeed. The median stays at $80 because most episodes do reach the target, but the mean is dragged down by the catastrophic tail.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The biggest insight for me was the gap between <em>median</em> and <em>expected value</em>. A gambler who looks only at "I usually win" misses the fact that the losses, when they happen, are devastating enough to make the whole strategy unprofitable. This is the exact risk-reward asymmetry that makes casino games unbeatable in the long run.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      From an engineering perspective, this project taught me the discipline of running large-scale simulations. A single run is noise. A thousand runs is data. I built the simulator to track every spin, compute running means/stds on the fly, and export clean aggregate statistics. That habit of reproducible, large-N experimentation carried into every later project.
-    </p>
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <p class="project-note">Median and expected value diverge sharply here: “I usually win” conceals a tail catastrophic enough to make the whole strategy unprofitable.</p>
   </section>
 
-  <!-- Tags -->
   <section class="section" data-aos="fade-up" style="padding-top: 0;">
     <div class="project-tags" style="margin-bottom: 16px;">
       <span class="project-tag">Probability</span>
@@ -152,7 +138,7 @@
     </a>
   </section>
 
-  <!-- Footer -->
+<!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
       <p class="footer-name">Nrepesh Joshi</p>

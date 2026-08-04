@@ -55,36 +55,26 @@
     </p>
   </section>
 
-  <!-- Overview -->
   <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
-    <p class="class-description" style="max-width: none;">
-      A drone has to recover a piece of ancient treasure from a jungle too dense to walk into. Part A is <strong>SLAM</strong>: the drone lands with no map at all, flies a prescripted sequence of turns and moves through the trees, and from noisy distance, bearing and size readings has to estimate both its own position and the position of every tree, which drift in and out of sensor range as it travels. I built this with <strong>GraphSLAM</strong>, accumulating every movement and every sighting as a constraint in a single linear system and solving that system for the drone and the landmarks together. Part B puts a navigator on top: fly to the treasure and extract it, steering around tree canopies using nothing but the map my own estimator is producing as it goes.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
+    <p class="class-description" style="max-width: 780px;">A drone enters an unmapped area, flies a prescripted route, and must estimate both its own position and the position of every tree from noisy range and bearing readings. The second half navigates it to a target and extracts it without striking a canopy.</p>
   </section>
 
-  <!-- What I Learned -->
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      Localization and mapping are not two problems that happen to run at the same time, they are one problem. You cannot build a map without knowing where you observed from, and you cannot know where you are without a map to place yourself against. That looks circular right up until you stop treating them as stages and write both down as constraints in the same system, and then it simply dissolves: solving once gives you both. The part that genuinely changed how I think about estimation is that a constraint is not consumed when you add it. Every new sighting of a tree the drone has seen before tightens everything that tree is linked to, retroactively, not just the current estimate. Landmarks leaving and re-entering sensor range is precisely what makes re-observation valuable, because a tree you see, lose and see again ties together two stretches of trajectory that were otherwise only connected through a chain of noisy movements.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The tidy version of GraphSLAM assumes the noise is independent and Gaussian in x and y. The sensors do not deliver that. The noise lives in distance and bearing, and converting a range and bearing reading into a displacement in x and y turns a well-behaved uncertainty into a wedge that is stretched along the bearing direction and grows with range. Treating every constraint as equally trustworthy in both axes is a simplification, and you can feel it in the output: distant landmarks end up with more influence than they have earned. The same gap shows up in orientation. GraphSLAM as taught estimates position, but heading accumulates error too, and a heading that is quietly drifting corrupts every measurement you convert afterwards, because the conversion depends on it. I carried orientation forward from the commanded turns, which is the honest weak point of what I built, and knowing exactly where a model is lying to you is worth almost as much as fixing it.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      Part B taught me a geometric lesson I will not forget: collision checking has to be against the swept path, not the endpoints. Two positions can both sit comfortably outside every canopy while the straight line between them passes right through one, and if you only ever ask "is where I am going safe", you will fly through a tree and never see it in your own checks. Testing the segment against each obstacle instead changed what avoidance even looks like. Rather than planning a route around the jungle, the drone proposes a move toward the goal, tests whether that move is geometrically safe, and if it is not, swings its heading off the direct bearing or shortens the step until it finds one that is. Because it re-senses every step, locally safe and roughly goal-directed at each step is enough. That is a very different mindset from the path search project, where I committed to an entire route in advance, and it took me a while to accept that the reactive version was not a cop-out.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      Mostly, though, this project works only because everything earlier in the course works. The obstacles the navigator avoids are the estimator's guesses, not the real trees, so a mediocre map is not a cosmetic problem, it is a crash. Filtering noisy measurements, planning under constraints and controlling a vehicle stopped being three topics and became three dependencies of one system, with failure modes that cross the seams between them: from the outside, a navigation bug and an estimation bug look identical, and the only way to tell them apart is to trust each layer's output enough to interrogate the next. That compounding was the real payoff of the semester.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <ul class="project-points">
+      <li>GraphSLAM: every movement and every sighting accumulated as a constraint in one linear system, solved for drone and landmarks together</li>
+      <li>Re-observing a known landmark tightens earlier trajectory estimates, not just the current pose</li>
+      <li>Landmarks enter and leave sensor range, which is precisely what makes re-observation worth exploiting</li>
+      <li>Navigation tests the swept segment against each canopy rather than the movement endpoints</li>
+      <li>On a predicted collision the heading is deflected or the step shortened until a safe move is found</li>
+    </ul>
   </section>
 
-  <!-- Tags -->
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <p class="project-note">GraphSLAM assumes independent Gaussian noise in x and y while the real noise lives in range and bearing; heading was carried forward from commanded turns, the weakest part of the build.</p>
+  </section>
+
   <section class="section" data-aos="fade-up" style="padding-top: 0;">
     <div class="project-tags" style="margin-bottom: 16px;">
       <span class="project-tag">GraphSLAM</span>
@@ -98,7 +88,7 @@
     </a>
   </section>
 
-  <!-- Footer -->
+<!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
       <p class="footer-name">Nrepesh Joshi</p>

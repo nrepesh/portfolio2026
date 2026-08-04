@@ -47,15 +47,22 @@
   </section>
 
   <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
-    <p class="class-description" style="max-width: none;">
-      I built five technical indicators from scratch in Python and evaluated whether they produce actionable trading signals. I also implemented the Theoretically Optimal Strategy (TOS) for JPM stock over a 2-year period. The TOS represents the upper bound of what any trading strategy could achieve given perfect foresight - it buys at local minima and sells at local maxima. Every real strategy I built in later projects was measured against this ceiling.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
+    <p class="class-description" style="max-width: 780px;">Implement five technical indicators and establish the performance ceiling any strategy could reach on the same symbol.</p>
   </section>
 
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Key Results</h2>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <ul class="project-points">
+      <li>Momentum, Price/SMA ratio, RSI, Stochastic and MACD, each built from scratch</li>
+      <li>A Theoretically Optimal Strategy constructed with perfect foresight, buying local minima and selling local maxima</li>
+      <li>That ceiling used as the reference every later strategy is measured against</li>
+      <li>Indicator periods treated as hyperparameters to be tuned, not as universal constants</li>
+    </ul>
+  </section>
 
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Results</h2>
     <div style="overflow-x: auto; margin-bottom: 24px;">
       <table style="width: 100%; max-width: 750px; border-collapse: collapse; font-size: 0.9rem;">
         <thead>
@@ -94,7 +101,6 @@
         </tbody>
       </table>
     </div>
-
     <div style="overflow-x: auto; margin-bottom: 16px;">
       <table style="width: 100%; max-width: 600px; border-collapse: collapse; font-size: 0.9rem;">
         <thead>
@@ -120,20 +126,8 @@
     </div>
   </section>
 
-  <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      No single indicator is reliable in isolation. Momentum tells you how fast price is moving, but not where it's going. Price/SMA tells you the trend direction, but generates false signals during range-bound periods. RSI catches extremity, but can stay in overbought territory for weeks during strong trends. The breakthrough realization was that indicators are like instruments in an orchestra. Each plays a different role, and you need at least three before the ensemble starts to make sense.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The Theoretically Optimal Strategy was a humbling calibration exercise. Knowing that the absolute ceiling for JPM in 2008-2009 was a 578% cumulative return and a Sharpe ratio of 13.32 puts every real strategy into perspective. My manual strategy in Project 8 achieved ~25% return. The strategy learner achieved ~164% in-sample. Neither comes close to TOS, but TOS sets the scale. It answers the vital question: "How much of the available alpha am I actually capturing?"
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      I also learned that parameter tuning matters dramatically. The choice of 12 days for momentum, 20 days for SMA, 14 days for RSI - these are not universal constants. They are hyperparameters. Changing the SMA window from 20 to 50 days completely changes the signal timing. I spent significant time experimenting with different periods before settling on combinations that produced clean, non-overlapping signals.
-    </p>
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <p class="project-note">No indicator is reliable alone, and the ceiling matters because it answers the only question worth asking: how much of the available alpha a strategy actually captures.</p>
   </section>
 
   <section class="section" data-aos="fade-up" style="padding-top: 0;">
@@ -145,10 +139,12 @@
       <span class="project-tag">Time Series</span>
     </div>
     <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; report shared on request</p>
-    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Indicator%20Evaluation&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;"><i class="fas fa-envelope"></i> Request materials</a>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Indicator%20Evaluation&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;">
+      <i class="fas fa-envelope"></i> Request materials
+    </a>
   </section>
 
-  <footer class="footer">
+<footer class="footer">
     <div class="footer-inner">
       <p class="footer-name">Nrepesh Joshi</p>
       <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>

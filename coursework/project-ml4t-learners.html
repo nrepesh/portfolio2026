@@ -47,15 +47,28 @@
   </section>
 
   <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
-    <p class="class-description" style="max-width: none;">
-      I built four supervised learners from scratch in pure Python: a Decision Tree (DT), a Random Tree (RT), a Bagging ensemble, and a Linear Regression baseline. I then designed three controlled experiments to understand their behaviors: measuring overfitting as leaf size shrinks, testing whether bagging reduces overfitting, and comparing training time and predictive accuracy between DT and RT. All experiments ran on the Istanbul dataset using a 60/40 train-test split.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
+    <p class="class-description" style="max-width: 780px;">Build four supervised learners from scratch and characterize their behavior under controlled experiments.</p>
   </section>
 
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Key Results</h2>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <ul class="project-points">
+      <li>Decision Tree, Random Tree, Bagging ensemble and Linear Regression, written in pure Python</li>
+      <li>Recursive split logic implemented directly, which exposes leaf size as the overfitting control</li>
+      <li>Three experiments: overfitting against leaf size, bagging's effect on it, and training time against accuracy</li>
+      <li>Consistent train-test split so the comparisons are like for like</li>
+    </ul>
+  </section>
 
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Results</h2>
+    <div class="bio-stats" style="grid-template-columns: repeat(1, 1fr); margin-bottom: 24px; max-width: 600px;">
+      <div class="bio-stat">
+        <span class="bio-stat-num">4</span>
+        <span class="bio-stat-label">learners built</span>
+      </div>
+    </div>
     <div style="overflow-x: auto; margin-bottom: 24px;">
       <table style="width: 100%; max-width: 750px; border-collapse: collapse; font-size: 0.9rem;">
         <thead>
@@ -84,37 +97,10 @@
         </tbody>
       </table>
     </div>
-
-    <div class="bio-stats" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 0; max-width: 500px;">
-      <div class="bio-stat">
-        <span class="bio-stat-num">18/18</span>
-        <span class="bio-stat-label">tests passed</span>
-      </div>
-      <div class="bio-stat">
-        <span class="bio-stat-num">40.0</span>
-        <span class="bio-stat-label">points earned</span>
-      </div>
-      <div class="bio-stat">
-        <span class="bio-stat-num">4</span>
-        <span class="bio-stat-label">learners built</span>
-      </div>
-    </div>
   </section>
 
-  <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      Building a Decision Tree from the ground up was the most instructive coding exercise of the term. Until you actually write the recursive split logic, you don't truly appreciate why leaf_size is the single most important hyperparameter. At leaf_size=1, the tree memorizes every data point. The training RMSE hits zero, and the model becomes useless outside the training set. Watching that gap shrink as I increased leaf_size was the clearest "aha" moment so far.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      Bagging was fascinating. The intuition is simple: average many noisy models and the noise cancels out. But the reality is more nuanced. Bagging with Decision Trees helps modestly because the trees are correlated (they all pick the same best feature first). Bagging with Random Trees helps more because the trees are decorrelated (they pick random features). The ensemble of 20 Random Trees achieved competitive accuracy while being dramatically faster to train.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The speed difference between DT and RT was counterintuitive at first. DT is slower because it's exhaustively searching for the best feature at every split. RT is faster because it just picks a feature at random. The trade-off is that individual RTs are weaker learners, but that weakness is exactly why ensembles of them work so well. Random Forests (which this project essentially builds the foundation for) exploit this beautifully.
-    </p>
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <p class="project-note">Bagging helps less on decision trees because they correlate, all selecting the same first feature; random trees decorrelate, which is exactly why weak learners ensemble well.</p>
   </section>
 
   <section class="section" data-aos="fade-up" style="padding-top: 0;">
@@ -125,10 +111,12 @@
       <span class="project-tag">Ensembles</span>
     </div>
     <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; report shared on request</p>
-    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Assess%20Learners&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;"><i class="fas fa-envelope"></i> Request materials</a>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Assess%20Learners&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;">
+      <i class="fas fa-envelope"></i> Request materials
+    </a>
   </section>
 
-  <footer class="footer">
+<footer class="footer">
     <div class="footer-inner">
       <p class="footer-name">Nrepesh Joshi</p>
       <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>

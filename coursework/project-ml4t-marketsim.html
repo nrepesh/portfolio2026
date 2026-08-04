@@ -47,15 +47,28 @@
   </section>
 
   <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 12px;">What I Did</h2>
-    <p class="class-description" style="max-width: none;">
-      I built a market simulator that reads order files, executes trades at daily closing prices, and tracks portfolio value over time. The simulator handles real-world friction in two forms: <strong>commission</strong> ($9.95 per trade) and <strong>market impact</strong> (0.5% adjustment per order). It maintains accurate cash balances, share counts, and portfolio valuations across the full trading period. This engine became the backend for every later trading strategy project.
-    </p>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
+    <p class="class-description" style="max-width: 780px;">Execute an order file against daily closing prices and track portfolio value under realistic trading friction.</p>
   </section>
 
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Key Results</h2>
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <ul class="project-points">
+      <li>Cash balance, share counts and portfolio valuation maintained across the full trading period</li>
+      <li>Orders sequenced chronologically within each day, since a sell cannot settle before its corresponding buy</li>
+      <li>Commission applied per trade as a fixed cost, market impact per order as a variable one</li>
+      <li>Became the execution backend for every later strategy project</li>
+    </ul>
+  </section>
 
+  <section class="section" data-aos="fade-up">
+    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Results</h2>
+    <div class="bio-stats" style="grid-template-columns: repeat(1, 1fr); margin-bottom: 24px; max-width: 600px;">
+      <div class="bio-stat">
+        <span class="bio-stat-num">$1M</span>
+        <span class="bio-stat-label">start value</span>
+      </div>
+    </div>
     <div style="overflow-x: auto; margin-bottom: 24px;">
       <table style="width: 100%; max-width: 700px; border-collapse: collapse; font-size: 0.9rem;">
         <thead>
@@ -88,28 +101,10 @@
         </tbody>
       </table>
     </div>
-
-    <div class="bio-stats" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 0; max-width: 500px;">
-      <div class="bio-stat"><span class="bio-stat-num">13/13</span><span class="bio-stat-label">tests passed</span></div>
-      <div class="bio-stat"><span class="bio-stat-num">87.0</span><span class="bio-stat-label">points earned</span></div>
-      <div class="bio-stat"><span class="bio-stat-num">$1M</span><span class="bio-stat-label">start value</span></div>
-    </div>
   </section>
 
-  <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">What I Learned</h2>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      Building a market simulator from scratch taught me that the "simple" parts of trading systems are where the bugs live. Cash balance tracking seems trivial until you realize that buy orders require available cash, sell orders require owned shares, and both need to update after the daily close price is applied. I had to be careful about order sequencing: chronological within a day matters because a sell cannot execute before the corresponding buy.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      The transaction cost calculations were a revelation. On paper, a strategy might look brilliant. But when I factored in $9.95 per trade plus 0.5% market impact, profitable-looking strategies turned mediocre. The commission is a fixed cost that punishes high-frequency approaches. The impact is a variable cost that scales with position size. Together they created a floor below which no trading strategy could profit - regardless of its predictive accuracy.
-    </p>
-
-    <p class="class-description" style="max-width: none; margin-bottom: 16px;">
-      I also learned to be suspicious of naive backtests. The simulator forces me to account for market impact, which means strategies that would work on paper often collapse in simulation. This was my first real taste of the gap between research code and production trading infrastructure, and it made me much more careful about claiming any strategy "works" without accounting for friction.
-    </p>
+  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+    <p class="project-note">Fixed commission punishes trade frequency while impact scales with position size; together they set a floor below which no strategy profits, whatever its predictive accuracy.</p>
   </section>
 
   <section class="section" data-aos="fade-up" style="padding-top: 0;">
@@ -120,10 +115,12 @@
       <span class="project-tag">Backtesting</span>
     </div>
     <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code shared on request</p>
-    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Market%20Simulator&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;"><i class="fas fa-envelope"></i> Request materials</a>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Market%20Simulator&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;">
+      <i class="fas fa-envelope"></i> Request materials
+    </a>
   </section>
 
-  <footer class="footer">
+<footer class="footer">
     <div class="footer-inner">
       <p class="footer-name">Nrepesh Joshi</p>
       <p class="footer-email"><a href="mailto:nrepesh.joshi@gmail.com">nrepesh.joshi@gmail.com</a></p>
