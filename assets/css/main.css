@@ -1,3 +1,17 @@
+/* --- Self-hosted fonts ------------------------------------------------------
+   Was three families from fonts.googleapis.com: an extra origin, a DNS and TLS
+   handshake, and a render-blocking stylesheet on every page. Same woff2 files,
+   served from this origin. Latin subset only - nothing in the content uses the
+   latin-ext range. font-display:swap preserved.                                */
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/inter-400-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/inter-500-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/inter-600-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/inter-700-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/jetbrains-mono-400-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/jetbrains-mono-500-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/space-grotesk-500-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/space-grotesk-700-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+
 /* ============================================
    Nrepesh Joshi — Portfolio 2026
    Design System + All Components
@@ -414,31 +428,9 @@ body.landing-page .hero-cta .btn {
 }
 
 /* --- Skills Strip --- */
-.skills-strip {
-  padding: 48px 24px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
 
-.skills-strip-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px 24px;
-}
 
-.skills-strip span {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  white-space: nowrap;
-}
 
-.skills-strip .sep {
-  color: var(--border);
-}
 
 /* --- Page Header --- */
 .page-header {
@@ -497,9 +489,6 @@ body.landing-page .hero-cta .btn {
 }
 
 /* Legacy divider (still hidden if any page reintroduces it) */
-.section-divider {
-  display: none;
-}
 
 /* Inline resume CTA inside the bio block */
 .bio-resume {
@@ -1325,20 +1314,65 @@ body.landing-page .footer::before {
 
 
 /* --- Coursework Project Learning Notes --- */
-.project-learning {
-  color: var(--text-primary);
-  font-size: 0.88rem;
-  line-height: 1.6;
-  margin-bottom: 16px;
-  border-left: 2px solid var(--accent);
-  padding-left: 12px;
-  opacity: 0.92;
-}
-.project-learning strong {
-  color: var(--accent);
-}
+
 
 /* --- Print hidden --- */
 @media print {
   .nav, .footer { display: none; }
+}
+
+/* --- Reveal on scroll ------------------------------------------------------
+   Replaces the AOS library (aos.css + aos.js from unpkg, loaded on all 22
+   pages) with the two rules it was actually being used for. The [data-aos]
+   markup is unchanged; main.js adds .aos-in via IntersectionObserver.
+   No-JS and reduce-motion users get the content immediately, unanimated.     */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-aos].aos-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* --- Inline SVG icons ------------------------------------------------------
+   Replaces the Font Awesome CDN stylesheet and its font downloads. Each page
+   inlines only the symbols it uses. Sized in em so icons track their adjacent
+   text, and filled with currentColor so every existing hover rule still works. */
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+}
+
+/* --- Skip link -------------------------------------------------------------
+   Keyboard users otherwise tab through the whole nav on every page. Hidden
+   until focused, then pinned top-left over the nav.                          */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1100;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: #0A0A0F;
+  font-weight: 600;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.skip-link:focus {
+  left: 0;
+  color: #0A0A0F;
 }
