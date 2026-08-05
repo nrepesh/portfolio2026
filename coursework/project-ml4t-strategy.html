@@ -17,7 +17,7 @@
 <body class="header-strip">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-arrow-left" viewBox="0 0 448 512"><path transform="translate(0,448) scale(1,-1)" d="M257.5 2.90039l-22.2002 -22.2002c-9.39941 -9.40039 -24.5996 -9.40039 -33.8994 0l-194.4 194.3c-9.40039 9.40039 -9.40039 24.5996 0 33.9004l194.4 194.399c9.39941 9.40039 24.5996 9.40039 33.8994 0l22.2002 -22.2002c9.5 -9.5 9.2998 -25 -0.400391 -34.2998
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><symbol id="i-arrow-left" viewBox="0 0 448 512"><path transform="translate(0,448) scale(1,-1)" d="M257.5 2.90039l-22.2002 -22.2002c-9.39941 -9.40039 -24.5996 -9.40039 -33.8994 0l-194.4 194.3c-9.40039 9.40039 -9.40039 24.5996 0 33.9004l194.4 194.399c9.39941 9.40039 24.5996 9.40039 33.8994 0l22.2002 -22.2002c9.5 -9.5 9.2998 -25 -0.400391 -34.2998
 l-120.5 -114.8h287.4c13.2998 0 24 -10.7002 24 -24v-32c0 -13.2998 -10.7002 -24 -24 -24h-287.4l120.5 -114.8c9.80078 -9.2998 10 -24.7998 0.400391 -34.2998z"/></symbol><symbol id="i-envelope" viewBox="0 0 512 512"><path transform="translate(0,448) scale(1,-1)" d="M502.3 257.2c3.90039 3.09961 9.7002 0.200195 9.7002 -4.7002v-204.5c0 -26.5 -21.5 -48 -48 -48h-416c-26.5 0 -48 21.5 -48 48v204.4c0 5 5.7002 7.7998 9.7002 4.69922c22.3994 -17.3994 52.0996 -39.5 154.1 -113.6
 c21.1006 -15.4004 56.7002 -47.7998 92.2002 -47.5996c35.7002 -0.300781 72 32.7998 92.2998 47.5996c102 74.0996 131.601 96.2998 154 113.7zM256 128c-23.2002 -0.400391 -56.5996 29.2002 -73.4004 41.4004c-132.699 96.2998 -142.8 104.8 -173.399 128.699
 c-5.7998 4.60059 -9.2002 11.5 -9.2002 18.9004v19c0 26.5 21.5 48 48 48h416c26.5 0 48 -21.5 48 -48v-19c0 -7.40039 -3.40039 -14.4004 -9.2002 -18.9004c-30.5996 -24 -40.7002 -32.3994 -173.399 -128.699c-16.8008 -12.2002 -50.2002 -41.8008 -73.4004 -41.4004z"/></symbol><symbol id="i-linkedin" viewBox="0 0 512 512"><path transform="translate(0,448) scale(1,-1)" d="M416 416c17.5996 0 32 -14.5 32 -32.2998v-383.4c0 -17.7998 -14.4004 -32.2998 -32 -32.2998h-384.1c-17.6006 0 -31.9004 14.5 -31.9004 32.2998v383.4c0 17.7998 14.2998 32.2998 31.9004 32.2998h384.1zM135.4 32h0.0996094v213.8h-66.5v-213.8h66.4004zM102.2 275
@@ -44,7 +44,7 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
         <a href="../pages/software.html">Software</a>
         <a href="../pages/physics.html">Physics</a>
       </div>
-      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
   <div class="nav-mobile" id="mobileNav">
@@ -58,23 +58,23 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
     <h1>Strategy Evaluation</h1>
   </header>
 
-  <section class="section" style="padding-bottom: 8px;" data-aos="fade-up">
+  <section class="section pb-8" data-aos="fade-up">
     <p class="class-meta-row">
       <a href="../pages/coursework.html" class="back-link"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg> Coursework</a>
-      <span style="color: var(--border);">/</span>
+      <span class="crumb-sep">/</span>
       <a href="ml4t.html" class="back-link">ML4T</a>
-      <span style="color: var(--border);">/</span>
+      <span class="crumb-sep">/</span>
       <span>Strategy Evaluation</span>
     </p>
   </section>
 
-  <section class="section" style="padding-top: 8px;" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Problem</h2>
-    <p class="class-description" style="max-width: 780px;">Build a rules-based trading strategy and a learned one on the same three indicators, then compare both against buy-and-hold in and out of sample.</p>
+  <section class="section pt-8" data-aos="fade-up">
+    <h2 class="section-title">Problem</h2>
+    <p class="class-description prose">Build a rules-based trading strategy and a learned one on the same three indicators, then compare both against buy-and-hold in and out of sample.</p>
   </section>
 
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Approach</h2>
+    <h2 class="section-title">Approach</h2>
     <ul class="project-points">
       <li>Manual strategy: human-coded rules over Price/SMA, RSI and MACD driving long and short entries</li>
       <li>Strategy Learner: a bagged ensemble of random trees classifying forward price movement into buy, hold and sell</li>
@@ -84,94 +84,94 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
   </section>
 
   <section class="section" data-aos="fade-up">
-    <h2 style="font-size: 1.3rem; margin-bottom: 16px;">Results</h2>
-    <div class="bio-stats" style="grid-template-columns: repeat(1, 1fr); margin-bottom: 24px; max-width: 600px;">
+    <h2 class="section-title">Results</h2>
+    <div class="bio-stats stat-row stat-row-single">
       <div class="bio-stat">
         <span class="bio-stat-num">2</span>
         <span class="bio-stat-label">strategies</span>
       </div>
     </div>
-    <p class="class-meta-row" style="margin-bottom: 8px;">In-Sample (2008-2009)</p>
-    <div style="overflow-x: auto; margin-bottom: 24px;">
-      <table style="width: 100%; max-width: 750px; border-collapse: collapse; font-size: 0.9rem;">
+    <p class="class-meta-row mb-8">In-Sample (2008-2009)</p>
+    <div class="table-scroll">
+      <table class="results-table">
         <thead>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <th style="text-align: left; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Strategy</th>
-            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Cum. Return</th>
-            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Sharpe</th>
-            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Volatility</th>
+          <tr>
+            <th>Strategy</th>
+            <th>Cum. Return</th>
+            <th>Sharpe</th>
+            <th>Volatility</th>
           </tr>
         </thead>
         <tbody>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 10px 12px; color: var(--text-secondary);">Benchmark (buy &amp; hold)</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">1.23%</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">0.157</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">0.0170</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 10px 12px; color: var(--text-secondary);">Manual Strategy</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--accent); font-weight: 600;">25.23%</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--accent);">0.637</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">0.0133</td>
+          <tr>
+            <td>Benchmark (buy &amp; hold)</td>
+            <td>1.23%</td>
+            <td>0.157</td>
+            <td>0.0170</td>
           </tr>
           <tr>
-            <td style="padding: 10px 12px; color: var(--text-secondary);"><strong>Strategy Learner (BagLearner)</strong></td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--accent); font-weight: 600;"><strong>164.4%</strong></td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--accent); font-weight: 600;"><strong>3.380</strong></td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">0.0093</td>
+            <td>Manual Strategy</td>
+            <td class="hl">25.23%</td>
+            <td class="hl">0.637</td>
+            <td>0.0133</td>
+          </tr>
+          <tr>
+            <td><strong>Strategy Learner (BagLearner)</strong></td>
+            <td class="hl"><strong>164.4%</strong></td>
+            <td class="hl"><strong>3.380</strong></td>
+            <td>0.0093</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="class-meta-row" style="margin-bottom: 8px;">Out-of-Sample (2010-2011)</p>
-    <div style="overflow-x: auto; margin-bottom: 24px;">
-      <table style="width: 100%; max-width: 750px; border-collapse: collapse; font-size: 0.9rem;">
+    <p class="class-meta-row mb-8">Out-of-Sample (2010-2011)</p>
+    <div class="table-scroll">
+      <table class="results-table">
         <thead>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <th style="text-align: left; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Strategy</th>
-            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Cum. Return</th>
-            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Sharpe</th>
-            <th style="text-align: center; padding: 10px 12px; color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">Volatility</th>
+          <tr>
+            <th>Strategy</th>
+            <th>Cum. Return</th>
+            <th>Sharpe</th>
+            <th>Volatility</th>
           </tr>
         </thead>
         <tbody>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 10px 12px; color: var(--text-secondary);">Benchmark (buy &amp; hold)</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">-8.36%</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">-0.257</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">0.0085</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 10px 12px; color: var(--text-secondary);">Manual Strategy</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">-5.32%</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">-0.142</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">0.0083</td>
+          <tr>
+            <td>Benchmark (buy &amp; hold)</td>
+            <td>-8.36%</td>
+            <td>-0.257</td>
+            <td>0.0085</td>
           </tr>
           <tr>
-            <td style="padding: 10px 12px; color: var(--text-secondary);"><strong>Strategy Learner (BagLearner)</strong></td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">-0.02%</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--accent); font-weight: 600;">0.064</td>
-            <td style="padding: 10px 12px; text-align: center; color: var(--text-primary);">0.0082</td>
+            <td>Manual Strategy</td>
+            <td>-5.32%</td>
+            <td>-0.142</td>
+            <td>0.0083</td>
+          </tr>
+          <tr>
+            <td><strong>Strategy Learner (BagLearner)</strong></td>
+            <td>-0.02%</td>
+            <td class="hl">0.064</td>
+            <td>0.0082</td>
           </tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <section class="section" data-aos="fade-up" style="padding-top: 0;">
+  <section class="section pt-0" data-aos="fade-up">
     <p class="project-note">In-sample performance is not the result. The learner's out-of-sample edge came from lower volatility, avoiding drawdowns rather than finding more winners.</p>
   </section>
 
-  <section class="section" data-aos="fade-up" style="padding-top: 0;">
-    <div class="project-tags" style="margin-bottom: 16px;">
+  <section class="section pt-0" data-aos="fade-up">
+    <div class="project-tags mb-16">
       <span class="project-tag">Strategy Learner</span>
       <span class="project-tag">Random Forest</span>
       <span class="project-tag">In-Sample / Out-of-Sample</span>
       <span class="project-tag">Capstone</span>
     </div>
-    <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); opacity: 0.75; margin-bottom: 8px;">// code &amp; report shared on request to comply with the GT honor code</p>
-    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Strategy%20Evaluation&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small" style="margin-top: 8px;">
+    <p class="meta-note">// code &amp; report shared on request to comply with the GT honor code</p>
+    <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20ML4T%20-%20Strategy%20Evaluation&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small mt-8">
       <svg class="icon" aria-hidden="true"><use href="#i-envelope"/></svg> Request materials
     </a>
   </section>

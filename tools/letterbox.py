@@ -486,6 +486,11 @@ JOBS = [
          cw=960, ch=540, crop=(0, 44, 672, 680)),
     dict(src="Solar System_ Particle Filters/P2_sample_photo.png", dst="rait-particle.png",
          cw=960, ch=540),
+    # NOTE: this one is a photograph - 118k unique colours - so the PNG this
+    # tool writes is converted to images/rait-pid.jpg afterwards (343 KB -> 54 KB)
+    # and that JPEG is what the site references. This tool is a PNG encoder by
+    # design; re-run it, then re-convert. The other thumbnails are flat UI
+    # screenshots where PNG is the right format and no conversion is wanted.
     dict(src="Drone Control_ PID/P3_sample_photo.png", dst="rait-pid.png",
          cw=960, ch=540, crop=(0, 0, 499, 499), allow_upscale=True,
          fills=[(345, 84, 150, 60, 14)]),

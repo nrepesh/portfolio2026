@@ -1386,3 +1386,158 @@ body.landing-page .footer::before {
   left: 0;
   color: #0A0A0F;
 }
+
+/* ==========================================================================
+   Project detail pages
+   These pages were generated with everything inline - 424 style attributes
+   across 22 pages, from only 31 distinct declarations. The classes below
+   replace them. Keep using these rather than reintroducing inline styles.
+   ========================================================================== */
+
+.section-title {
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+
+/* Breadcrumb separator between crumb links */
+.crumb-sep {
+  color: var(--border);
+}
+
+/* Inline SVG sprite holder, hidden but present in the DOM */
+.icon-sprite {
+  display: none;
+}
+
+/* Arrow/chevron icons that should track their label's size */
+.icon-sm {
+  font-size: 0.8em;
+}
+
+/* Measure for body copy on detail pages */
+.prose {
+  max-width: 780px;
+}
+
+/* "// code & reports shared on request" note, and figure captions */
+.meta-note {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  opacity: 0.75;
+  margin-bottom: 8px;
+}
+
+.figure-caption {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  opacity: 0.75;
+  margin-top: 10px;
+}
+
+.figure-img {
+  width: 100%;
+  max-width: 820px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+/* Stat tile row on a detail page */
+.stat-row {
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 24px;
+  max-width: 600px;
+}
+
+.stat-row-single {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+/* --- Results tables ------------------------------------------------------ */
+.table-scroll {
+  overflow-x: auto;
+  margin-bottom: 24px;
+}
+
+.results-table {
+  width: 100%;
+  max-width: 750px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.results-table tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.results-table tbody tr:last-child {
+  border-bottom: 0;
+}
+
+.results-table th {
+  padding: 10px 12px;
+  text-align: center;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+/* First column is the row label, so it reads left-aligned */
+.results-table th:first-child {
+  text-align: left;
+}
+
+.results-table td {
+  padding: 10px 12px;
+  color: var(--text-secondary);
+}
+
+.results-table td + td {
+  text-align: center;
+  color: var(--text-primary);
+}
+
+/* Value emphasis: the better figure, and a regression */
+.results-table td.hl {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.results-table td.neg {
+  color: #C44444;
+  font-weight: 600;
+}
+
+/* --- Section spacing overrides ------------------------------------------- */
+.pt-0 { padding-top: 0; }
+.pt-8 { padding-top: 8px; }
+.pb-8 { padding-bottom: 8px; }
+.mt-8 { margin-top: 8px; }
+.mb-8 { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.accent { color: var(--accent); }
+
+/* --- Keyboard focus -------------------------------------------------------
+   Only the skip link and the coursework cards had focus styling, so tabbing
+   through the nav, footer, buttons and project links was invisible. One ring
+   for everything focusable, shown only for keyboard users via :focus-visible.
+   Colours are the accent on the dark surface, which measures 16.4:1.        */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* The nav sits on a blurred bar, so pull the ring in to avoid clipping */
+.nav a:focus-visible,
+.nav button:focus-visible {
+  outline-offset: 2px;
+}
+
+/* Cards already draw their own ring on the stretched hit area */
+.coursework-grid .project-card-link:focus-visible {
+  outline: none;
+}

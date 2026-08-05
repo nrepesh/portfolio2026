@@ -6,13 +6,15 @@
 (function () {
   'use strict';
 
+  // Honoured by every animation below, not just the scroll reveal.
+  var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // --- Reveal on scroll (replaces the AOS library) ---
   // Same [data-aos] / [data-aos-delay] markup, no third-party CSS or JS.
   var reveal = document.querySelectorAll('[data-aos]');
   if (reveal.length) {
-    if (!('IntersectionObserver' in window) ||
-        matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      for (var i = 0; i < reveal.length; i++) reveal[i].classList.add('aos-in');
+    if (!('IntersectionObserver' in window) || reduceMotion) {
+      for (var r = 0; r < reveal.length; r++) reveal[r].classList.add('aos-in');
     } else {
       var io = new IntersectionObserver(function (entries) {
         for (var j = 0; j < entries.length; j++) {
@@ -39,7 +41,7 @@
         });
         ticking = true;
       }
-    });
+    }, { passive: true });
   }
 
   // --- Mobile hamburger ---
@@ -68,34 +70,58 @@
   var typewriterEl = document.getElementById('typewriter');
   if (typewriterEl) {
     var text = 'ML Engineer';
-    var i = 0;
+    var pos = 0;
     var cursor = document.createElement('span');
     cursor.className = 'cursor';
 
     function type() {
-      if (i < text.length) {
-        typewriterEl.textContent = text.slice(0, i + 1);
-        typewriterEl.appendChild(cursor);
-        i++;
+      typewriterEl.textContent = text.slice(0, pos + 1);
+      typewriterEl.appendChild(cursor);
+      if (pos < text.length - 1) {
+        pos++;
         setTimeout(type, 70 + Math.random() * 40);
-      } else {
-        typewriterEl.textContent = text;
-        typewriterEl.appendChild(cursor);
       }
     }
 
-    setTimeout(type, 600);
+    if (reduceMotion) {
+      typewriterEl.textContent = text;
+      typewriterEl.appendChild(cursor);
+    } else {
+      setTimeout(type, 600);
+    }
   }
 
 
   // --- Cursor halo: soft amber moonlight that drifts after the cursor ---
   var halo = document.getElementById('cursorHalo');
-  if (halo) {
+  if (halo && !reduceMotion) {
     var hx = window.innerWidth / 2;
     var hy = window.innerHeight / 2;
     var htx = hx, hty = hy;
     var haloVisible = false;
     var EASE = 0.06;
+
+    var running = false;
+
+    // Only animate while the halo still has ground to cover. Left running
+    // unconditionally this burns a frame callback forever on an idle page.
+    function loop() {
+      hx += (htx - hx) * EASE;
+      hy += (hty - hy) * EASE;
+      halo.style.transform = 'translate3d(' + hx + 'px, ' + hy + 'px, 0) translate(-50%, -50%)';
+      if (Math.abs(htx - hx) < 0.5 && Math.abs(hty - hy) < 0.5) {
+        running = false;
+        return;
+      }
+      requestAnimationFrame(loop);
+    }
+
+    function start() {
+      if (!running) {
+        running = true;
+        requestAnimationFrame(loop);
+      }
+    }
 
     document.addEventListener('mousemove', function (e) {
       htx = e.clientX;
@@ -104,19 +130,13 @@
         haloVisible = true;
         halo.classList.add('visible');
       }
-    });
+      start();
+    }, { passive: true });
 
     document.addEventListener('mouseleave', function () {
       haloVisible = false;
       halo.classList.remove('visible');
     });
-
-    (function loop() {
-      hx += (htx - hx) * EASE;
-      hy += (hty - hy) * EASE;
-      halo.style.transform = 'translate3d(' + hx + 'px, ' + hy + 'px, 0) translate(-50%, -50%)';
-      requestAnimationFrame(loop);
-    })();
   }
 
 })();

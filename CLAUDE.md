@@ -42,6 +42,22 @@ classmate could publish. Make it a real judgement, not a summary.
 engine" reads as roleplay. Name the domain once, then describe the system in
 third person. American spelling.
 
+## Styling
+
+**No inline `style` attributes.** 424 of them were removed in Aug 2026 and
+replaced with a class layer at the bottom of `main.css` - `.section-title`,
+`.results-table` (with `td.hl` / `td.neg` for emphasis), `.table-scroll`,
+`.stat-row`, `.meta-note`, `.figure-img`, `.prose`, `.icon-sm`, plus six
+spacing utilities (`.pt-0`, `.pt-8`, `.pb-8`, `.mt-8`, `.mb-8`, `.mb-16`).
+Reach for those instead of writing style="".
+
+Results tables need no per-cell styling: `.results-table` handles headers, the
+label column and value columns via descendant selectors. Add `hl` to a `<td>`
+for the accent value and `neg` for a red one.
+
+`:focus-visible` is styled globally for links, buttons and `[tabindex]`. Do not
+remove focus outlines.
+
 ## Honor code
 
 - No code, pseudocode, solution strategies, or tuned parameter values.
@@ -83,10 +99,23 @@ to the crop. Every card image must also land at the **same placed height**
 (502px on a 960x540 canvas), or one card visibly renders shorter than its
 neighbours.
 
+**Pick the format by content, not by habit.** A flat UI screenshot compresses
+far better as PNG; a photograph belongs in JPEG. `rait-pid` was a 343 KB PNG of
+a mountain range (118k unique colours) and is 54 KB as a JPEG at the same
+dimensions. Conversely `pendulum.png` is 3-colour line art and JPEG made it 3x
+larger. Count unique colours if unsure: above ~50k, use JPEG.
+
+**Size to the display box, not to "big enough".** Card thumbnails render at
+roughly 380x200 CSS px, so **960px on the long edge** is the cap - that is 2x
+retina with room to spare. The only things allowed past it are
+`background.jpg` (2560x2560, a full-viewport CSS background), `og-card.jpg`
+(1200x630, a fixed social-card spec) and `rait-pid-response.png` (1000px, an
+inline figure capped at `max-width:820px`).
+
 For photos, resize with Pillow in a throwaway venv outside the repo -
-`python3 -m venv /tmp/venv && /tmp/venv/bin/pip install Pillow`. LANCZOS to
-2560px max, JPEG quality 82, `optimize=True, progressive=True`. That took
-background.jpg from 5.6 MB to 172 KB at 46 dB PSNR. Do not commit the venv.
+`python3 -m venv /tmp/venv && /tmp/venv/bin/pip install Pillow`. LANCZOS,
+JPEG quality 82, `optimize=True, progressive=True`. That took background.jpg
+from 5.6 MB to 172 KB at 46 dB PSNR. Do not commit the venv.
 
 For course thumbnails use the pure-stdlib tool, which needs no dependencies:
 
