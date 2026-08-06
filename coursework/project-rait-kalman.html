@@ -3,14 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hopscotch (Kalman Filters) - RAIT Project 1</title>
-  <meta name="description" content="Project 1 from CS 7638: tracking asteroids with Kalman filters from noisy position readings, then hopping between them to reach home base." />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Hopscotch (Kalman Filters) - RAIT Project 1" />
-  <meta property="og:description" content="Project 1 from CS 7638: tracking asteroids with Kalman filters from noisy position readings, then hopping between them to reach home base." />
+  <title>Hopscotch (Kalman Filters) — RAIT Project 1 — Nrepesh Joshi</title>
+  <meta name="description" content="Project 1 from CS 7638: tracking asteroids with Kalman filters from noisy position readings, then chaining transfers across the field to reach the far boundary." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Hopscotch (Kalman Filters) — RAIT Project 1 — Nrepesh Joshi" />
+  <meta property="og:description" content="Project 1 from CS 7638: tracking asteroids with Kalman filters from noisy position readings, then chaining transfers across the field to reach the far boundary." />
   <meta property="og:url" content="https://nrepesh.github.io/portfolio2026/coursework/project-rait-kalman.html" />
   <meta property="og:image" content="https://nrepesh.github.io/portfolio2026/images/og-card.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://nrepesh.github.io/portfolio2026/coursework/project-rait-kalman.html" />
+  <meta property="og:site_name" content="Nrepesh Joshi" />
+  <meta property="og:image:alt" content="Nrepesh Joshi - machine learning, software and physics portfolio" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg" />
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0A0A0F" />
   <link rel="stylesheet" href="../assets/css/main.css" />
   <noscript><style>[data-aos]{opacity:1;transform:none}</style></noscript>
 </head>
@@ -32,33 +40,33 @@ c14.7002 -44.7998 84.7002 -29.7998 84.7002 -29.7998c0 -21 0.299805 -55.2002 0.29
 c1.2998 1.30078 3.59961 0.600586 5.2002 -1c1.69922 -1.89941 2 -4.19922 0.699219 -5.19922c-1.2998 -1.30078 -3.59961 -0.600586 -5.19922 1c-1.7002 1.89941 -2 4.19922 -0.700195 5.19922zM86.4004 103.2c0.699219 1 2.2998 1.2998 4.2998 0.700195
 c2 -1 3 -2.60059 2.2998 -3.90039c-0.700195 -1.40039 -2.7002 -1.7002 -4.2998 -0.700195c-2 1 -3 2.60059 -2.2998 3.90039zM118.8 67.5996c1.2998 1.60059 4.2998 1.30078 6.5 -1c2 -1.89941 2.60059 -4.89941 1.2998 -6.19922
 c-1.2998 -1.60059 -4.19922 -1.30078 -6.5 1c-2.2998 1.89941 -2.89941 4.89941 -1.2998 6.19922zM107.4 82.2998c1.59961 1.2998 4.19922 0.299805 5.59961 -2c1.59961 -2.2998 1.59961 -4.89941 0 -6.2002c-1.2998 -1 -4 0 -5.59961 2.30078
-c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
+c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol><symbol id="i-download" viewBox="0 0 512 512"><path d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24z"/></symbol></svg>
 
   <!-- Navigation -->
-  <nav class="nav" id="nav">
+  <nav class="nav" id="nav" aria-label="Main">
     <div class="nav-inner">
       <a href="../index.html" class="nav-logo">Nrepesh Joshi</a>
       <div class="nav-links">
         <a href="../pages/about.html">About Me</a>
-        <a href="../pages/coursework.html" class="active">Coursework</a>
+        <a href="../pages/coursework.html" class="active" aria-current="page">Coursework</a>
         <a href="../pages/ml.html">Machine Learning</a>
         <a href="../pages/software.html">Software</a>
         <a href="../pages/physics.html">Physics</a>
       </div>
-      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
-  <div class="nav-mobile" id="mobileNav">
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
     <a href="../pages/about.html">About Me</a>
-    <a href="../pages/coursework.html" class="active">Coursework</a>
+    <a href="../pages/coursework.html" class="active" aria-current="page">Coursework</a>
     <a href="../pages/ml.html">Machine Learning</a>
     <a href="../pages/software.html">Software</a>
     <a href="../pages/physics.html">Physics</a>
-  </div>
+  </nav>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
   <!-- Page Header -->
   <header class="page-header">
@@ -104,7 +112,7 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
       <span class="project-tag">Sensor Noise</span>
       <span class="project-tag">Python</span>
     </div>
-    <p class="meta-note">// code &amp; reports shared on request to comply with the GT honor code</p>
+    <p class="meta-note">// code &amp; report shared on request to comply with the GT honor code</p>
     <a href="mailto:nrepesh.joshi@gmail.com?subject=Request%3A%20RAIT%20%E2%80%94%20Hopscotch%20%28Kalman%20Filters%29&body=Hi%20Nrepesh%2C%20I%27d%20like%20the%20code%20and%20report%20for%20this%20project.%20My%20GitHub%20username%3A%20" class="btn btn-small mt-8">
       <svg class="icon" aria-hidden="true"><use href="#i-envelope"/></svg> Request materials
     </a>
@@ -120,11 +128,12 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
       <div class="footer-social">
         <a href="https://www.linkedin.com/in/nrepeshjoshi" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> LinkedIn</a>
         <a href="https://github.com/nrepesh" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub</a>
+        <a href="../resume/nrepesh-joshi-resume.pdf"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Resume</a>
       </div>
       <p class="footer-copy">&copy; 2026 Nrepesh Joshi</p>
     </div>
   </footer>
 
-  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/main.js?v=3"></script>
 </body>
 </html>

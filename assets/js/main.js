@@ -45,23 +45,47 @@
   }
 
   // --- Mobile hamburger ---
+  // The open/closed state used to live only in CSS classes, so a screen reader
+  // announced "Toggle menu, button" whether the menu was open or shut - and on
+  // a phone this button is the only route to every other page on the site.
+  // Routing every state change through setMenu() keeps aria-expanded from
+  // drifting out of sync with the DOM, which is what happens when the attribute
+  // is set at one call site and forgotten at the other three.
   var hamburger = document.getElementById('hamburger');
   var mobileNav = document.getElementById('mobileNav');
   if (hamburger && mobileNav) {
+    var setMenu = function (open) {
+      hamburger.classList.toggle('open', open);
+      mobileNav.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+    };
+
     hamburger.addEventListener('click', function () {
-      hamburger.classList.toggle('open');
-      mobileNav.classList.toggle('open');
+      setMenu(!mobileNav.classList.contains('open'));
     });
-    mobileNav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        hamburger.classList.remove('open');
-        mobileNav.classList.remove('open');
+
+    // Index loop rather than NodeList.forEach: forEach is missing in exactly
+    // the browser generation that lacks IntersectionObserver, which line 16
+    // already feature-detects for.
+    var navLinks = mobileNav.querySelectorAll('a');
+    for (var n = 0; n < navLinks.length; n++) {
+      navLinks[n].addEventListener('click', function () {
+        setMenu(false);
       });
-    });
+    }
+
     document.addEventListener('click', function (e) {
       if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
-        hamburger.classList.remove('open');
-        mobileNav.classList.remove('open');
+        setMenu(false);
+      }
+    });
+
+    // Escape closes and returns focus to the control that opened it, so a
+    // keyboard user is not dropped at the top of the document.
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+        setMenu(false);
+        hamburger.focus();
       }
     });
   }
@@ -84,8 +108,11 @@
     }
 
     if (reduceMotion) {
+      // Text only. Appending the cursor here was the bug: .cursor carries
+      // `animation: blink 1s infinite`, so a user who asked for less motion got
+      // an indefinitely blinking element. The CSS now also stops the animation,
+      // but not creating the element at all is the cleaner half of the fix.
       typewriterEl.textContent = text;
-      typewriterEl.appendChild(cursor);
     } else {
       setTimeout(type, 600);
     }

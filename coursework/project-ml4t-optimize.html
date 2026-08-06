@@ -3,14 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio Optimization - ML4T Project 2</title>
+  <title>Portfolio Optimization — ML4T Project 2 — Nrepesh Joshi</title>
   <meta name="description" content="Project 2 from CS 7646: Optimizing stock portfolio allocations using SciPy to maximize Sharpe ratio." />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Portfolio Optimization - ML4T Project 2" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Portfolio Optimization — ML4T Project 2 — Nrepesh Joshi" />
   <meta property="og:description" content="Project 2 from CS 7646: Optimizing stock portfolio allocations using SciPy to maximize Sharpe ratio." />
   <meta property="og:url" content="https://nrepesh.github.io/portfolio2026/coursework/project-ml4t-optimize.html" />
   <meta property="og:image" content="https://nrepesh.github.io/portfolio2026/images/og-card.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://nrepesh.github.io/portfolio2026/coursework/project-ml4t-optimize.html" />
+  <meta property="og:site_name" content="Nrepesh Joshi" />
+  <meta property="og:image:alt" content="Nrepesh Joshi - machine learning, software and physics portfolio" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg" />
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0A0A0F" />
   <link rel="stylesheet" href="../assets/css/main.css" />
   <noscript><style>[data-aos]{opacity:1;transform:none}</style></noscript>
 </head>
@@ -32,26 +40,26 @@ c14.7002 -44.7998 84.7002 -29.7998 84.7002 -29.7998c0 -21 0.299805 -55.2002 0.29
 c1.2998 1.30078 3.59961 0.600586 5.2002 -1c1.69922 -1.89941 2 -4.19922 0.699219 -5.19922c-1.2998 -1.30078 -3.59961 -0.600586 -5.19922 1c-1.7002 1.89941 -2 4.19922 -0.700195 5.19922zM86.4004 103.2c0.699219 1 2.2998 1.2998 4.2998 0.700195
 c2 -1 3 -2.60059 2.2998 -3.90039c-0.700195 -1.40039 -2.7002 -1.7002 -4.2998 -0.700195c-2 1 -3 2.60059 -2.2998 3.90039zM118.8 67.5996c1.2998 1.60059 4.2998 1.30078 6.5 -1c2 -1.89941 2.60059 -4.89941 1.2998 -6.19922
 c-1.2998 -1.60059 -4.19922 -1.30078 -6.5 1c-2.2998 1.89941 -2.89941 4.89941 -1.2998 6.19922zM107.4 82.2998c1.59961 1.2998 4.19922 0.299805 5.59961 -2c1.59961 -2.2998 1.59961 -4.89941 0 -6.2002c-1.2998 -1 -4 0 -5.59961 2.30078
-c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
+c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol><symbol id="i-download" viewBox="0 0 512 512"><path d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24z"/></symbol></svg>
 
-  <nav class="nav" id="nav">
+  <nav class="nav" id="nav" aria-label="Main">
     <div class="nav-inner">
       <a href="../index.html" class="nav-logo">Nrepesh Joshi</a>
       <div class="nav-links">
         <a href="../pages/about.html">About Me</a>
-        <a href="../pages/coursework.html" class="active">Coursework</a>
+        <a href="../pages/coursework.html" class="active" aria-current="page">Coursework</a>
         <a href="../pages/ml.html">Machine Learning</a>
         <a href="../pages/software.html">Software</a>
         <a href="../pages/physics.html">Physics</a>
       </div>
-      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
     </div>
   </nav>
-  <div class="nav-mobile" id="mobileNav">
-    <a href="../pages/about.html">About Me</a><a href="../pages/coursework.html" class="active">Coursework</a><a href="../pages/ml.html">ML</a><a href="../pages/software.html">Software</a><a href="../pages/physics.html">Physics</a>
-  </div>
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <a href="../pages/about.html">About Me</a><a href="../pages/coursework.html" class="active" aria-current="page">Coursework</a><a href="../pages/ml.html">Machine Learning</a><a href="../pages/software.html">Software</a><a href="../pages/physics.html">Physics</a>
+  </nav>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
   <header class="page-header">
     <p class="section-label">// ML4T - Project 2</p>
@@ -87,31 +95,32 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
     <h2 class="section-title">Results</h2>
     <div class="table-scroll">
       <table class="results-table">
+        <caption>Optimized allocation against equal weighting</caption>
         <thead>
           <tr>
-            <th>Metric</th>
-            <th>Optimized Portfolio</th>
-            <th>Equal-Weighted</th>
+            <th scope="col">Metric</th>
+            <th scope="col">Optimized Portfolio</th>
+            <th scope="col">Equal-Weighted</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Cumulative return</td>
+            <th scope="row">Cumulative return</th>
             <td class="hl">+32.6%</td>
             <td>+18.4%</td>
           </tr>
           <tr>
-            <td>Sharpe ratio (252-day)</td>
+            <th scope="row">Sharpe ratio (252-day)</th>
             <td class="hl">2.06</td>
             <td>1.28</td>
           </tr>
           <tr>
-            <td>Volatility (daily std)</td>
+            <th scope="row">Volatility (daily std)</th>
             <td>0.0103</td>
             <td>0.0137</td>
           </tr>
           <tr>
-            <td>Max allocation</td>
+            <th scope="row">Max allocation</th>
             <td>JPM (43%)</td>
             <td>20% each</td>
           </tr>
@@ -121,7 +130,7 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
   </section>
 
   <section class="section pt-0" data-aos="fade-up">
-    <p class="project-note">Maximizing Sharpe rewards consistency where maximizing return concentrates everything in one name, and the optimizer is only ever as forward-looking as the data behind it.</p>
+    <p class="project-note">The optimizer put 43% into one name and still cut volatility below equal weight, which is only impressive until you remember it was fitted on the period it was scored on.</p>
   </section>
 
   <section class="section pt-0" data-aos="fade-up">
@@ -146,11 +155,12 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
       <div class="footer-social">
         <a href="https://www.linkedin.com/in/nrepeshjoshi" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> LinkedIn</a>
         <a href="https://github.com/nrepesh" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub</a>
+        <a href="../resume/nrepesh-joshi-resume.pdf"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Resume</a>
       </div>
       <p class="footer-copy">&copy; 2026 Nrepesh Joshi</p>
     </div>
   </footer>
 
-  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/main.js?v=3"></script>
 </body>
 </html>

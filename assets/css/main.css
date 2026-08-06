@@ -2,15 +2,19 @@
    Was three families from fonts.googleapis.com: an extra origin, a DNS and TLS
    handshake, and a render-blocking stylesheet on every page. Same woff2 files,
    served from this origin. Latin subset only - nothing in the content uses the
-   latin-ext range. font-display:swap preserved.                                */
-@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/inter-400-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/inter-500-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/inter-600-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/inter-700-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/jetbrains-mono-400-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/jetbrains-mono-500-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/space-grotesk-500-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/space-grotesk-700-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+   latin-ext range. font-display:swap preserved.
+
+   These are VARIABLE fonts. The original download saved the same file once per
+   weight - eight @font-face rules pointing at eight URLs, of which only three
+   were distinct files (verified byte-identical by hash). The browser fetched
+   each URL separately: ~225 KB over 6 requests for ~100 KB of unique bytes.
+   One face per family with a weight range renders identically and downloads
+   each file once. Confirmed the wght axis actually responds by rasterising
+   each family at 400/500/700 and comparing ink coverage - JetBrains Mono needs
+   the pixel test rather than an advance-width test, being monospace.          */
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('../fonts/inter-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 900;font-display:swap;src:url('../fonts/jetbrains-mono-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:100 900;font-display:swap;src:url('../fonts/space-grotesk-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
 
 /* ============================================
    Nrepesh Joshi — Portfolio 2026
@@ -20,20 +24,52 @@
 /* --- CSS Variables --- */
 :root {
   --bg: #0A0A0F;
+  --bg-rgb: 10, 10, 15;
   --surface: #111118;
   --border: #1E1E2E;
   --text-primary: #F0F0F0;
   --text-secondary: #A09897;
+  /* Dim text used to be --text-secondary multiplied by an opacity, which put six
+     rules between 3.15:1 and 4.34:1 - under AA. A real token measures 5.31:1 on
+     --bg, so contrast is a value that can be checked rather than a product of two. */
+  --text-muted: #8A8382;
   --accent: #C9FB50;
   --accent-rgb: 201, 251, 80;
   --accent-dim: rgba(201, 251, 80, 0.08);
   --accent-glow: 0 0 20px rgba(201, 251, 80, 0.18);
+  /* The one palette colour that used to be hardcoded, so it could not be
+     restyled from here. Lightened from #C44444 (4.0:1) to clear AA. */
+  --negative: #D25A5A;
   --max-width: 1100px;
   --radius: 8px;
   --nav-height: 64px;
   --font-headline: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+
+  /* --- Type scale ---------------------------------------------------------
+     Was 13 static sizes, nine of them inside a 5.3px band, with three pairs
+     less than half a pixel apart. Collapsed to six steps; every merge moves a
+     value by =<0.9px. The clamp() ramp below is unchanged - it was already a
+     coherent four-step scale and is the part of the type system that worked. */
+  --fs-xs:   0.75rem;    /* 12px    mono meta, tags, pills, captions */
+  --fs-sm:   0.875rem;   /* 14px    nav, card body, inline links     */
+  --fs-md:   1rem;       /* 16px    body, lead paragraphs            */
+  --fs-lg:   1.125rem;   /* 18px    edu-card headings                */
+  --fs-xl:   1.3125rem;  /* 21px    timeline headings, section-title */
+  --fs-2xl:  1.625rem;   /* 26px    stat numerals                    */
+
+  /* --- Spacing scale ------------------------------------------------------
+     Was 28 distinct values, 16 off the 8px grid and 7 off even a 4px grid. */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-6: 24px;  --space-8: 32px;  --space-10: 40px; --space-14: 56px;
+  --space-20: 80px;
+
+  /* --- Measure ------------------------------------------------------------
+     Was seven unnamed content widths between 600 and 820px. */
+  --measure-narrow: 600px;
+  --measure: 780px;
+  --measure-wide: 820px;
 }
 
 /* --- Reset --- */
@@ -59,13 +95,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Landing page: lock to viewport height, no scroll */
+/* Landing page: fills the viewport, but never traps content ------------------
+   Was `height:100vh` + `overflow:hidden`, which is a hard clip with no escape.
+   Content fits at normal desktop zoom, so this looked safe - but 100vh resolves
+   to the LARGE viewport on mobile, i.e. the height the page would have if the
+   browser toolbar were collapsed. Under a visible toolbar the real viewport is
+   ~110px shorter, the footer lands below it, and overflow:hidden means there is
+   no way to scroll to it. Measured: footer bottom 657px, visible area 557px,
+   scrollable by 0px. What was unreachable is the entire contact surface -
+   email, LinkedIn, GitHub. Browser zoom at 200% does the same thing.
+
+   `min-height:100svh` uses the SMALL viewport (toolbar visible), so the page
+   still fills the screen, and dropping the clip lets anything that outgrows it
+   scroll normally. No visible change at any size where content already fits.  */
 body.landing-page {
   min-height: 100vh;
-  height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 body.landing-page .hero-compact {
   flex: 1 1 auto;
@@ -176,12 +223,21 @@ h1, h2, h3, h4 {
 }
 
 /* Hamburger */
+/* Was 32x24 - the only route to every other page on a phone, at roughly half
+   the 44x44 guidance and exactly on the 24x24 AA floor. The bars are unchanged
+   at 24x2; the hit area grew around them, and the negative margin keeps them
+   optically where they were against the nav's right edge. */
 .nav-hamburger {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   cursor: pointer;
   padding: 4px;
+  min-width: 44px;
+  min-height: 44px;
+  margin-right: -6px;
   background: none;
   border: none;
 }
@@ -294,11 +350,17 @@ body.landing-page {
 }
 
 /* Uniform dark wash so white text reads against the light image */
+/* background.jpg is a light render whose centre is a near-white glow, and it is
+   positioned center/center - so centred hero text sits on the brightest part of
+   the image by construction. Sampling the actual pixels behind the subtitle
+   gives rgb(228-236); through a 0.6 wash that is 4.42:1 at 1920x1080 and
+   4.46:1 at 390x844, both under AA. 0.68 clears every hero element even over a
+   pure-white pixel, and the difference is barely perceptible. */
 body.landing-page::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: rgba(10, 10, 15, 0.6);
+  background: rgba(var(--bg-rgb), 0.68);
   pointer-events: none;
   z-index: 0;
 }
@@ -310,9 +372,11 @@ body.landing-page .footer {
   z-index: 1;
 }
 
-/* Brighter subtitle so it reads on the darkened image */
+/* This rule exists to brighten the subtitle for the image behind it, but the
+   12% transparency dragged it BELOW plain --text-primary - the mitigation was
+   the thing breaking it. Solid, and the deeper wash above does the work. */
 body.landing-page .hero-subtitle {
-  color: rgba(240, 240, 245, 0.88);
+  color: var(--text-primary);
 }
 
 /* Subtle depth: hero content pops forward of the background image */
@@ -368,13 +432,13 @@ body.landing-page .hero-cta .btn {
 .hero-subtitle {
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: var(--text-secondary);
-  margin-bottom: 40px;
+  margin-bottom: var(--space-10);
   font-weight: 400;
 }
 
 .hero-cta {
   display: flex;
-  gap: 16px;
+  gap: var(--space-4);
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -412,7 +476,9 @@ body.landing-page .hero-cta .btn {
   color: var(--text-primary);
   background: transparent;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  /* border-color was missing, so .btn-secondary's border snapped to accent
+     while its background faded in. */
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s;
   text-decoration: none;
 }
 
@@ -451,11 +517,30 @@ body.landing-page .hero-cta .btn {
 
 .section-label {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   color: var(--accent);
   text-transform: lowercase;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-2);
   font-weight: 400;
+}
+
+/* Standfirst under the page title. The three section pages went h1 -> invisible
+   h2 -> grid, so nothing told the reader that every card on them is dated
+   2019-2020 - and ml.html was the landing page's primary call to action.
+   Aligned to the grid below rather than centred, so it reads as a lead line. */
+.page-intro {
+  max-width: var(--max-width);
+  margin: 0 auto var(--space-8);
+  padding-inline: var(--space-6);
+  color: var(--text-secondary);
+  font-size: var(--fs-md);
+  text-wrap: pretty;
+}
+
+.page-intro a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .page-header h1 {
@@ -653,17 +738,18 @@ body.landing-page .hero-cta .btn {
 .class-meta-row .back-link:hover {
   color: var(--accent);
 }
+/* max-width was 760px, but every one of the 14 detail pages writes
+   class="class-description prose", and .prose (780px, later, same specificity)
+   always won - two measure values 20px apart, one of which never applied. */
 .class-description {
   color: var(--text-secondary);
-  font-size: 1rem;
-  max-width: 760px;
-  margin-bottom: 18px;
+  font-size: var(--fs-md);
+  margin-bottom: var(--space-4);
 }
 .honor-code-note {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  opacity: 0.75;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
 }
 
 /* Slim link to a class syllabus PDF, centered on an accent hairline that
@@ -712,8 +798,8 @@ body.landing-page .hero-cta .btn {
   color: var(--accent);
 }
 .syllabus-inline .syllabus-meta {
-  opacity: 0.65;
-  padding-left: 10px;
+  color: var(--text-muted);
+  padding-left: var(--space-3);
   border-left: 1px solid var(--border);
 }
 
@@ -721,11 +807,10 @@ body.landing-page .hero-cta .btn {
 .coursework-empty {
   grid-column: 1 / -1;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  opacity: 0.7;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
   text-align: center;
-  padding: 32px 24px;
+  padding: var(--space-8) var(--space-6);
   border: 1px dashed var(--border);
   border-radius: var(--radius);
 }
@@ -1028,13 +1113,17 @@ body.landing-page .hero-cta .btn {
   margin-top: auto;
 }
 
+/* Was a 23px-tall target with no padding - on the three section pages it was
+   the ONLY way to open a project. 44px tall now; the text position is
+   unchanged, the hit area grew around it. */
 .project-links a {
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   font-weight: 500;
   color: var(--text-secondary);
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  min-height: 44px;
   transition: color 0.2s;
 }
 
@@ -1093,32 +1182,39 @@ body.landing-page .hero-cta .btn {
    the mailto and "More info" links stay independently clickable. Scoped to
    .coursework-grid so the ml/software/physics cards are untouched.
    Trade-off: the stretched overlay means card text is not selectable.        */
-.coursework-grid .project-card {
+/* Unscoped from .coursework-grid ------------------------------------------
+   This pattern only ever applied on the two class pages. The three section
+   pages (ml, software, physics) render the same .project-card with the same
+   global :hover lift, accent border and glow - but had no .project-card-link
+   anywhere, so 30 cards looked clickable and were not; the only real target
+   was a 23px-tall text link. Dropping the scope makes the stretched hit area
+   work wherever a .project-card-link is present. */
+.project-card {
   position: relative;
 }
 
-.coursework-grid .project-card-link {
+.project-card-link {
   text-decoration: none;
   color: inherit;
   transition: color 0.2s;
 }
 
-.coursework-grid .project-card-link::after {
+.project-card-link::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
 }
 
-.coursework-grid .project-card:hover .project-card-link {
+.project-card:hover .project-card-link {
   color: var(--accent);
 }
 
-.coursework-grid .project-links {
+.project-links {
   position: relative;
   z-index: 2;
   flex-wrap: wrap;
-  row-gap: 8px;
+  row-gap: var(--space-2);
 }
 
 /* Explicit affordance, so the card reads as clickable instead of relying on
@@ -1128,24 +1224,24 @@ body.landing-page .hero-cta .btn {
   transition: color 0.2s, gap 0.2s;
 }
 
-.coursework-grid .project-card:hover .project-more {
+.project-card:hover .project-more {
   color: var(--accent);
   gap: 10px;
 }
 
 /* Keyboard parity: tabbing to the title should light the card the same way
    hovering does, and show a visible ring on the stretched hit area. */
-.coursework-grid .project-card:focus-within {
+.project-card:focus-within {
   border-color: var(--accent);
   box-shadow: var(--accent-glow);
 }
 
-.coursework-grid .project-card:focus-within .project-card-link,
-.coursework-grid .project-card:focus-within .project-more {
+.project-card:focus-within .project-card-link,
+.project-card:focus-within .project-more {
   color: var(--accent);
 }
 
-.coursework-grid .project-card-link:focus-visible::after {
+.project-card-link:focus-visible::after {
   outline: 2px solid var(--accent);
   outline-offset: -2px;
   border-radius: var(--radius);
@@ -1160,7 +1256,11 @@ body.header-strip .page-header {
   margin: 0;
   padding: 160px 0 100px;
   position: relative;
-  background-image: url('../../images/background.jpg');
+  /* Was background.jpg (2560x2560, 172 KB) driving a band roughly 1600x420 that
+     is then covered by a 72% black wash - 6.55 Mpx decoded, about 26 MB of RGBA,
+     for detail that does not survive the wash. This derivative is 1600x560.
+     The landing page still uses the full-resolution original, where it earns it. */
+  background-image: url('../../images/background-strip.jpg');
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;
@@ -1208,9 +1308,11 @@ body.header-strip .project-grid {
 }
 
 /* Landing footer: single-row, semi-transparent bar — image shows through dimly */
+/* Same problem as the hero wash: the footer bar sits over the light lower band
+   of background.jpg, putting its links at 3.95:1. 0.85 clears AA. */
 body.landing-page .footer {
   padding: 10px 24px;
-  background: rgba(10, 10, 15, 0.78);
+  background: rgba(var(--bg-rgb), 0.85);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
@@ -1234,6 +1336,13 @@ body.landing-page .footer-social {
 }
 body.landing-page .footer::before {
   display: none; /* drop the gradient divider — redundant on the bar variant */
+}
+/* --text-muted is calibrated against the flat --bg. On the landing page the
+   footer bar sits over the light lower band of background.jpg, so the effective
+   ground is lighter and the muted grey lands at 4.19:1. Measured over the
+   brightest pixel behind it, --text-secondary holds 5.15:1 here. */
+body.landing-page .footer-copy {
+  color: var(--text-secondary);
 }
 @media (max-width: 640px) {
   body.landing-page .footer-copy { display: none; }
@@ -1298,16 +1407,16 @@ body.landing-page .footer::before {
   color: var(--accent);
 }
 
+/* Was --text-secondary at 0.6 opacity = 3.15:1, the worst on the site, on all
+   22 pages. Six rules used stacked opacity this way; all now use --text-muted. */
 .footer-copy {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  opacity: 0.6;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
 }
 
-/* --- AOS overrides (if using AOS CDN) --- */
-[data-aos] {
-  transition-duration: 600ms;
-}
+/* The AOS CDN was removed and replaced with two local rules further down; this
+   block was left behind and is fully overridden by the `transition` shorthand
+   there, which resets transition-duration. Deleted. */
 
 /* --- Utilities --- */
 .sr-only {
@@ -1347,11 +1456,40 @@ body.landing-page .footer::before {
   transform: none;
 }
 
+/* Reduced motion --------------------------------------------------------
+   This block used to cover [data-aos] only, while three animations ran
+   regardless. The typewriter is the clearest case: main.js correctly skips the
+   typing for reduced-motion users and then still appends the cursor element,
+   which carries `animation: blink 1s infinite` - so someone who asked for less
+   motion got an indefinitely blinking element on the homepage.
+
+   The .hero-content rule matters twice over: heroFadeIn starts at opacity:0 and
+   depends on the animation to reveal it, so suppressing animation without
+   restoring opacity would leave the entire hero invisible. */
 @media (prefers-reduced-motion: reduce) {
   [data-aos] {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-content > * {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .hero-tag .cursor {
+    animation: none;
+    opacity: 1;
+  }
+
+  .cursor-halo {
+    display: none;
   }
 }
 
@@ -1395,18 +1533,28 @@ body.landing-page .footer::before {
    ========================================================================== */
 
 .section-title {
-  font-size: 1.3rem;
-  margin-bottom: 16px;
+  font-size: var(--fs-xl);
+  margin-bottom: var(--space-4);
 }
 
 /* Breadcrumb separator between crumb links */
+/* Was var(--border) - a border token used as a text colour, measuring 1.2:1.
+   28 separators across 14 pages, invisible to everyone, while screen readers
+   still announced "slash". Now legible, and marked decorative so AT skips it. */
 .crumb-sep {
-  color: var(--border);
+  color: var(--text-muted);
 }
 
-/* Inline SVG sprite holder, hidden but present in the DOM */
+/* Inline SVG sprite holder, hidden but present in the DOM.
+   display:none works everywhere current, but the historically safe pattern for
+   a <use> sprite is zero-size + overflow hidden - some engines have declined to
+   resolve <use> into a display:none subtree, which would wipe every icon on
+   every page at once. Cheap insurance for a single-point-of-failure element. */
 .icon-sprite {
-  display: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 /* Arrow/chevron icons that should track their label's size */
@@ -1416,24 +1564,22 @@ body.landing-page .footer::before {
 
 /* Measure for body copy on detail pages */
 .prose {
-  max-width: 780px;
+  max-width: var(--measure);
 }
 
 /* "// code & reports shared on request" note, and figure captions */
 .meta-note {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  opacity: 0.75;
-  margin-bottom: 8px;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
 }
 
 .figure-caption {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  opacity: 0.75;
-  margin-top: 10px;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-top: var(--space-3);
 }
 
 .figure-img {
@@ -1444,14 +1590,27 @@ body.landing-page .footer::before {
 }
 
 /* Stat tile row on a detail page */
+/* Was grid-template-columns with no display:grid, so it was inert unless
+   .bio-stats supplied the grid - hence the three-class incantation
+   "bio-stats stat-row stat-row-single" at every call site, two of whose
+   declarations override each other. Worse: at equal specificity but 900 lines
+   later, it beat .bio-stats' own max-width:768px rule at EVERY width, so three
+   stat tiles stayed in three columns on a 375px phone (~102px each, wrapping
+   the labels). Self-sufficient now, with its own breakpoint after it. */
 .stat-row {
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 24px;
-  max-width: 600px;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  max-width: var(--measure-narrow);
 }
 
 .stat-row-single {
   grid-template-columns: repeat(1, 1fr);
+}
+
+@media (max-width: 768px) {
+  .stat-row:not(.stat-row-single) { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* --- Results tables ------------------------------------------------------ */
@@ -1490,6 +1649,34 @@ body.landing-page .footer::before {
   text-align: left;
 }
 
+/* The label column is now <th scope="row"> rather than <td>, so a screen
+   reader announces "Benchmark, Cum. Return, 1.23%" instead of a bare figure
+   with no indication of which strategy it belongs to. These two rules keep it
+   rendering exactly as the <td> did - the <th> defaults (bold, centred) are
+   what would otherwise change. */
+.results-table tbody th[scope="row"] {
+  padding: 10px 12px;
+  text-align: left;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-transform: none;
+}
+
+/* Paired in-sample / out-of-sample tables had byte-identical headers and no
+   accessible name, so they were two anonymous tables in a screen reader's
+   table list - on pages where that distinction is the entire point. The
+   caption replaces a <p> that sat directly above and styles to match it. */
+.results-table caption {
+  caption-side: top;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--accent);
+  margin-bottom: var(--space-2);
+}
+
 .results-table td {
   padding: 10px 12px;
   color: var(--text-secondary);
@@ -1507,17 +1694,34 @@ body.landing-page .footer::before {
 }
 
 .results-table td.neg {
-  color: #C44444;
+  color: var(--negative);
   font-weight: 600;
 }
 
-/* --- Section spacing overrides ------------------------------------------- */
+/* --- Section spacing overrides -------------------------------------------
+   These six were derived from whatever the 424 removed inline styles happened
+   to contain, not designed as a scale - directional but not axial (.pt-0 with
+   no .pb-0, .mb-16 with no .mt-16), and offering only 0/8/16, so the reachable
+   inter-section gaps were {0, 8, 16, 48, 56, 96}: non-monotonic and unrelated
+   to any scale. That gap is the pressure that produced the off-grid values
+   elsewhere. Completed on the token scale below; the original six keep their
+   exact values, so nothing that uses them moves. */
 .pt-0 { padding-top: 0; }
-.pt-8 { padding-top: 8px; }
-.pb-8 { padding-bottom: 8px; }
-.mt-8 { margin-top: 8px; }
-.mb-8 { margin-bottom: 8px; }
-.mb-16 { margin-bottom: 16px; }
+.pb-0 { padding-bottom: 0; }
+.pt-8 { padding-top: var(--space-2); }
+.pb-8 { padding-bottom: var(--space-2); }
+.pt-16 { padding-top: var(--space-4); }
+.pb-16 { padding-bottom: var(--space-4); }
+.pt-24 { padding-top: var(--space-6); }
+.pb-24 { padding-bottom: var(--space-6); }
+
+.mt-8 { margin-top: var(--space-2); }
+.mb-8 { margin-bottom: var(--space-2); }
+.mt-16 { margin-top: var(--space-4); }
+.mb-16 { margin-bottom: var(--space-4); }
+.mt-24 { margin-top: var(--space-6); }
+.mb-24 { margin-bottom: var(--space-6); }
+
 .accent { color: var(--accent); }
 
 /* --- Keyboard focus -------------------------------------------------------
@@ -1537,7 +1741,46 @@ body.landing-page .footer::before {
   outline-offset: 2px;
 }
 
-/* Cards already draw their own ring on the stretched hit area */
-.coursework-grid .project-card-link:focus-visible {
+/* Cards already draw their own ring on the stretched hit area. Unscoped along
+   with the rest of the stretched-link pattern, or the section-page cards would
+   draw both this global ring and the ::after one. */
+.project-card-link:focus-visible {
   outline: none;
+}
+
+/* --- Mobile vertical rhythm -----------------------------------------------
+   Every one of the existing media queries changes only grid-template-columns
+   or display - not a single padding or font-size responds, so the vertical
+   rhythm was frozen at desktop values all the way down to 320px. The worst
+   case was body.header-strip .page-header at 160px top + 100px bottom: 260px
+   of fixed empty band, 39% of a 667px phone viewport, before any content.
+
+   Placed last so it lands after the rules it moderates, and kept to the two
+   breakpoints already used most (768 for stacking, 900 for grids) rather than
+   adding to the four that were in play.                                      */
+@media (max-width: 768px) {
+  body.header-strip .page-header {
+    padding: 104px 0 56px;
+  }
+
+  .page-header {
+    padding: 96px var(--space-6) var(--space-10);
+  }
+
+  .hero {
+    padding: 88px var(--space-6) var(--space-10);
+  }
+
+  .section {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-8);
+  }
+
+  .footer {
+    padding: var(--space-8) var(--space-6) var(--space-6);
+  }
+
+  body.header-strip .project-grid {
+    margin-top: var(--space-8);
+  }
 }
