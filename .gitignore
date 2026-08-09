@@ -1,3 +1,8 @@
 __pycache__/
 *.pyc
 .idea/
+
+# Resume source of truth - edited in Word, never published
+*.docx
+*.doc
+~$*
