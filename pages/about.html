@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About — Nrepesh Joshi</title>
-  <meta name="description" content="Nrepesh Joshi — building ML at TackleAI since 2020, from founding engineer to team lead. Experience, Georgia Tech OMSCS coursework, education and skills." />
+  <meta name="description" content="Nrepesh Joshi — ML team lead at TackleAI since 2020, building on-premise document and LLM systems. Experience, Georgia Tech OMSCS coursework, education and skills." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="About — Nrepesh Joshi" />
-  <meta property="og:description" content="Nrepesh Joshi — building ML at TackleAI since 2020, from founding engineer to team lead. Experience, Georgia Tech OMSCS coursework, education and skills." />
+  <meta property="og:description" content="Nrepesh Joshi — ML team lead at TackleAI since 2020, building on-premise document and LLM systems. Experience, Georgia Tech OMSCS coursework, education and skills." />
   <meta property="og:url" content="https://nrepesh.github.io/portfolio2026/pages/about.html" />
   <meta property="og:image" content="https://nrepesh.github.io/portfolio2026/images/og-card.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -89,7 +89,7 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
     <div class="bio">
       <img src="../images/nrepesh.jpg" alt="Nrepesh Joshi" class="bio-photo" width="640" height="640" />
       <div class="bio-text">
-        <p>Document-understanding and LLM systems for healthcare and legal work, where the inputs are messy scans and the compliance bar is HIPAA. At TackleAI since 2020, from founding ML engineer to team lead. The hard part is rarely the model; it is making it fast and cheap enough to ship.</p>
+        <p>Document-understanding and LLM systems for legal and healthcare work, where the inputs are messy scans and the compliance bar is HIPAA. Second hire on the ML team at TackleAI in 2020, now leading it, with the whole stack running on-premise so the records it processes never reach a hosted model. The hard part is rarely the model; it is making it fast and cheap enough to ship.</p>
         <div class="bio-stats">
           <div class="bio-stat">
             <span class="bio-stat-num">5</span>
@@ -97,7 +97,7 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
           </div>
           <div class="bio-stat">
             <span class="bio-stat-num">90%</span>
-            <span class="bio-stat-label">Q4 revenue driven</span>
+            <span class="bio-stat-label">revenue in one quarter</span>
           </div>
           <div class="bio-stat">
             <span class="bio-stat-num">3M+</span>
@@ -123,28 +123,33 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
     </div>
     <div class="timeline" data-aos="fade-up">
       <div class="timeline-item">
-        <h3>ML Team Lead</h3>
+        <h3>Machine Learning Team Lead</h3>
         <p class="timeline-date">TackleAI · Mar 2023 – Present</p>
         <ul>
-          <li>Lead a team of 5 ML engineers driving 90% of revenue in a critical quarter</li>
-          <li>Architected pipelines processing 3M+ medical records under HIPAA compliance</li>
-          <li>Implemented LayoutLMv3 for intelligent document understanding</li>
-          <li>Built 3 internal Python packages, reducing team development time by 70%</li>
-          <li>Achieved 25x LLM inference speed improvement through optimization</li>
-          <li>Designed async gRPC/WebSocket architecture for real-time processing</li>
-          <li>Developed proprietary OCR engine achieving 94% accuracy</li>
-          <li>Improved object detection by 30% via synthetic data augmentation</li>
+          <li>Hired and lead a team of 5 ML engineers driving 90% of revenue in a critical quarter</li>
+          <li>Fine-tuned and benchmarked TackleVision's OCR engine to 86.1 on olmOCR-bench across 8,413 tests</li>
+          <li>Shipped the company's first production LLM systems, replacing LangChain and vector DBs for a 25x speedup</li>
+          <li>Built the team's ML platform and shared packages for OCR, file handling and agentic LLM templates</li>
+          <li>Built an autolabeler on idle overnight GPU capacity and lifted object detection 30% with synthetic data</li>
+          <li>Stood up air-gapped on-premise infrastructure at a law client's site</li>
+          <li>Scaled computer vision and NLP redaction models to 250K+ pages per day in production</li>
+          <li>Own the production bar for AI-assisted code, cutting per-document processing from 2 hours to 15 minutes</li>
+          <li>Architected pipelines processing 3M+ patient records under HIPAA, classifying documents with LayoutLMv3</li>
+          <li>Designed async gRPC and WebSocket architecture serving multimodal LLMs on vLLM in real time</li>
         </ul>
       </div>
       <div class="timeline-item">
-        <h3>Founding ML Engineer</h3>
+        <h3>Machine Learning Engineer</h3>
         <p class="timeline-date">TackleAI · Oct 2020 – Mar 2023</p>
         <ul>
-          <li>Built 85% of core computer vision models from the ground up</li>
-          <li>Created image similarity search with 92% accuracy and 84.5% speed increase</li>
-          <li>Developed DistilBERT NER system achieving F1 score of 97%</li>
-          <li>Led Triton Inference Server migration resulting in 10x vRAM reduction</li>
-          <li>Reduced manual labeling effort by 85% using HDBSCAN clustering</li>
+          <li>Trained the bounding-box, instance and semantic segmentation models that carried the platform through its seed round</li>
+          <li>Built image retrieval on feature-extractor embeddings and custom LSH, holding 92% accuracy across 1M+ images</li>
+          <li>Ported a Kinesis video pipeline from Python to Java, taking a lagging feed to real time</li>
+          <li>Consolidated a multi-model inference pipeline into a single ensemble call, 75% faster</li>
+          <li>Fine-tuned spaCy DistilBERT for named entity recognition, reaching an F1 of 97%</li>
+          <li>Migrated spaCy NLP models to Triton Server, cutting vRAM usage 10x</li>
+          <li>Reduced manual labeling 85% with HDBSCAN clustering and dimensionality reduction</li>
+          <li>Established CI/CD for gRPC and REST model deployment on AWS using ECS, ECR and Lambda</li>
         </ul>
       </div>
     </div>
@@ -164,9 +169,15 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
           <p class="edu-detail">Jan 2026 – Present</p>
         </div>
         <div class="edu-card">
+          <h3>Fourth Brain</h3>
+          <p class="edu-degree">MLOps and Systems Program, backed by Andrew Ng</p>
+          <p class="edu-detail">Nov 2021 – Feb 2022</p>
+        </div>
+        <div class="edu-card">
           <h3>Knox College</h3>
           <p class="edu-degree">BS Computer Science & Physics — Magna Cum Laude</p>
-          <p class="edu-detail">GPA: 3.77/4.0 · CS GPA: 4.0</p>
+          <p class="edu-detail">Sept 2016 – June 2020 · GPA: 3.77/4.0 · CS GPA: 4.0</p>
+          <p class="edu-detail">Scholarships: Ellen Browning Scripps, Service & Leadership, Knox Grant</p>
         </div>
       </div>
     </div>
@@ -217,14 +228,35 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
           <span class="skill-pill">TensorFlow</span>
           <span class="skill-pill">Keras</span>
           <span class="skill-pill">PyTorch</span>
-          <span class="skill-pill">HuggingFace</span>
+          <span class="skill-pill">Hugging Face</span>
           <span class="skill-pill">spaCy</span>
-          <span class="skill-pill">LangChain</span>
-          <span class="skill-pill">LlamaIndex</span>
-          <span class="skill-pill">OpenAI</span>
+          <span class="skill-pill">LayoutLMv3</span>
+          <span class="skill-pill">HDBSCAN</span>
           <span class="skill-pill">PCA</span>
           <span class="skill-pill">t-SNE</span>
           <span class="skill-pill">UMAP</span>
+        </div>
+      </div>
+      <div class="skills-category">
+        <h3>LLMs & GenAI</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">vLLM</span>
+          <span class="skill-pill">LangChain</span>
+          <span class="skill-pill">LlamaIndex</span>
+          <span class="skill-pill">OpenAI</span>
+          <span class="skill-pill">RAG</span>
+          <span class="skill-pill">Vector search</span>
+          <span class="skill-pill">Agentic workflows</span>
+        </div>
+      </div>
+      <div class="skills-category">
+        <h3>MLOps & Monitoring</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">MLflow</span>
+          <span class="skill-pill">Prometheus</span>
+          <span class="skill-pill">Grafana</span>
+          <span class="skill-pill">Label Studio</span>
+          <span class="skill-pill">Triton Server</span>
         </div>
       </div>
       <div class="skills-category">
@@ -243,11 +275,13 @@ c-1.60059 2.2998 -1.60059 4.89941 0 5.89941z"/></symbol></svg>
       <div class="skills-category">
         <h3>Cloud & Infra</h3>
         <div class="skill-pills">
-          <span class="skill-pill">AWS</span>
-          <span class="skill-pill">GCP</span>
+          <span class="skill-pill">On-premise</span>
+          <span class="skill-pill">Air-gapped</span>
           <span class="skill-pill">Linux</span>
           <span class="skill-pill">Docker</span>
           <span class="skill-pill">Kubernetes</span>
+          <span class="skill-pill">AWS</span>
+          <span class="skill-pill">GCP</span>
         </div>
       </div>
     </div>
