@@ -951,6 +951,16 @@ body.landing-page .hero-cta .btn {
   color: var(--accent);
 }
 
+/* Secondary card facts - GPA, honors, scholarships. Accent is reserved for the
+   date line, so a second accent-coloured row would compete with it. */
+.edu-card .edu-note {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-top: var(--space-2);
+  line-height: 1.5;
+}
+
 /* --- Community --- */
 .community-list {
   display: grid;
