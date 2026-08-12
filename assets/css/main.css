@@ -738,6 +738,10 @@ body.landing-page .hero-cta .btn {
 .class-meta-row .back-link:hover {
   color: var(--accent);
 }
+.class-overview .class-meta-row .back-link {
+  font-size: var(--fs-md);
+  font-weight: 600;
+}
 /* max-width was 760px, but every one of the 14 detail pages writes
    class="class-description prose", and .prose (780px, later, same specificity)
    always won - two measure values 20px apart, one of which never applied. */
