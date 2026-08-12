@@ -547,6 +547,40 @@ body.landing-page .hero-cta .btn {
   font-size: clamp(2rem, 4vw, 3rem);
 }
 
+.class-back-link {
+  min-height: 44px;
+  margin-bottom: var(--space-6);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.class-back-link .icon {
+  width: 36px;
+  height: 36px;
+  padding: 10px;
+  color: var(--accent);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.class-back-link:hover {
+  color: var(--accent);
+}
+
+.class-back-link:hover .icon {
+  border-color: var(--accent);
+  transform: translateX(-2px);
+  box-shadow: var(--accent-glow);
+}
+
 /* --- Section --- */
 .section {
   padding: 40px 24px 56px;
