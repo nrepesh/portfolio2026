@@ -637,11 +637,6 @@ body.landing-page .hero-cta .btn {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   text-align: center;
-  transition: border-color 0.2s, transform 0.2s;
-}
-.bio-stat:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
 }
 .bio-stat-num {
   font-family: var(--font-headline);
@@ -959,13 +954,6 @@ body.landing-page .hero-cta .btn {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 28px;
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-
-.edu-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-4px);
-  box-shadow: var(--accent-glow);
 }
 
 .edu-card h3 {
@@ -1010,12 +998,6 @@ body.landing-page .hero-cta .btn {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  transition: border-color 0.2s, transform 0.2s;
-}
-
-.community-item:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
 }
 
 .community-item i {
