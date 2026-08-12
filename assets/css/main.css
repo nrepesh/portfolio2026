@@ -294,6 +294,47 @@ h1, h2, h3, h4 {
   color: var(--text-primary);
 }
 
+/* Fixed shortcuts on inner pages. The translucent surface changes subtly as
+   it passes over the patterned header and the plain page background. */
+.quick-links-rail {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 900;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transform: translateY(-50%);
+  background: rgba(17, 17, 24, 0.76);
+  border: 1px solid rgba(160, 152, 151, 0.22);
+  border-right: 0;
+  border-radius: 10px 0 0 10px;
+  box-shadow: -8px 8px 28px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.quick-links-rail a {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  color: var(--text-secondary);
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.quick-links-rail a:hover {
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.quick-links-rail .icon {
+  width: 17px;
+  height: 17px;
+}
+
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -1463,7 +1504,7 @@ body.landing-page .footer-copy {
 
 /* --- Print hidden --- */
 @media print {
-  .nav, .footer { display: none; }
+  .nav, .footer, .quick-links-rail { display: none; }
 }
 
 /* --- Reveal on scroll ------------------------------------------------------
