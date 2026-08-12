@@ -9,6 +9,46 @@
   // Honoured by every animation below, not just the scroll reveal.
   var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // --- Floating profile links (inner pages only) ---
+  if (!document.body.classList.contains('landing-page')) {
+    var rail = document.createElement('nav');
+    rail.className = 'quick-links-rail';
+    rail.setAttribute('aria-label', 'Profile links');
+
+    var scriptSrc = document.currentScript && document.currentScript.src;
+    var resumeHref = new URL('../../resume/nrepesh-joshi-resume.pdf',
+      scriptSrc || window.location.href).href;
+    var quickLinks = [
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nrepeshjoshi', icon: 'i-linkedin', external: true },
+      { label: 'GitHub', href: 'https://github.com/nrepesh', icon: 'i-github', external: true },
+      { label: 'Download resume', href: resumeHref, icon: 'i-download', download: true }
+    ];
+
+    for (var q = 0; q < quickLinks.length; q++) {
+      var item = quickLinks[q];
+      var link = document.createElement('a');
+      link.href = item.href;
+      link.setAttribute('aria-label', item.label);
+      link.title = item.label;
+      if (item.external) {
+        link.target = '_blank';
+        link.rel = 'noopener';
+      }
+      if (item.download) link.setAttribute('download', '');
+
+      var icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      icon.setAttribute('class', 'icon');
+      icon.setAttribute('aria-hidden', 'true');
+      var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      use.setAttribute('href', '#' + item.icon);
+      icon.appendChild(use);
+      link.appendChild(icon);
+      rail.appendChild(link);
+    }
+
+    document.body.appendChild(rail);
+  }
+
   // --- Reveal on scroll (replaces the AOS library) ---
   // Same [data-aos] / [data-aos-delay] markup, no third-party CSS or JS.
   var reveal = document.querySelectorAll('[data-aos]');
