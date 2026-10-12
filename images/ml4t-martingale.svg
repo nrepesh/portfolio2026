@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="260" viewBox="0 0 480 260">
+  <rect width="480" height="260" fill="#111118"/>
+  
+  <!-- Roulette wheel (top left) -->
+  <circle cx="110" cy="120" r="70" fill="none" stroke="#1E1E2E" stroke-width="2"/>
+  <circle cx="110" cy="120" r="65" fill="none" stroke="#3A3A4A" stroke-width="1"/>
+  <circle cx="110" cy="120" r="5" fill="#C9FB50"/>
+  
+  <!-- Wheel segments -->
+  <path d="M175,120 L130,120 A20,20 0 0,1 127.32050807568878,130 Z" fill="#3A3A4A"/><line x1="130" y1="120" x2="175" y2="120" stroke="#1E1E2E" stroke-width="1"/><path d="M166.29165124598853,152.5 L127.32050807568878,130 A20,20 0 0,1 120,137.32050807568876 Z" fill="#2A2A3A"/><line x1="127.32050807568878" y1="130" x2="166.29165124598853" y2="152.5" stroke="#1E1E2E" stroke-width="1"/><path d="M142.5,176.2916512459885 L120,137.32050807568876 A20,20 0 0,1 110,140 Z" fill="#3A3A4A"/><line x1="120" y1="137.32050807568876" x2="142.5" y2="176.2916512459885" stroke="#1E1E2E" stroke-width="1"/><path d="M110,185 L110,140 A20,20 0 0,1 100,137.32050807568876 Z" fill="#2A2A3A"/><line x1="110" y1="140" x2="110" y2="185" stroke="#1E1E2E" stroke-width="1"/><path d="M77.50000000000001,176.29165124598853 L100,137.32050807568876 A20,20 0 0,1 92.67949192431122,130 Z" fill="#3A3A4A"/><line x1="100" y1="137.32050807568876" x2="77.50000000000001" y2="176.29165124598853" stroke="#1E1E2E" stroke-width="1"/><path d="M53.70834875401148,152.5 L92.67949192431122,130 A20,20 0 0,1 90,120 Z" fill="#2A2A3A"/><line x1="92.67949192431122" y1="130" x2="53.70834875401148" y2="152.5" stroke="#1E1E2E" stroke-width="1"/><path d="M45,120.00000000000001 L90,120 A20,20 0 0,1 92.67949192431124,110 Z" fill="#3A3A4A"/><line x1="90" y1="120" x2="45" y2="120.00000000000001" stroke="#1E1E2E" stroke-width="1"/><path d="M53.70834875401149,87.5 L92.67949192431124,110 A20,20 0 0,1 99.99999999999999,102.67949192431124 Z" fill="#2A2A3A"/><line x1="92.67949192431124" y1="110" x2="53.70834875401149" y2="87.5" stroke="#1E1E2E" stroke-width="1"/><path d="M77.49999999999997,63.708348754011496 L99.99999999999999,102.67949192431124 A20,20 0 0,1 110,100 Z" fill="#3A3A4A"/><line x1="99.99999999999999" y1="102.67949192431124" x2="77.49999999999997" y2="63.708348754011496" stroke="#1E1E2E" stroke-width="1"/><path d="M109.99999999999999,55 L110,100 A20,20 0 0,1 120,102.67949192431124 Z" fill="#2A2A3A"/><line x1="110" y1="100" x2="109.99999999999999" y2="55" stroke="#1E1E2E" stroke-width="1"/><path d="M142.5,63.70834875401149 L120,102.67949192431124 A20,20 0 0,1 127.32050807568876,109.99999999999999 Z" fill="#3A3A4A"/><line x1="120" y1="102.67949192431124" x2="142.5" y2="63.70834875401149" stroke="#1E1E2E" stroke-width="1"/><path d="M166.2916512459885,87.49999999999997 L127.32050807568876,109.99999999999999 A20,20 0 0,1 130,120 Z" fill="#2A2A3A"/><line x1="127.32050807568876" y1="109.99999999999999" x2="166.2916512459885" y2="87.49999999999997" stroke="#1E1E2E" stroke-width="1"/>
+  
+  <!-- Black & Red pockets -->
+  <circle cx="110" cy="75" r="7" fill="#333" stroke="#1E1E2E" stroke-width="1"/>
+  <circle cx="150" cy="120" r="7" fill="#C44444" stroke="#1E1E2E" stroke-width="1"/>
+  <circle cx="135" cy="80" r="7" fill="#C44444" stroke="#1E1E2E" stroke-width="1"/>
+  <circle cx="85" cy="80" r="7" fill="#333" stroke="#1E1E2E" stroke-width="1"/>
+  <text x="145" y="132" fill="#C9FB50" font-size="8" font-family="monospace">18/38</text>
+  
+  <!-- Bankroll chart (right side) -->
+  <rect x="220" y="40" width="240" height="180" fill="none" stroke="#1E1E2E" stroke-width="1"/>
+  <text x="340" y="28" text-anchor="middle" fill="#F0F0F0" font-size="14" font-weight="bold" font-family="'Space Grotesk', sans-serif">Bankroll Over 1000 Spins</text>
+  
+  <!-- Y axis labels -->
+  <text x="215" y="50" text-anchor="end" fill="#A09897" font-size="9">+$80</text>
+  <text x="215" y="130" text-anchor="end" fill="#A09897" font-size="9">$0</text>
+  <text x="215" y="210" text-anchor="end" fill="#A09897" font-size="9">-$1K</text>
+  
+  <!-- X axis labels -->
+  <text x="240" y="228" fill="#A09897" font-size="9">0</text>
+  <text x="310" y="228" fill="#A09897" font-size="9">500</text>
+  <text x="420" y="228" fill="#A09897" font-size="9">1000</text>
+  
+  <!-- Unlimited bankroll line (steady rise) -->
+  <polyline points="240,220 280,200 320,185 360,175 400,165 440,155 460,130" fill="none" stroke="#C9FB50" stroke-width="2" opacity="0.7"/>
+  <text x="460" y="125" fill="#C9FB50" font-size="9" font-family="monospace">unlimited bankroll</text>
+  
+  <!-- Limited bankroll line (sharp crash) -->
+  <polyline points="240,220 260,210 280,200 300,205 320,195 340,200 360,190 380,195 390,210 400,217" fill="none" stroke="#C44444" stroke-width="2" opacity="0.8"/>
+  <text x="410" y="223" fill="#C44444" font-size="9" font-family="monospace">limited bankroll</text>
+  
+  <!-- Zero line -->
+  <line x1="240" y1="130" x2="460" y2="130" stroke="#3A3A4A" stroke-width="1" stroke-dasharray="4,4"/>
+</svg>

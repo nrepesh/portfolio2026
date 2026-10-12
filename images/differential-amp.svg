@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect fill="#fafafa" width="800" height="450"/>
+  <polygon points="300,120 300,330 520,225" fill="#f3f4f6" stroke="#6b7280" stroke-width="3"/>
+  <line x1="180" y1="150" x2="300" y2="150" stroke="#374151" stroke-width="2"/>
+  <line x1="180" y1="300" x2="300" y2="300" stroke="#374151" stroke-width="2"/>
+  <line x1="520" y1="225" x2="620" y2="225" stroke="#374151" stroke-width="2"/>
+  <text x="380" y="130" font-family="monospace" font-size="18" fill="#ef4444">-</text>
+  <text x="380" y="320" font-family="monospace" font-size="18" fill="#22c55e">+</text>
+  <path d="M200 380 L250 380 L300 330" stroke="#fbbf24" stroke-width="2" fill="none"/>
+  <path d="M550 380 L500 380 L480 330" stroke="#fbbf24" stroke-width="2" fill="none"/>
+  <text x="400" y="420" font-family="Inter, sans-serif" font-size="18" fill="#374151" text-anchor="middle">Differential Amplifier &amp; Oscillator</text>
+</svg>

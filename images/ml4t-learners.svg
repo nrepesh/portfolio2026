@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="280" viewBox="0 0 480 280">
+  <rect width="480" height="280" fill="#111118"/>
+  
+  <text x="240" y="28" text-anchor="middle" fill="#F0F0F0" font-size="15" font-weight="bold" font-family="'Space Grotesk', sans-serif">Overfitting vs. Leaf Size</text>
+  
+  <!-- Left panel: Overfitting example -->
+  <text x="110" y="50" text-anchor="middle" fill="#A09897" font-size="11" font-weight="bold">Training Error</text>
+  <text x="370" y="50" text-anchor="middle" fill="#A09897" font-size="11" font-weight="bold">Test Error</text>
+  
+  <!-- Left: data + overfit curve -->
+  <rect x="25" y="65" width="170" height="190" fill="none" stroke="#1E1E2E" stroke-width="1"/>
+  
+  <circle cx="117.81512268377207" cy="222.54943967975512" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="137.8043303142863" cy="79.16467178539231" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="145.8134284707408" cy="218.14706872347276" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="115.54206521402025" cy="133.50218154504347" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="173.42673347897576" cy="110.29550497178056" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="132.0895730207028" cy="169.79756748357786" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="158.8942356105054" cy="183.61354702381595" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="90.01820834747457" cy="129.82438307921393" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="93.1091890586506" cy="95.19825182661788" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="79.92929079385944" cy="149.8140347295356" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="121.59255435666418" cy="202.2677280000946" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="35.004332535084764" cy="208.84613227276188" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="119.43382003780474" cy="169.0193264751732" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="99.07293732351663" cy="194.66614730813944" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="164.86048139382768" cy="80.00786479585449" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="114.24252725831839" cy="176.28139504868426" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="83.96376974419331" cy="149.77171724916616" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="48.08403422671375" cy="220.09777341159307" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="121.23506633005967" cy="192.33428254771732" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="126.3496867203993" cy="118.43685686070035" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="183.3695240418496" cy="174.48150731161348" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="61.032402592518" cy="91.48286461258172" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="152.54569957137596" cy="94.82188150827034" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="37.34124511806972" cy="165.61645962401707" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="69.1878587614624" cy="184.15918536690344" r="3" fill="#C9FB50" opacity="0.5"/>
+  
+  <!-- Jagged overfit line (left) -->
+  <polyline points="30,230 40,180 50,200 60,120 70,170 80,90 90,190 100,100 110,210 120,80 130,200 140,110 150,220 160,130 170,210 180,140 185,230" fill="none" stroke="#C9FB50" stroke-width="1.5" opacity="0.8"/>
+  
+  <!-- Right: smoother generalization curve -->
+  <rect x="265" y="65" width="170" height="190" fill="none" stroke="#1E1E2E" stroke-width="1"/>
+  
+  <circle cx="326.3531239485733" cy="110.0667685868183" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="333.1661890650318" cy="141.58505489428177" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="333.3111067339279" cy="177.51332648274322" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="391.4654859136118" cy="82.25311145522717" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="342.429799890807" cy="90.37591330384289" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="423.01406713955316" cy="129.08572072181454" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="392.44957701037276" cy="188.75574474878553" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="350.3786996434704" cy="127.93751387460219" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="351.5197815651437" cy="186.8660759765524" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="318.01334245422606" cy="183.78273198439393" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="352.6086709977628" cy="160.64339317338522" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="387.07636583989415" cy="147.5405813170165" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="289.3581842101832" cy="145.67370609048905" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="292.0338956447175" cy="186.18694862604002" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="413.432996853169" cy="105.08757924069741" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="369.35992525428014" cy="180.9577730386793" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="422.92278849081515" cy="197.26820458005187" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="334.08218529369566" cy="170.63546939421775" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="305.3660026887462" cy="136.20974369616079" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="420.53009224914734" cy="98.18486662485661" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="384.31055656994073" cy="198.85903549080155" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="360.7030329055349" cy="191.1423956325075" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="413.3678445828936" cy="211.16069125358845" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="332.40552063122465" cy="217.35948590271414" r="3" fill="#C9FB50" opacity="0.5"/><circle cx="413.5813086914653" cy="102.4719570237175" r="3" fill="#C9FB50" opacity="0.5"/>
+  
+  <!-- Smoother line (right) -->
+  <polyline points="270,230 300,210 330,185 360,160 390,140 410,145 430,170 435,230" fill="none" stroke="#C9FB50" stroke-width="1.5" opacity="0.8"/>
+  
+  <!-- Leaf size axis at bottom -->
+  <text x="240" y="265" text-anchor="middle" fill="#A09897" font-size="11" font-family="monospace">Increasing Leaf Size -></text>
+  
+  <!-- Gap annotation -->
+  <text x="110" y="40" text-anchor="middle" fill="#C9FB50" font-size="9" font-family="monospace">RMSE: near 0</text>
+  <text x="370" y="40" text-anchor="middle" fill="#C4C444" font-size="9" font-family="monospace">RMSE: high</text>
+</svg>
